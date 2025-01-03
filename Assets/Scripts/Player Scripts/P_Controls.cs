@@ -7,6 +7,10 @@ public class P_Controls
     P_Movement _movement;
     P_View _view;
     KeyCode switchCharacter = KeyCode.LeftShift;
+    KeyCode basicAttack = KeyCode.Mouse0;
+    KeyCode damageAbility = KeyCode.Mouse1;
+    KeyCode ccAbility = KeyCode.Q;
+    KeyCode utilityAbility = KeyCode.R;
 
     MarkusState _markusState;
     FeranaState _feranaState;
@@ -25,6 +29,7 @@ public class P_Controls
     {
         BasicControls();
         SwitchControls();
+        Ability();
     }
 
     public void BasicControls()
@@ -41,19 +46,63 @@ public class P_Controls
             if(isMarkus == true)
             {
                 _markusState.SwitchToFerana();
-                _view.SwitchToFerana();
                 isMarkus = false;
-                Debug.Log("Entro To Ferana");
                 return;
             }
 
             else if(isMarkus == false)
             {
                 _feranaState.SwitchToMarkus();
-                _view.SwitchToMarkus();
                 isMarkus = true;
-                Debug.Log("Entro To Markus");
                 return;
+            }
+        }
+    }
+
+    public void Ability()
+    {
+        if(Input.GetKeyDown(basicAttack))
+        {
+            if(isMarkus == true)
+            {
+                _markusState.BasicAttack();
+            }
+            else
+            {
+                _feranaState.BasicAttack();
+            }
+        }
+        if (Input.GetKeyDown(damageAbility))
+        {
+            if (isMarkus == true)
+            {
+                _markusState.DamageAbility();
+            }
+            else
+            {
+                _feranaState.DamageHability();
+            }
+        }
+        if (Input.GetKeyDown(ccAbility))
+        {
+            if (isMarkus == true)
+            {
+                _markusState.CCAbility();
+            }
+            else
+            {
+                _feranaState.CCHability();
+            }
+        }
+        if (Input.GetKeyDown(utilityAbility))
+        {
+            if (isMarkus == true)
+            {
+                _markusState.UtilityAbility();
+            }
+            else
+            {
+                _feranaState.UtilityHability();
             }
         }
     }
