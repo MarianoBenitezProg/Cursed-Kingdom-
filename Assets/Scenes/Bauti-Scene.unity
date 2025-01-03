@@ -349,6 +349,7 @@ GameObject:
   - component: {fileID: 1123515264}
   - component: {fileID: 1123515266}
   - component: {fileID: 1123515267}
+  - component: {fileID: 1123515268}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -372,6 +373,15 @@ MonoBehaviour:
   _rb: {fileID: 0}
   _markusSprite: {fileID: 1232425806}
   _feranaSprite: {fileID: 821100326}
+  _timersScript: {fileID: 1123515268}
+  fer_Basic: 1
+  fer_Damage: 4
+  fer_CC: 6
+  fer_Utility: 8
+  mar_Basic: 1
+  mar_Damage: 4
+  mar_CC: 6
+  mar_Utility: 8
   _fsm: {fileID: 0}
 --- !u!4 &1123515265
 Transform:
@@ -452,6 +462,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1123515268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123515263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b840146bd20e1341babea6057fdff61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1232425806
 GameObject:
   m_ObjectHideFlags: 0

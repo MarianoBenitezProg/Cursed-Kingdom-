@@ -6,11 +6,18 @@ public class MarkusState : State
 {
     P_Behaviour _playerScript;
     P_View _viewScript;
+    AbilityTimers _timersScript;
 
-    public MarkusState(P_Behaviour playerRef, P_View viewRef)
+    private bool _canUseBasicAttack = true;
+    private bool _canUseDamageAbility = true;
+    private bool _canUseCCAbility = true;
+    private bool _canUseUtilityAbility = true;
+
+    public MarkusState(P_Behaviour playerRef, P_View viewRef, AbilityTimers timerRef)
     {
         _playerScript = playerRef;
         _viewScript = viewRef;
+        _timersScript = timerRef;
     }
 
     protected override void OnEnter()
@@ -36,20 +43,39 @@ public class MarkusState : State
 
     public void BasicAttack()
     {
-        Debug.Log("Ataque Basico Markus");
+        if (_canUseBasicAttack && !_timersScript.IsOnCooldown("MarkusBasicAttack"))
+        {
+            Debug.Log("Ataque Basico Markus");
+            _canUseBasicAttack = false;
+            _timersScript.StartCooldown("MarkusBasicAttack", () => _canUseBasicAttack = true);
+        }
     }
     public void DamageAbility()
     {
-        Debug.Log("Habilidad de Daño Markus");
+        if (_canUseDamageAbility && !_timersScript.IsOnCooldown("MarkusDamage"))
+        {
+            Debug.Log("Habilidad de Daño Markus");
+            _canUseDamageAbility = false;
+            _timersScript.StartCooldown("MarkusDamage", () => _canUseDamageAbility = true);
+        }
     }
     public void CCAbility()//Crowd Control. Stuns y slow
     {
-        Debug.Log("Habilidad de CC Markus");
+        if (_canUseCCAbility && !_timersScript.IsOnCooldown("MarkusCC"))
+        {
+            Debug.Log("Habilidad de CC Markus");
+            _canUseCCAbility = false;
+            _timersScript.StartCooldown("MarkusCC", () => _canUseCCAbility = true);
+        }
     }
 
     public void UtilityAbility()
     {
-        Debug.Log("Habilidad de Utilidad Markus");
+        if (_canUseUtilityAbility && !_timersScript.IsOnCooldown("MarkusUtility"))
+        {
+            Debug.Log("Habilidad de Utilidad Markus");
+            _canUseUtilityAbility = false;
+            _timersScript.StartCooldown("MarkusUtility", () => _canUseUtilityAbility = true);
+        }
     }
-
 }

@@ -80,7 +80,7 @@ public class P_Controls
             }
             else
             {
-                _feranaState.DamageHability();
+                _feranaState.DamageAbility();
             }
         }
         if (Input.GetKeyDown(ccAbility))
@@ -91,7 +91,7 @@ public class P_Controls
             }
             else
             {
-                _feranaState.CCHability();
+                _feranaState.CCAbility();
             }
         }
         if (Input.GetKeyDown(utilityAbility))
@@ -102,7 +102,7 @@ public class P_Controls
             }
             else
             {
-                _feranaState.UtilityHability();
+                _feranaState.UtilityAbility();
             }
         }
     }
