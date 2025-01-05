@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class P_Behaviour : MonoBehaviour
 {
+    Rigidbody2D _rb;
+    public int life = 100;
     [SerializeField] float _speed;
-    [SerializeField] Rigidbody2D _rb;
     [SerializeField] GameObject _markusSprite;
     [SerializeField] GameObject _feranaSprite;
     [SerializeField] GameObject _aimPosition;
+    public bool isMarkus;
 
     P_Movement _movement;
     P_Controls _controls;
@@ -29,7 +31,7 @@ public class P_Behaviour : MonoBehaviour
     public float mar_Damage;
     public float mar_CC;
     public float mar_Utility;
-
+    
     [HideInInspector] public FSM _fsm;
 
     private void Awake()
@@ -59,7 +61,7 @@ public class P_Behaviour : MonoBehaviour
         _feranaState = new FeranaState(this, _view, _timersScript);
         _fsm = new FSM(_feranaState);
         _movement = new P_Movement(this.transform, _speed, _rb, _aimPosition);
-        _controls = new P_Controls(_movement, _view, _markusState, _feranaState);
+        _controls = new P_Controls(_movement, _view, _markusState, _feranaState, this);
 
         _markusState.AddTransition("SwitchToFerana", _feranaState);
         _feranaState.AddTransition("SwitchToMarkus", _markusState);

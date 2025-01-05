@@ -71,22 +71,22 @@ public class P_Movement
                 case Direction.Up:
                     Debug.Log("Looking Up");
                     //_playerTransform.rotation = Quaternion.Euler(0, 0, 90);
-                    _aimPosition.transform.position = new Vector3(0, 1.5f, 0);
+                    _aimPosition.transform.position = new Vector3(_playerTransform.position.x, _playerTransform.position.y + 1.5f, 0);
                     break;
                 case Direction.Left:
                     Debug.Log("Looking Left");
                     //_playerTransform.rotation = Quaternion.Euler(0, 0, 180);
-                    _aimPosition.transform.position = new Vector3(-1, 0, 0);
+                    _aimPosition.transform.position = new Vector3(_playerTransform.position.x - 1, _playerTransform.position.y, 0);
                     break;
                 case Direction.Down:
                     Debug.Log("Looking Down");
                     //_playerTransform.rotation = Quaternion.Euler(0, 0, 270);
-                    _aimPosition.transform.position = new Vector3(0, -1.5f, 0);
+                    _aimPosition.transform.position = new Vector3(_playerTransform.position.x, _playerTransform.position.y - 1.5f, 0);
                     break;
                 case Direction.Right:
                     Debug.Log("Looking Right");
                     //_playerTransform.rotation = Quaternion.Euler(0, 0, 0);
-                    _aimPosition.transform.position = new Vector3(1, 0, 0);
+                    _aimPosition.transform.position = new Vector3(_playerTransform.position.x + 1, _playerTransform.position.y, 0);
                     break;
             }
 

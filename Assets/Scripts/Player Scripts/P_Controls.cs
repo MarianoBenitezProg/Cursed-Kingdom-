@@ -6,6 +6,7 @@ public class P_Controls
 {
     P_Movement _movement;
     P_View _view;
+    P_Behaviour _playerScript;
     KeyCode switchCharacter = KeyCode.LeftShift;
     KeyCode basicAttack = KeyCode.Mouse0;
     KeyCode damageAbility = KeyCode.Mouse1;
@@ -17,12 +18,13 @@ public class P_Controls
 
     bool isMarkus = false;
 
-    public P_Controls(P_Movement movementRef, P_View viewRef, MarkusState markusSRef, FeranaState feranaSRef)
+    public P_Controls(P_Movement movementRef, P_View viewRef, MarkusState markusSRef, FeranaState feranaSRef, P_Behaviour playerRef)
     {
         _movement = movementRef;
         _view = viewRef;
         _markusState = markusSRef;
         _feranaState = feranaSRef;
+        _playerScript = playerRef;
     }
 
     public void ControlsUpdate()
@@ -46,6 +48,7 @@ public class P_Controls
             if(isMarkus == true)
             {
                 _markusState.SwitchToFerana();
+                _playerScript.isMarkus = false;
                 isMarkus = false;
                 return;
             }
@@ -53,6 +56,7 @@ public class P_Controls
             else if(isMarkus == false)
             {
                 _feranaState.SwitchToMarkus();
+                _playerScript.isMarkus = true;
                 isMarkus = true;
                 return;
             }

@@ -41,6 +41,18 @@ public class AbilityTimers : MonoBehaviour
         }
     }
 
+    public float GetCooldownProgress(string abilityName)
+    {
+        if (!cooldowns.ContainsKey(abilityName) || !currentCooldowns.ContainsKey(abilityName))
+            return 1f; // Return 1 if ability not found (means no cooldown)
+
+        float totalCooldown = cooldowns[abilityName];
+        float currentCooldown = currentCooldowns[abilityName];
+
+        // Returns 1 when ready, 0 when just started cooldown
+        return 1f - (currentCooldown / totalCooldown);
+    }
+
     public void StartCooldown(string abilityName, Action onCooldownComplete)
     {
         if (cooldowns.ContainsKey(abilityName))
