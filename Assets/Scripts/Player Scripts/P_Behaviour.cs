@@ -8,6 +8,7 @@ public class P_Behaviour : MonoBehaviour
     [SerializeField] Rigidbody2D _rb;
     [SerializeField] GameObject _markusSprite;
     [SerializeField] GameObject _feranaSprite;
+    [SerializeField] GameObject _aimPosition;
 
     P_Movement _movement;
     P_Controls _controls;
@@ -57,7 +58,7 @@ public class P_Behaviour : MonoBehaviour
         _markusState = new MarkusState(this, _view, _timersScript);
         _feranaState = new FeranaState(this, _view, _timersScript);
         _fsm = new FSM(_feranaState);
-        _movement = new P_Movement(this.transform, _speed, _rb);
+        _movement = new P_Movement(this.transform, _speed, _rb, _aimPosition);
         _controls = new P_Controls(_movement, _view, _markusState, _feranaState);
 
         _markusState.AddTransition("SwitchToFerana", _feranaState);
