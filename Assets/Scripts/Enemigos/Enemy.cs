@@ -15,6 +15,9 @@ public class Enemy : MonoBehaviour
     public LayerMask playerLayer;
     public LayerMask ObstacleLayer;
 
+   public bool enemyHasSight = false;
+   public bool isAttacking = false;
+
 
     IEnemyState currentState;
 
@@ -26,6 +29,14 @@ public class Enemy : MonoBehaviour
     public void Update()
     {
         currentState?.UpdateState(this);
+
+        if (enemyHasSight && !isAttacking)
+        {
+            isAttacking = true;
+            enemyHasSight = false; // Desactiva temporalmente la visión
+            SetState(new AtackState());
+        }
+
     }
 
     #region metodos basicos
@@ -46,6 +57,11 @@ public class Enemy : MonoBehaviour
 
     public void SetState(IEnemyState newState)
     {
+        if (currentState != null && currentState.GetType() == newState.GetType())
+        {
+            return; // Si el tipo es el mismo, no cambiar el estado
+        }
+
         currentState?.ExitState(this);
         currentState = newState;
         currentState.EnterState(this);
@@ -61,26 +77,23 @@ public class Enemy : MonoBehaviour
 
         foreach (Collider2D col in targetsInViewRadius )
         {
-   
-
             Transform potentialTarget = col.transform;
 
             Vector2 directionToTarget = (potentialTarget.position - transform.position).normalized;
             float angleToTarget = Vector2.Angle(transform.right, directionToTarget);
 
-            if (angleToTarget < ViewAngle / 2f)
+            if (angleToTarget < ViewAngle / 2f && potentialTarget != null)
             {
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToTarget, ViewRadius, ObstacleLayer | playerLayer);
                 if (hit.collider != null && hit.collider.transform == potentialTarget )
                 {
                     target = potentialTarget;
-                    Debug.Log("vi un player");
-                    SetState(new AtackState());
+                    enemyHasSight = true;
                     return true;
                 }
             }
         }
-
+        enemyHasSight = false;
         return false;
     }
     private Vector3 DirectionFromAngle(float angleInDegrees)

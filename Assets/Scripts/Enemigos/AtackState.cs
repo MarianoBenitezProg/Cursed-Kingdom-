@@ -6,7 +6,7 @@ public class AtackState : IEnemyState
 {
     public void EnterState(Enemy enemy)
     {
-        Debug.Log("estoy en modo ataque ");
+        Debug.Log("estoy en modo ataque");
     }
     public void UpdateState(Enemy enemy)
     {

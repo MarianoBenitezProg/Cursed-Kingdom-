@@ -598,21 +598,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1841949558}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ab0fe7200eac594caba07290563365c, type: 3}
+  m_Script: {fileID: 11500000, guid: aa861c130d46b2f41a63fa443831d853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path: []
+  path:
+  - {fileID: 1834052935}
+  - {fileID: 1135551697}
+  - {fileID: 506955440}
+  - {fileID: 113302282}
   Health: 100
-  Speed: 2.5
+  Speed: 5
   RotationSpeed: 5
   ViewAngle: 24.8
   ViewRadius: 4.66
-  targetMask:
+  playerLayer:
     serializedVersion: 2
     m_Bits: 8
-  obstacleMask:
+  ObstacleLayer:
     serializedVersion: 2
     m_Bits: 64
+  enemyHasSigth: 0
 --- !u!1 &2089281654
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,7 +697,7 @@ Transform:
   m_GameObject: {fileID: 2089281654}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.44, y: -1.99, z: 0}
+  m_LocalPosition: {x: 9.23, y: -2.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
