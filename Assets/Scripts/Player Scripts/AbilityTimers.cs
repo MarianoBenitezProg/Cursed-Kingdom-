@@ -1,14 +1,32 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Linq;
+using UnityEngine.Events;
 
 public class AbilityTimers : MonoBehaviour
 {
+    public static AbilityTimers instance;
+    
     private Dictionary<string, float> cooldowns = new Dictionary<string, float>();
     private Dictionary<string, float> currentCooldowns = new Dictionary<string, float>();
     private Dictionary<string, Action> cooldownCallbacks = new Dictionary<string, Action>();
+
+    // Added UnityEvent for cooldown updates
+    public UnityEvent<string, float> OnCooldownUpdated = new UnityEvent<string, float>();
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public void Initialize(Dictionary<string, float> abilityCooldowns)
     {
@@ -27,15 +45,21 @@ public class AbilityTimers : MonoBehaviour
             if (currentCooldowns[key] > 0)
             {
                 currentCooldowns[key] -= Time.deltaTime;
+                
+                // Trigger event when cooldown updates
+                float progress = GetCooldownProgress(key);
+                OnCooldownUpdated.Invoke(key, progress);
 
                 if (currentCooldowns[key] <= 0)
                 {
                     currentCooldowns[key] = 0;
                     if (cooldownCallbacks.ContainsKey(key))
                     {
-                        cooldownCallbacks[key].Invoke();
+                        cooldownCallbacks[key]?.Invoke();
                         Debug.Log($"Cooldown finished for {key}");
                     }
+                    // Final update when cooldown ends
+                    OnCooldownUpdated.Invoke(key, 1f);
                 }
             }
         }
@@ -48,8 +72,7 @@ public class AbilityTimers : MonoBehaviour
 
         float totalCooldown = cooldowns[abilityName];
         float currentCooldown = currentCooldowns[abilityName];
-
-        // Returns 1 when ready, 0 when just started cooldown
+        
         return 1f - (currentCooldown / totalCooldown);
     }
 
@@ -60,6 +83,7 @@ public class AbilityTimers : MonoBehaviour
             currentCooldowns[abilityName] = cooldowns[abilityName];
             cooldownCallbacks[abilityName] = onCooldownComplete;
             Debug.Log($"Started cooldown for {abilityName}: {cooldowns[abilityName]} seconds");
+            OnCooldownUpdated.Invoke(abilityName, 0f); // Trigger UI update immediately
         }
     }
 

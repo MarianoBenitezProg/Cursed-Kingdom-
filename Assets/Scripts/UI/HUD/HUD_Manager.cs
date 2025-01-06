@@ -1,106 +1,74 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class HUD_Manager : MonoBehaviour
 {
-    [SerializeField] P_Behaviour _playerScript;
-    AbilityTimers _timersRef;
-    [SerializeField] GameObject[] _markusUI;
-    [SerializeField] GameObject[] _feranaUI;
+    [SerializeField] private P_Behaviour _playerScript;
+    private AbilityTimers _timersRef;
 
-    Image feranaBasic;
-    Image feranaDamage;
-    Image feranaCC;
-    Image feranaUtility;
+    [SerializeField] private GameObject[] _markusUI;
+    [SerializeField] private GameObject[] _feranaUI;
 
-    Image markusBasic;
-    Image markusDamage;
-    Image markusCC;
-    Image markusUtility;
+    private Dictionary<string, Image> feranaImages = new Dictionary<string, Image>();
+    private Dictionary<string, Image> markusImages = new Dictionary<string, Image>();
 
-    bool isMarkusRef;
+    private bool isMarkusRef;
 
     private void Awake()
     {
         isMarkusRef = _playerScript.isMarkus;
-        _timersRef = _playerScript.gameObject.GetComponent<AbilityTimers>();
-        feranaBasic = _feranaUI[1].GetComponent<Image>();
-        feranaDamage = _feranaUI[2].GetComponent<Image>();
-        feranaCC = _feranaUI[3].GetComponent<Image>();
-        feranaUtility = _feranaUI[4].GetComponent<Image>();
+        _timersRef = _playerScript.GetComponent<AbilityTimers>();
 
-        markusBasic = _markusUI[1].GetComponent<Image>();
-        markusDamage = _markusUI[2].GetComponent<Image>();
-        markusCC = _markusUI[3].GetComponent<Image>();
-        markusUtility = _markusUI[4].GetComponent<Image>();
+        InitializeAbilityUI(_feranaUI, feranaImages, "Ferana");
+        InitializeAbilityUI(_markusUI, markusImages, "Markus");
+
+        _timersRef.OnCooldownUpdated.AddListener(UpdateCooldownUI);
+
+        UpdateUIState();
+    }
+
+    private void InitializeAbilityUI(GameObject[] uiElements, Dictionary<string, Image> imageDict, string prefix)
+    {
+        string[] abilityNames = { "None", "BasicAttack", "Damage", "CC", "Utility" }; //El "None" es importante porque en la lista imagenes primero esta la UI de flecha o espada
+
+        for (int i = 0; i < uiElements.Length; i++)
+        {
+            if (i < abilityNames.Length)
+            {
+                string key = prefix + abilityNames[i];
+                imageDict[key] = uiElements[i].GetComponent<Image>();
+            }
+        }
     }
 
     private void Update()
     {
-        ChangeUI();
-        AbilitiesCooldown();
-    }
-
-    public void ChangeUI()
-    {
-        if (_playerScript.isMarkus == true && isMarkusRef == false)
+        if (_playerScript.isMarkus != isMarkusRef)
         {
-            for (int i = 0; i < _markusUI.Length; i++)
-            {
-                _markusUI[i].gameObject.SetActive(true);
-                _feranaUI[i].gameObject.SetActive(false);
-                isMarkusRef = true;
-            }
-        }
-        else if (_playerScript.isMarkus == false && isMarkusRef == true)
-        {
-            for (int i = 0; i < _markusUI.Length; i++)
-            {
-                _markusUI[i].gameObject.SetActive(false);
-                _feranaUI[i].gameObject.SetActive(true);
-                isMarkusRef = false;
-            }
+            UpdateUIState();
         }
     }
 
-    public void AbilitiesCooldown()
+    private void UpdateUIState()
     {
-        if (_markusUI[1] != null)
-        {
-            markusBasic.fillAmount = _timersRef.GetCooldownProgress("MarkusBasicAttack");
-            Debug.Log(feranaBasic);
-        }
-        if (_markusUI[2] != null)
-        {
-            markusDamage.fillAmount = _timersRef.GetCooldownProgress("MarkusDamage");
-        }
-        if (_markusUI[3] != null)
-        {
-            markusCC.fillAmount = _timersRef.GetCooldownProgress("MarkusCC");
-        }
-        if (_markusUI[4] != null)
-        {
-            markusUtility.fillAmount = _timersRef.GetCooldownProgress("MarkusUtility");
-        }
+        bool markusActive = _playerScript.isMarkus;
 
+        foreach (GameObject obj in _markusUI)
+            obj.SetActive(markusActive);
 
-        if (_feranaUI[1] != null)
-        {
-            feranaBasic.fillAmount = _timersRef.GetCooldownProgress("FeranaBasicAttack");
-        }
-        if (_feranaUI[2] != null)
-        {
-            feranaDamage.fillAmount = _timersRef.GetCooldownProgress("FeranaDamage");
-        }
-        if (_feranaUI[3] != null)
-        {
-            feranaCC.fillAmount = _timersRef.GetCooldownProgress("FeranaCC");
-        }
-        if (_feranaUI[4] != null)
-        {
-            feranaUtility.fillAmount = _timersRef.GetCooldownProgress("FeranaUtility");
-        }
+        foreach (GameObject obj in _feranaUI)
+            obj.SetActive(!markusActive);
+
+        isMarkusRef = markusActive;
+    }
+
+    private void UpdateCooldownUI(string abilityName, float progress)
+    {
+        if (markusImages.ContainsKey(abilityName))
+            markusImages[abilityName].fillAmount = progress;
+
+        if (feranaImages.ContainsKey(abilityName))
+            feranaImages[abilityName].fillAmount = progress;
     }
 }
