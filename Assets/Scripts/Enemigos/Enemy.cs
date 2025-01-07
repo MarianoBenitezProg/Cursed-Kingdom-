@@ -15,8 +15,13 @@ public class Enemy : MonoBehaviour
     public LayerMask playerLayer;
     public LayerMask ObstacleLayer;
 
+    public GameObject player;
+
    public bool enemyHasSight = false;
    public bool isAttacking = false;
+
+    public float timeToLoseSight = 6f; // Tiempo necesario para perder la visión
+    private float timeWithoutSight = 0f;
 
 
     IEnemyState currentState;
@@ -28,15 +33,33 @@ public class Enemy : MonoBehaviour
     }
     public void Update()
     {
+        // Actualizar lógica del estado actual
         currentState?.UpdateState(this);
 
-        if (enemyHasSight && !isAttacking)
-        {
-            isAttacking = true;
-            enemyHasSight = false; // Desactiva temporalmente la visión
-            SetState(new AtackState());
-        }
+        // Verificar si el jugador está dentro del campo de visión
+        enemyHasSight = CanSeeTarget(out GameObject target);
 
+        if (enemyHasSight)
+        {
+            timeWithoutSight = 0f; // Reinicia el contador si puede ver al jugador
+
+            if (!isAttacking)
+            {
+                isAttacking = true;
+                SetState(new AtackState());
+            }
+        }
+        else
+        {
+            timeWithoutSight += Time.deltaTime; // Incrementa el tiempo sin visión
+
+            if (timeWithoutSight >= timeToLoseSight)
+            {
+                // Volver al estado de patrullaje si no ve al jugador por un tiempo
+                isAttacking = false;
+                SetState(new PatrolState());
+            }
+        }
     }
 
     #region metodos basicos
@@ -66,10 +89,8 @@ public class Enemy : MonoBehaviour
         currentState = newState;
         currentState.EnterState(this);
     }
-
-
     #region Field Of View
-    public bool CanSeeTarget(out Transform target)
+    public bool CanSeeTarget(out GameObject target)
     {
         target = null;
 
@@ -77,18 +98,19 @@ public class Enemy : MonoBehaviour
 
         foreach (Collider2D col in targetsInViewRadius )
         {
-            Transform potentialTarget = col.transform;
+            GameObject potentialTarget = col.gameObject;
 
-            Vector2 directionToTarget = (potentialTarget.position - transform.position).normalized;
+            Vector2 directionToTarget = (potentialTarget.transform.position - transform.position).normalized;
             float angleToTarget = Vector2.Angle(transform.right, directionToTarget);
 
             if (angleToTarget < ViewAngle / 2f && potentialTarget != null)
             {
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToTarget, ViewRadius, ObstacleLayer | playerLayer);
-                if (hit.collider != null && hit.collider.transform == potentialTarget )
+                if (hit.collider != null && hit.collider.gameObject == potentialTarget)
                 {
                     target = potentialTarget;
                     enemyHasSight = true;
+                    player = target;
                     return true;
                 }
             }
@@ -116,10 +138,10 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + leftBoundary * ViewRadius);
         Gizmos.DrawLine(transform.position, transform.position + rightBoundary * ViewRadius);
 
-        if (CanSeeTarget(out Transform target))
+        if (CanSeeTarget(out GameObject target))
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, target.position); 
+            Gizmos.DrawLine(transform.position, target.transform.position); 
         }
 
         RaycastHit2D hitObstacle = Physics2D.Raycast(transform.position, transform.right, ViewRadius, ObstacleLayer);
