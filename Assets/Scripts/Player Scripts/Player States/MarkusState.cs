@@ -43,6 +43,11 @@ public class MarkusState : State
 
     public void BasicAttack()
     {
+        if (_canUseBasicAttack == true)
+        {
+            ProyectilePool.Instance.GetObstacle(ProjectileType.Markus1);
+        }
+
         if (_canUseBasicAttack && !_timersScript.IsOnCooldown("MarkusBasicAttack"))
         {
             Debug.Log("Ataque Basico Markus");

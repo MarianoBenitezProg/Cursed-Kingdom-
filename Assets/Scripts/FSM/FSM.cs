@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FSM : MonoBehaviour
+public class FSM
 {
     State current;
     public FSM(State initialState)

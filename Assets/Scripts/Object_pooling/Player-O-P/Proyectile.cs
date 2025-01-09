@@ -4,18 +4,32 @@ using UnityEngine;
 
 public class Proyectile : MonoBehaviour
 {
-    float timer;
-    public float DestroyTimer = 5f;
+    protected bool isActive;
+    protected float timer;
+    public float speed;
+    public float destroyTimer = 5f;
     public ProjectileType ProyectType;
-    private void Update()
+    protected GameObject shootingPivot;
+
+    private void Awake()
     {
-        timer += Time.deltaTime;
-        if (timer >= DestroyTimer)
-        {
-            ProyectilePool.Instance.ReturnObstacle(gameObject, ProyectType);
-            timer = 0;
-        }
+        shootingPivot = GameObject.Find("Shooting Pivot");
     }
+    private void OnEnable()
+    {
+        transform.position = shootingPivot.transform.position;
+        isActive = true;
+    }
+
+    //private void Update()
+    //{
+    //    timer += Time.deltaTime;
+    //    if (timer >= DestroyTimer)
+    //    {
+    //        ProyectilePool.Instance.ReturnObstacle(gameObject, ProyectType);
+    //        timer = 0;
+    //    }
+    //}
     public virtual void Behaviour()
     {
 

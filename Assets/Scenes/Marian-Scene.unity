@@ -260,7 +260,7 @@ MonoBehaviour:
     prefab: {fileID: 2694205241798850848, guid: 46e2d8e40392b0e4c8332384a762ed0d, type: 3}
   - type: 7
     prefab: {fileID: 2694205241798850848, guid: 98e8a597fbef9284591b797550df5a08, type: 3}
-  poolSizePerType: 10
+  poolSizePerType: 4
 --- !u!1 &506955439
 GameObject:
   m_ObjectHideFlags: 0
