@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -5815707703617810159}
   - component: {fileID: 7101292587070326167}
   m_Layer: 0
-  m_Name: ProyectilHit
+  m_Name: ferrana 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86bb534a4e4c4cc4a9337f2177e4a9e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestroyTimer: 2
   ProyectType: 1
 --- !u!61 &7101292587070326167
 BoxCollider2D:

@@ -63,11 +63,6 @@ public class Enemy : MonoBehaviour
     }
 
     #region metodos basicos
-    public virtual void TakeDamage(int amount)
-    {
-        Health -= amount;
-        if (Health <= 0) Die();
-    }
     public virtual void Die()
     {
         Destroy(gameObject);

@@ -10,7 +10,8 @@ public class EyeScript : Enemy
         if(Input.GetKeyDown(KeyCode.Space))
         {
             GameObject obstacle = ProyectilePool.Instance.GetObstacle(ProjectileType.Markus1);
-            obstacle.transform.position = new Vector3(1,1,0);
+            Transform SpawnPoint = gameObject.transform.GetChild(0).transform;
+            obstacle.transform.position = SpawnPoint.position;
         }
 
     }
