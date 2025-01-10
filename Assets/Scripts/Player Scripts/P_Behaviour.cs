@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class P_Behaviour : MonoBehaviour
+public class P_Behaviour : MonoBehaviour, ItakeDamage
 {
     Rigidbody2D _rb;
     public int life = 100;
+    public Direction lookingDir;
     [SerializeField] float _speed;
     [SerializeField] GameObject _markusSprite;
     [SerializeField] GameObject _feranaSprite;
@@ -60,7 +61,7 @@ public class P_Behaviour : MonoBehaviour
         _markusState = new MarkusState(this, _view, _timersScript);
         _feranaState = new FeranaState(this, _view, _timersScript);
         _fsm = new FSM(_feranaState);
-        _movement = new P_Movement(this.transform, _speed, _rb, _aimPosition);
+        _movement = new P_Movement(this, _speed, _rb, _aimPosition);
         _controls = new P_Controls(_movement, _view, _markusState, _feranaState, this);
 
         _markusState.AddTransition("SwitchToFerana", _feranaState);
@@ -71,5 +72,11 @@ public class P_Behaviour : MonoBehaviour
     {
         _controls.ControlsUpdate();
         _fsm.FsmUpdate(Time.deltaTime);
+    }
+
+    public void takeDMG(int dmg)
+    {
+        life -= dmg;
+        Debug.Log("Recibi daño");
     }
 }

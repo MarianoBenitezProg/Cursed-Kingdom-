@@ -42,6 +42,11 @@ public class FeranaState : State
 
     public void BasicAttack()
     {
+        if(_canUseBasicAttack == true)
+        {
+            ProyectilePool.Instance.GetObstacle(ProjectileType.Ferrana1);
+        }
+
         if (_canUseBasicAttack && !_timersScript.IsOnCooldown("FeranaBasicAttack"))
         {
             Debug.Log("Ataque Basico Ferana");
@@ -51,6 +56,11 @@ public class FeranaState : State
     }
     public void DamageAbility()
     {
+        if (_canUseDamageAbility == true)
+        {
+            ProyectilePool.Instance.GetObstacle(ProjectileType.Ferrana2);
+        }
+
         if (_canUseDamageAbility && !_timersScript.IsOnCooldown("FeranaDamage"))
         {
             Debug.Log("Habilidad de Daño Ferana");
@@ -60,6 +70,11 @@ public class FeranaState : State
     }
     public void CCAbility()//Crowd Control. Stuns y slow
     {
+        if (_canUseCCAbility == true)
+        {
+            ProyectilePool.Instance.GetObstacle(ProjectileType.Ferrana3);
+        }
+
         if (_canUseCCAbility && !_timersScript.IsOnCooldown("FeranaCC"))
         {
             Debug.Log("Habilidad de CC Ferana");
@@ -70,6 +85,11 @@ public class FeranaState : State
 
     public void UtilityAbility()
     {
+        if (_canUseUtilityAbility == true)
+        {
+            ProyectilePool.Instance.GetObstacle(ProjectileType.Ferrana4);
+        }
+
         if (_canUseUtilityAbility && !_timersScript.IsOnCooldown("FeranaUtility"))
         {
             Debug.Log("Habilidad de Utilidad Ferana");

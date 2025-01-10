@@ -6,9 +6,8 @@ public class Destrucible : MonoBehaviour, ItakeDamage
 {
     public int life;
 
-    void takeDMG(int dmg)
+    public void takeDMG(int dmg)
     {
-        life = life - dmg;
+        life -= dmg;
     }
-
 }

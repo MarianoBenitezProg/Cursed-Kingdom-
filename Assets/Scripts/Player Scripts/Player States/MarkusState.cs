@@ -57,6 +57,11 @@ public class MarkusState : State
     }
     public void DamageAbility()
     {
+        if (_canUseDamageAbility == true)
+        {
+            ProyectilePool.Instance.GetObstacle(ProjectileType.Markus2);
+        }
+
         if (_canUseDamageAbility && !_timersScript.IsOnCooldown("MarkusDamage"))
         {
             Debug.Log("Habilidad de Daño Markus");
@@ -66,6 +71,11 @@ public class MarkusState : State
     }
     public void CCAbility()//Crowd Control. Stuns y slow
     {
+        if (_canUseCCAbility == true)
+        {
+            ProyectilePool.Instance.GetObstacle(ProjectileType.Markus3);
+        }
+
         if (_canUseCCAbility && !_timersScript.IsOnCooldown("MarkusCC"))
         {
             Debug.Log("Habilidad de CC Markus");
@@ -76,6 +86,11 @@ public class MarkusState : State
 
     public void UtilityAbility()
     {
+        if (_canUseUtilityAbility == true)
+        {
+            ProyectilePool.Instance.GetObstacle(ProjectileType.Markus4);
+        }
+
         if (_canUseUtilityAbility && !_timersScript.IsOnCooldown("MarkusUtility"))
         {
             Debug.Log("Habilidad de Utilidad Markus");

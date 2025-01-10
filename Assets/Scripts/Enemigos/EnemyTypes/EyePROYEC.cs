@@ -7,7 +7,7 @@ public class EyePROYEC : Proyectile
     private float time;
     private float Lifetimer;
 
-    public float amplitude = 0.2f;
+    public float amplitude = 0.01f;
     public override void Behaviour()
     {
         Lifetimer += Time.deltaTime;    

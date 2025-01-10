@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6479289415757273996}
   - component: {fileID: 4721508117668987041}
-  - component: {fileID: -5815707703617810159}
   - component: {fileID: 7101292587070326167}
+  - component: {fileID: -4931553399712646784}
   m_Layer: 0
   m_Name: ferrana 1
   m_TagString: Untagged
@@ -86,20 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-5815707703617810159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2694205241798850848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86bb534a4e4c4cc4a9337f2177e4a9e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DestroyTimer: 2
-  ProyectType: 1
 --- !u!61 &7101292587070326167
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -145,3 +131,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-4931553399712646784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2694205241798850848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0247f5144f26f4448a78a0a61fbe373, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  destroyTimer: 5
+  ProyectType: 0
