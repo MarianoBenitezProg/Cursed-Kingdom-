@@ -2,15 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EyePROYEC : MonoBehaviour
+public class EyePROYEC : Proyectile
 {
-    private void Update()
+    private float time;
+    private float Lifetimer;
+
+    public float amplitude = 0.2f;
+    public override void Behaviour()
     {
-        if(gameObject.active == true)
+        Lifetimer += Time.deltaTime;    
+        if(Lifetimer >= destroyTimer)
         {
-            Debug.Log("creee un diparo");
-        gameObject.transform.position += Vector3.forward * 2f;
+            ProyectilePool.Instance.ReturnObstacle(gameObject, ProjectileType.EyeEnemy);
+            Lifetimer = 0;
         }
 
+        if (gameObject.activeSelf)
+        {
+            transform.position += transform.right * speed * Time.deltaTime;
+
+            float verticalOffset = Mathf.Sin(time * speed) * amplitude;
+            transform.position += transform.up * verticalOffset;
+
+            time += Time.deltaTime;
+
+        }
+
+
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        var check = other.gameObject.GetComponent<ItakeDamage>();
+        if (check != null)
+        {
+            check.takeDMG(dmg);
+        }else
+        {
+            Debug.Log("no se le puede hacer daño ");
+        }
     }
 }

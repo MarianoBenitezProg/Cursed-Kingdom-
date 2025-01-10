@@ -5,6 +5,7 @@ using UnityEngine;
 public class EyeScript : Enemy
 {
     public float timer;
+    public float Shoottimer = 5f;
     public Vector3 spawnPoint;
     Vector3 directionToPlayer;
     public override void Atack()
@@ -15,12 +16,17 @@ public class EyeScript : Enemy
 
             directionToPlayer = player.transform.position - transform.position;
 
+
+            //ir para atras 
+            Vector3 retreatDirection = -directionToPlayer.normalized;
+            transform.position += retreatDirection * 1f * Time.deltaTime;
+
             float angle = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
-            timer += Time.deltaTime;
 
-            if(timer >= 5)
+            timer += Time.deltaTime;
+            if(timer >= Shoottimer)
             {
               GameObject disparo =  ProyectilePool.Instance.GetObstacle(ProjectileType.EyeEnemy);
 
