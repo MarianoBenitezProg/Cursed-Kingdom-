@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
    public bool enemyHasSight = false;
    public bool isAttacking = false;
 
-    public float timeToLoseSight = 6f; // Tiempo necesario para perder la visión
+    public float timeToLoseSight = 6f;
     private float timeWithoutSight = 0f;
 
 
