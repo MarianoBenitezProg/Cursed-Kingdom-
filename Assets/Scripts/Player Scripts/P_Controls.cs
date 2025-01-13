@@ -7,15 +7,20 @@ public class P_Controls
     P_Movement _movement;
     P_View _view;
     P_Behaviour _playerScript;
+    Camera _mainCamera;
     KeyCode switchCharacter = KeyCode.LeftShift;
     KeyCode basicAttack = KeyCode.Mouse0;
     KeyCode damageAbility = KeyCode.Mouse1;
     KeyCode ccAbility = KeyCode.Q;
     KeyCode utilityAbility = KeyCode.R;
 
+    float dirX;
+    float dirY;
+
     MarkusState _markusState;
     FeranaState _feranaState;
 
+    bool isRunning;
     bool isMarkus = false;
 
     public P_Controls(P_Movement movementRef, P_View viewRef, MarkusState markusSRef, FeranaState feranaSRef, P_Behaviour playerRef)
@@ -25,6 +30,8 @@ public class P_Controls
         _markusState = markusSRef;
         _feranaState = feranaSRef;
         _playerScript = playerRef;
+
+        _mainCamera = Camera.main;
     }
 
     public void ControlsUpdate()
@@ -36,10 +43,26 @@ public class P_Controls
 
     public void BasicControls()
     {
+        Vector2 mousePosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 direction = mousePosition - (Vector2)_playerScript.transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        float normalizedAngle = (angle + 360) % 360;
+
         var hor = Input.GetAxisRaw("Horizontal");
         var ver = Input.GetAxisRaw("Vertical");
 
-        _movement.Movement(hor, ver);
+        if(hor != 0 || ver != 0)
+        {
+            isRunning = true;
+        }
+        else
+        {
+            isRunning = false;
+        }
+
+        _movement.Movement(hor, ver, normalizedAngle);
+        LookingDirection(normalizedAngle);
+        _view.SetAnimations(isRunning, dirX, dirY);
     }
     public void SwitchControls()
     {
@@ -60,6 +83,31 @@ public class P_Controls
                 isMarkus = true;
                 return;
             }
+        }
+    }
+
+    void LookingDirection(float rotationAngle)
+    {
+        if (rotationAngle >= 45 && rotationAngle < 135)
+        {
+            dirX = 0;
+            dirY = 1;
+        }
+        else if (rotationAngle >= 135 && rotationAngle < 225)
+        {
+            dirX = -1;
+            dirY = 0;
+        }
+        else if (rotationAngle >= 225 && rotationAngle < 315)
+        {
+            
+            dirX = 0;
+            dirY = -1;
+        }
+        else
+        {
+            dirX = 1;
+            dirY = 0;
         }
     }
 

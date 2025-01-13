@@ -57,7 +57,7 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage
 
         _rb = GetComponent<Rigidbody2D>();
         #region Scripts Creation
-        _view = new P_View(_markusSprite, _feranaSprite);
+        _view = new P_View(this, _markusSprite, _feranaSprite);
         _markusState = new MarkusState(this, _view, _timersScript);
         _feranaState = new FeranaState(this, _view, _timersScript);
         _fsm = new FSM(_feranaState);
@@ -72,6 +72,7 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage
     {
         _controls.ControlsUpdate();
         _fsm.FsmUpdate(Time.deltaTime);
+        _view.FlipRenderer(lookingDir);
     }
 
     public void takeDMG(int dmg)

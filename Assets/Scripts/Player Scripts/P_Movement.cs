@@ -19,7 +19,8 @@ public class P_Movement
     float _speed;
     float _originalSpeed;
     Rigidbody2D _rb;
-    Camera _mainCamera;
+    
+
 
     // Cache the last direction to avoid unnecessary updates
     private Direction _currentDirection = Direction.Right;
@@ -33,40 +34,36 @@ public class P_Movement
         _originalSpeed = speedRef;
         _playerRef = playerRef;
         _rb = rbRef;
-        _mainCamera = Camera.main;
+        
         _aimPosition = aimPositionRef;
         playerTransform = _playerRef.transform;
     }
 
-    public void Movement(float hor, float ver)
+    public void Movement(float hor, float ver, float angle)
     {
         var dir = playerTransform.right * hor;
         dir += playerTransform.up * ver;
         _rb.velocity = dir.normalized * _speed;
 
-        UpdateDirection();
+
+        UpdateDirection(angle);
     }
 
-    public void UpdateDirection()
+    public void UpdateDirection(float rotationAngle)
     {
-        Vector2 mousePosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = mousePosition - (Vector2)playerTransform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        float normalizedAngle = (angle + 360) % 360;
-
         // Determine new direction
         Direction newDirection;
-        if (normalizedAngle >= 45 && normalizedAngle < 135)
+        if (rotationAngle >= 45 && rotationAngle < 135)
         {
             newDirection = Direction.Up;
             _playerRef.lookingDir = Direction.Up;
         }
-        else if (normalizedAngle >= 135 && normalizedAngle < 225)
+        else if (rotationAngle >= 135 && rotationAngle < 225)
         {
             newDirection = Direction.Left;
             _playerRef.lookingDir = Direction.Left;
         }
-        else if (normalizedAngle >= 225 && normalizedAngle < 315)
+        else if (rotationAngle >= 225 && rotationAngle < 315)
         {
             newDirection = Direction.Down;
             _playerRef.lookingDir = Direction.Down;
@@ -76,6 +73,7 @@ public class P_Movement
             newDirection = Direction.Right;
             _playerRef.lookingDir = Direction.Right;
         }
+
 
         // Only update rotation if direction has changed
         if (newDirection != _currentDirection)
