@@ -5,15 +5,16 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public List<Transform> path = new List<Transform>();
-    public int Health = 100;
-    public float Speed = 5f;
-    public float RotationSpeed = 5f;
+    public int health = 100;
+    public float speed = 5f;
+    public float rotationSpeed = 5f;
+    public bool isStunned;
 
-    public float ViewAngle = 45f;
-    public float ViewRadius = 10f;
+    public float viewAngle = 45f;
+    public float viewRadius = 10f;
 
     public LayerMask playerLayer;
-    public LayerMask ObstacleLayer;
+    public LayerMask obstacleLayer;
 
     public GameObject player;
 
@@ -67,7 +68,7 @@ public class Enemy : MonoBehaviour
     {
         Destroy(gameObject);
     }
-    public virtual void Atack()
+    public virtual void Attack()
     {
         Debug.Log("este es el ataque base aca irian los cambios");
     }
@@ -89,7 +90,7 @@ public class Enemy : MonoBehaviour
     {
         target = null;
 
-        Collider2D[] targetsInViewRadius = Physics2D.OverlapCircleAll(transform.position, ViewRadius, playerLayer);
+        Collider2D[] targetsInViewRadius = Physics2D.OverlapCircleAll(transform.position, viewRadius, playerLayer);
 
         foreach (Collider2D col in targetsInViewRadius )
         {
@@ -98,9 +99,9 @@ public class Enemy : MonoBehaviour
             Vector2 directionToTarget = (potentialTarget.transform.position - transform.position).normalized;
             float angleToTarget = Vector2.Angle(transform.right, directionToTarget);
 
-            if (angleToTarget < ViewAngle / 2f && potentialTarget != null)
+            if (angleToTarget < viewAngle / 2f && potentialTarget != null)
             {
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToTarget, ViewRadius, ObstacleLayer | playerLayer);
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToTarget, viewRadius, obstacleLayer | playerLayer);
                 if (hit.collider != null && hit.collider.gameObject == potentialTarget)
                 {
                     target = potentialTarget;
@@ -124,14 +125,14 @@ public class Enemy : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, ViewRadius);
+        Gizmos.DrawWireSphere(transform.position, viewRadius);
 
-        Vector3 leftBoundary = DirectionFromAngle(-ViewAngle / 2);
-        Vector3 rightBoundary = DirectionFromAngle(ViewAngle / 2);
+        Vector3 leftBoundary = DirectionFromAngle(-viewAngle / 2);
+        Vector3 rightBoundary = DirectionFromAngle(viewAngle / 2);
 
         Gizmos.color = Color.blue;
-        Gizmos.DrawLine(transform.position, transform.position + leftBoundary * ViewRadius);
-        Gizmos.DrawLine(transform.position, transform.position + rightBoundary * ViewRadius);
+        Gizmos.DrawLine(transform.position, transform.position + leftBoundary * viewRadius);
+        Gizmos.DrawLine(transform.position, transform.position + rightBoundary * viewRadius);
 
         if (CanSeeTarget(out GameObject target))
         {
@@ -139,7 +140,7 @@ public class Enemy : MonoBehaviour
             Gizmos.DrawLine(transform.position, target.transform.position); 
         }
 
-        RaycastHit2D hitObstacle = Physics2D.Raycast(transform.position, transform.right, ViewRadius, ObstacleLayer);
+        RaycastHit2D hitObstacle = Physics2D.Raycast(transform.position, transform.right, viewRadius, obstacleLayer);
         if (hitObstacle.collider != null)
         {
             Gizmos.color = Color.magenta;
@@ -147,5 +148,18 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void Stunned(float timeToWait, float slowSpeed, bool stunned)
+    {
+        StartCoroutine(CCEffect(timeToWait, slowSpeed, stunned));
+    }
 
+    public IEnumerator CCEffect(float timeToWait, float slowSpeed, bool stunned)
+    {
+        isStunned = stunned;
+        float originalSpeed = speed;
+        speed = slowSpeed;
+        yield return new WaitForSeconds(timeToWait);
+        speed = originalSpeed;
+        isStunned = false;
+    }
 }

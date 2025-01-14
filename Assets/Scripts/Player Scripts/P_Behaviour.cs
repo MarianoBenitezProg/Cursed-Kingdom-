@@ -75,7 +75,7 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage
         _view.FlipRenderer(lookingDir);
     }
 
-    public void takeDMG(int dmg)
+    public void TakeDamage(int dmg)
     {
         life -= dmg;
         Debug.Log("Recibi daño");

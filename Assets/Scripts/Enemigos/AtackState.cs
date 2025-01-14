@@ -10,7 +10,7 @@ public class AtackState : IEnemyState
     }
     public void UpdateState(Enemy enemy)
     {
-        enemy.Atack();
+        enemy.Attack();
     }
     public void ExitState(Enemy enemy)
     {

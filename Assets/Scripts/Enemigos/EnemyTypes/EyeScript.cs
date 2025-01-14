@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EyeScript : Enemy
+public class EyeScript : Enemy, ItakeDamage
 {
     public float timer;
-    public float Shoottimer = 5f;
+    public float shootTimer = 5f;
     public Vector3 spawnPoint;
     Vector3 directionToPlayer;
-    public override void Atack()
+    public override void Attack()
     {
        if(player != null && enemyHasSight == true)
         {
@@ -26,7 +26,7 @@ public class EyeScript : Enemy
 
 
             timer += Time.deltaTime;
-            if(timer >= Shoottimer)
+            if(timer >= shootTimer)
             {
               GameObject disparo =  ProyectilePool.Instance.GetObstacle(ProjectileType.EyeEnemy);
 
@@ -42,5 +42,8 @@ public class EyeScript : Enemy
 
     }
 
-
+    public void TakeDamage(int dmg)
+    {
+        health -= dmg;
+    }
 }

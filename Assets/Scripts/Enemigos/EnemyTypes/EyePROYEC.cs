@@ -35,7 +35,7 @@ public class EyePROYEC : Proyectile
         var check = other.gameObject.GetComponent<ItakeDamage>();
         if (check != null)
         {
-            check.takeDMG(dmg);
+            check.TakeDamage(dmg);
         }else
         {
             Debug.Log("no se le puede hacer daño ");
