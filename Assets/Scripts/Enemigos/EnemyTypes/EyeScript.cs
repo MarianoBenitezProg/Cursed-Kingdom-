@@ -8,6 +8,7 @@ public class EyeScript : Enemy, ItakeDamage
     public float shootTimer = 5f;
     public Vector3 spawnPoint;
     Vector3 directionToPlayer;
+
     public override void Attack()
     {
        if(player != null && enemyHasSight == true)
@@ -17,9 +18,12 @@ public class EyeScript : Enemy, ItakeDamage
             directionToPlayer = player.transform.position - transform.position;
 
 
-            //ir para atras 
+            if(player != null && enemyHasSight == true)
+            {
+
             Vector3 retreatDirection = -directionToPlayer.normalized;
             transform.position += retreatDirection * 1f * Time.deltaTime;
+            }
 
             float angle = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, angle);
@@ -37,11 +41,7 @@ public class EyeScript : Enemy, ItakeDamage
                 timer = 0;
             }
         }
-
-
-
     }
-
     public void TakeDamage(int dmg)
     {
         health -= dmg;

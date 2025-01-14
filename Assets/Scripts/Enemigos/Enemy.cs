@@ -12,65 +12,64 @@ public class Enemy : MonoBehaviour
 
     public float viewAngle = 45f;
     public float viewRadius = 10f;
+    public float attackRadius = 5f;
 
     public LayerMask playerLayer;
     public LayerMask obstacleLayer;
 
     public GameObject player;
 
-   public bool enemyHasSight = false;
-   public bool isAttacking = false;
+    public bool enemyHasSight = false;
+    public bool needToAtack = false;
 
     public float timeToLoseSight = 6f;
     private float timeWithoutSight = 0f;
-
 
     IEnemyState currentState;
 
     protected virtual void Awake()
     {
-
         SetState(new PatrolState());
     }
+
     public void Update()
     {
-        // Actualizar lógica del estado actual
         currentState?.UpdateState(this);
 
-        // Verificar si el jugador está dentro del campo de visión
-        enemyHasSight = CanSeeTarget(out GameObject target);
-
-        if (enemyHasSight)
+        if (health <= 0)
         {
-            timeWithoutSight = 0f; // Reinicia el contador si puede ver al jugador
-
-            if (!isAttacking)
-            {
-                isAttacking = true;
-                SetState(new AtackState());
-            }
+            Die();
         }
-        else
+
+        enemyHasSight = CanSeeTarget();
+        needToAtack = enemyHasSight && IsPlayerInAttackRadius();
+
+        if (needToAtack)
         {
-            timeWithoutSight += Time.deltaTime; // Incrementa el tiempo sin visión
+            SetState(new AtackState());
+        }
+        else if (!enemyHasSight)
+        {
+            timeWithoutSight += Time.deltaTime;
 
             if (timeWithoutSight >= timeToLoseSight)
             {
-                // Volver al estado de patrullaje si no ve al jugador por un tiempo
-                isAttacking = false;
+                needToAtack = false;
+                player = null;
                 SetState(new PatrolState());
             }
         }
     }
 
-    #region metodos basicos
+    #region Métodos básicos
     public virtual void Die()
     {
         Destroy(gameObject);
     }
+
     public virtual void Attack()
     {
-        Debug.Log("este es el ataque base aca irian los cambios");
+        Debug.Log("Ejecutando ataque base");
     }
     #endregion
 
@@ -78,54 +77,67 @@ public class Enemy : MonoBehaviour
     {
         if (currentState != null && currentState.GetType() == newState.GetType())
         {
-            return; // Si el tipo es el mismo, no cambiar el estado
+            return;
         }
 
         currentState?.ExitState(this);
         currentState = newState;
         currentState.EnterState(this);
     }
-    #region Field Of View
-    public bool CanSeeTarget(out GameObject target)
-    {
-        target = null;
 
+    #region Field Of View y Attack Radius
+    public bool CanSeeTarget()
+    {
         Collider2D[] targetsInViewRadius = Physics2D.OverlapCircleAll(transform.position, viewRadius, playerLayer);
 
-        foreach (Collider2D col in targetsInViewRadius )
+        foreach (Collider2D col in targetsInViewRadius)
         {
             GameObject potentialTarget = col.gameObject;
 
             Vector2 directionToTarget = (potentialTarget.transform.position - transform.position).normalized;
+             float distanceToTarget = directionToTarget.magnitude;
             float angleToTarget = Vector2.Angle(transform.right, directionToTarget);
 
-            if (angleToTarget < viewAngle / 2f && potentialTarget != null)
+            if ( potentialTarget != null && )
             {
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToTarget, viewRadius, obstacleLayer | playerLayer);
                 if (hit.collider != null && hit.collider.gameObject == potentialTarget)
                 {
-                    target = potentialTarget;
-                    enemyHasSight = true;
-                    player = target;
+                    player = potentialTarget;
+                    timeWithoutSight = 0f; 
                     return true;
                 }
             }
         }
-        enemyHasSight = false;
+        player = null;
         return false;
     }
+
+    public bool IsPlayerInAttackRadius()
+    {
+        if (player == null)
+            return false;
+        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+        return distanceToPlayer <= attackRadius;
+    }
+
     private Vector3 DirectionFromAngle(float angleInDegrees)
     {
         float radians = Mathf.Deg2Rad * (angleInDegrees + transform.eulerAngles.z);
         return new Vector3(Mathf.Cos(radians), Mathf.Sin(radians), 0);
     }
-
     #endregion
 
+
+
+    #region OnDrawGizmos
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, viewRadius);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRadius);
 
         Vector3 leftBoundary = DirectionFromAngle(-viewAngle / 2);
         Vector3 rightBoundary = DirectionFromAngle(viewAngle / 2);
@@ -134,20 +146,17 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + leftBoundary * viewRadius);
         Gizmos.DrawLine(transform.position, transform.position + rightBoundary * viewRadius);
 
-        if (CanSeeTarget(out GameObject target))
+        if (enemyHasSight && player != null)
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, target.transform.position); 
-        }
-
-        RaycastHit2D hitObstacle = Physics2D.Raycast(transform.position, transform.right, viewRadius, obstacleLayer);
-        if (hitObstacle.collider != null)
-        {
-            Gizmos.color = Color.magenta;
-            Gizmos.DrawLine(transform.position, hitObstacle.point); 
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(transform.position, player.transform.position);
         }
     }
+    #endregion
 
+
+
+    #region Efectos de CC
     public void Stunned(float timeToWait, float slowSpeed, bool stunned)
     {
         StartCoroutine(CCEffect(timeToWait, slowSpeed, stunned));
@@ -162,4 +171,5 @@ public class Enemy : MonoBehaviour
         speed = originalSpeed;
         isStunned = false;
     }
+    #endregion
 }
