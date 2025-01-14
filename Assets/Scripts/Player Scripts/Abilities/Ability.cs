@@ -23,19 +23,20 @@ public class Ability : Proyectile
 
     public void ShootingDirection()
     {
+        transform.position += transform.up * speed * Time.deltaTime;
         switch(shootingDir)
         {
             case Direction.Up:
-                transform.position += transform.up * speed * Time.deltaTime;
+                transform.rotation = Quaternion.Euler(0,0,0);
                 break;
             case Direction.Down:
-                transform.position -= transform.up * speed * Time.deltaTime;
+                transform.rotation = Quaternion.Euler(0,0,180f);
                 break;
             case Direction.Right:
-                transform.position += transform.right * speed * Time.deltaTime;
+                transform.rotation = Quaternion.Euler(0,0,-90f);
                 break;
             case Direction.Left:
-                transform.position -= transform.right * speed * Time.deltaTime;
+                transform.rotation = Quaternion.Euler(0,0,90f);
                 break;
         }
     }
