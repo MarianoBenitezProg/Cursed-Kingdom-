@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EyeScript : Enemy, ItakeDamage
 {
-    public float timer;
+    float timer;
     public float shootTimer = 5f;
     public Vector3 spawnPoint;
     Vector3 directionToPlayer;
@@ -18,11 +18,11 @@ public class EyeScript : Enemy, ItakeDamage
             directionToPlayer = player.transform.position - transform.position;
 
 
-            if(player != null && enemyHasSight == true)
+            if(player != null && needToAtack == true)
             {
 
             Vector3 retreatDirection = -directionToPlayer.normalized;
-            transform.position += retreatDirection * 1f * Time.deltaTime;
+            transform.position += retreatDirection * speed * Time.deltaTime;
             }
 
             float angle = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
