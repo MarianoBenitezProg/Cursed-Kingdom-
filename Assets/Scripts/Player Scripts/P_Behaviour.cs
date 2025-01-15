@@ -12,6 +12,7 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage
     [SerializeField] GameObject _feranaSprite;
     [SerializeField] GameObject _aimPosition;
     public bool isMarkus;
+    [SerializeField] bool isStunned;
 
     P_Movement _movement;
     P_Controls _controls;
@@ -80,4 +81,21 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage
         life -= dmg;
         Debug.Log("Recibi daño");
     }
+
+    #region Efectos de CC
+    public void Stunned(float timeToWait, float slowSpeed, bool stunned)
+    {
+        StartCoroutine(CCEffect(timeToWait, slowSpeed, stunned));
+    }
+
+    public IEnumerator CCEffect(float timeToWait, float slowSpeed, bool stunned)
+    {
+        isStunned = stunned;
+        float originalSpeed = _speed;
+        _speed = slowSpeed;
+        yield return new WaitForSeconds(timeToWait);
+        _speed = originalSpeed;
+        isStunned = false;
+    }
+    #endregion
 }
