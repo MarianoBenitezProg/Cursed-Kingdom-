@@ -11,39 +11,36 @@ public class EyeScript : Enemy, ItakeDamage
 
     public override void Attack()
     {
-       if(player != null && enemyHasSight == true)
+        spawnPoint = transform.GetChild(0).position;
+        if (player != null && enemyHasSight)
         {
-            spawnPoint = gameObject.transform.GetChild(0).position;
 
-            directionToPlayer = player.transform.position - transform.position;
-
-
-            if(player != null && needToAtack == true)
+            if (needToAtack)
             {
-
-            Vector3 retreatDirection = -directionToPlayer.normalized;
-            transform.position += retreatDirection * speed * Time.deltaTime;
+                Vector3 retreatDirection = -(player.transform.position - transform.position).normalized;
+                transform.position += retreatDirection * speed * Time.deltaTime;
             }
 
+            directionToPlayer = player.transform.position - transform.position;
             float angle = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
-
             timer += Time.deltaTime;
-            if(timer >= shootTimer)
+            if (timer >= shootTimer)
             {
-              GameObject disparo =  ProyectilePool.Instance.GetObstacle(ProjectileType.EyeEnemy);
-
-                disparo.transform.position = spawnPoint;
-
-                float angleBullet = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
-                disparo.transform.rotation = Quaternion.Euler(0f, 0f, angleBullet);                
-                timer = 0;
+                GameObject disparo = ProyectilePool.Instance.GetObstacle(ProjectileType.EyeEnemy);
+                if (disparo != null)
+                {
+                    disparo.transform.position = spawnPoint;
+                    disparo.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+                }
+                timer = 0f;
             }
         }
     }
     public void TakeDamage(int dmg)
     {
         health -= dmg;
+        Debug.Log(health);
     }
 }

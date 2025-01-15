@@ -41,8 +41,9 @@ public class Enemy : MonoBehaviour
             Die();
         }
 
+        // Actualizar los estados de detección y ataque
         enemyHasSight = CanSeeTarget();
-        needToAtack = enemyHasSight && IsPlayerInAttackRadius();
+        needToAtack = IsPlayerInAttackRadius();
 
         if (needToAtack)
         {
@@ -54,9 +55,7 @@ public class Enemy : MonoBehaviour
 
             if (timeWithoutSight >= timeToLoseSight)
             {
-                needToAtack = false;
-                player = null;
-                SetState(new PatrolState());
+                ResetState();
             }
         }
     }
@@ -70,6 +69,15 @@ public class Enemy : MonoBehaviour
     public virtual void Attack()
     {
         Debug.Log("Ejecutando ataque base");
+    }
+
+    private void ResetState()
+    {
+        needToAtack = false;
+        enemyHasSight = false;
+        player = null;
+        timeWithoutSight = 0f;
+        SetState(new PatrolState());
     }
     #endregion
 
@@ -94,21 +102,33 @@ public class Enemy : MonoBehaviour
         {
             GameObject potentialTarget = col.gameObject;
 
-            Vector2 directionToTarget = (potentialTarget.transform.position - transform.position).normalized;
-             float distanceToTarget = directionToTarget.magnitude;
+            Vector2 directionToTarget = potentialTarget.transform.position - transform.position;
+            float distanceToTarget = directionToTarget.magnitude;
+
+            // Si el jugador está muy cerca, asumir que está visible
+            if (distanceToTarget < 1f || IsPlayerInAttackRadius())
+            {
+                player = potentialTarget;
+                timeWithoutSight = 0f;
+                return true;
+            }
+
+            directionToTarget.Normalize();
+
             float angleToTarget = Vector2.Angle(transform.right, directionToTarget);
 
-            if ( potentialTarget != null) // Borre un && que quedo vacio y daba error de Compilado
+            if (angleToTarget < viewAngle / 2f)
             {
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToTarget, viewRadius, obstacleLayer | playerLayer);
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToTarget, distanceToTarget, obstacleLayer | playerLayer);
                 if (hit.collider != null && hit.collider.gameObject == potentialTarget)
                 {
                     player = potentialTarget;
-                    timeWithoutSight = 0f; 
+                    timeWithoutSight = 0f;
                     return true;
                 }
             }
         }
+
         player = null;
         return false;
     }
@@ -117,8 +137,8 @@ public class Enemy : MonoBehaviour
     {
         if (player == null)
             return false;
-        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-        return distanceToPlayer <= attackRadius;
+
+        return Vector3.Distance(transform.position, player.transform.position) <= attackRadius;
     }
 
     private Vector3 DirectionFromAngle(float angleInDegrees)
@@ -128,17 +148,18 @@ public class Enemy : MonoBehaviour
     }
     #endregion
 
-
-
     #region OnDrawGizmos
     private void OnDrawGizmos()
     {
+        // Visualizar radio de visión
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, viewRadius);
 
+        // Visualizar radio de ataque
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRadius);
 
+        // Límites del ángulo de visión
         Vector3 leftBoundary = DirectionFromAngle(-viewAngle / 2);
         Vector3 rightBoundary = DirectionFromAngle(viewAngle / 2);
 

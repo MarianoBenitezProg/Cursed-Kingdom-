@@ -20,10 +20,6 @@ public class EyePROYEC : Proyectile
         if (gameObject.activeSelf)
         {
             transform.position += transform.right * speed * Time.deltaTime;
-
-            float verticalOffset = Mathf.Sin(time * speed) * amplitude;
-            transform.position += transform.up * verticalOffset;
-
             time += Time.deltaTime;
 
         }
