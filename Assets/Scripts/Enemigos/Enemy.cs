@@ -98,7 +98,7 @@ public class Enemy : MonoBehaviour
              float distanceToTarget = directionToTarget.magnitude;
             float angleToTarget = Vector2.Angle(transform.right, directionToTarget);
 
-            if ( potentialTarget != null && )
+            if ( potentialTarget != null) // Borre un && que quedo vacio y daba error de Compilado
             {
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToTarget, viewRadius, obstacleLayer | playerLayer);
                 if (hit.collider != null && hit.collider.gameObject == potentialTarget)
