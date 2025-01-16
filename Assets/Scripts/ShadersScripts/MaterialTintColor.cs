@@ -11,8 +11,8 @@ public class MaterialTintColor : MonoBehaviour
 
     private void Awake()
     {
-        materialColor = new Color(1, 0, 0, 0);
-        setMaterial(transform.Find("Body").GetComponent<MeshRenderer>().material);
+        materialColor = new Color(0, 0, 0, 1f);
+        setMaterial(GetComponent<SpriteRenderer>().material);
         tintFadeSpeed = 6f;
     }
 
