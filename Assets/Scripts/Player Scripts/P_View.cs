@@ -39,12 +39,19 @@ public class P_View
 
     public void SetAnimations(bool IsRunning, float dirX, float dirY)
     {
-        _markusAnimator.SetFloat("X", dirX);
-        _markusAnimator.SetFloat("Y", dirY);
-        _feranaAnimator.SetFloat("X", dirX);
-        _feranaAnimator.SetFloat("Y", dirY);
-        _markusAnimator.SetBool("IsRunning", IsRunning);
-        _feranaAnimator.SetBool("IsRunning", IsRunning);
+        if(_markusAnimator != null)
+        {
+            _markusAnimator.SetFloat("X", dirX);
+            _markusAnimator.SetFloat("Y", dirY);
+            _markusAnimator.SetBool("IsRunning", IsRunning);
+        }
+        if(_feranaAnimator != null)
+        {
+            _feranaAnimator.SetFloat("X", dirX);
+            _feranaAnimator.SetFloat("Y", dirY);
+            _feranaAnimator.SetBool("IsRunning", IsRunning);
+        }
+
     }
     public void FlipRenderer(Direction lookingDir)
     {

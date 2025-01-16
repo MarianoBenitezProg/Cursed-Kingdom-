@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class P_Behaviour : MonoBehaviour, ItakeDamage
+public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp
 {
     Rigidbody2D _rb;
     public int life = 100;
@@ -14,14 +15,17 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage
     public bool isMarkus;
     [SerializeField] bool isStunned;
 
+    #region Scripts Variables
     P_Movement _movement;
     P_Controls _controls;
     P_View _view;
-
+    P_Inventory _inventory;
     MarkusState _markusState;
     FeranaState _feranaState;
     [SerializeField]AbilityTimers _timersScript;
+    #endregion
 
+    #region Ability variables
     [Header ("Ferana Timers")]
     public float fer_Basic;
     public float fer_Damage;
@@ -33,7 +37,8 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage
     public float mar_Damage;
     public float mar_CC;
     public float mar_Utility;
-    
+    #endregion
+
     [HideInInspector] public FSM _fsm;
 
     private void Awake()
@@ -56,6 +61,7 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage
         #endregion
 
 
+        _inventory = new P_Inventory();
         _rb = GetComponent<Rigidbody2D>();
         #region Scripts Creation
         _view = new P_View(this, _markusSprite, _feranaSprite);
@@ -63,7 +69,7 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage
         _feranaState = new FeranaState(this, _view, _timersScript);
         _fsm = new FSM(_feranaState);
         _movement = new P_Movement(this, _speed, _rb, _aimPosition);
-        _controls = new P_Controls(_movement, _view, _markusState, _feranaState, this);
+        _controls = new P_Controls(_movement, _view, _markusState, _feranaState, this,_inventory);
 
         _markusState.AddTransition("SwitchToFerana", _feranaState);
         _feranaState.AddTransition("SwitchToMarkus", _markusState);
@@ -97,5 +103,10 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage
         _speed = originalSpeed;
         isStunned = false;
     }
+    public void StoreObject(ItemStored pickedObject)
+    {
+        _inventory.StoreItem(pickedObject);
+    }
+
     #endregion
 }

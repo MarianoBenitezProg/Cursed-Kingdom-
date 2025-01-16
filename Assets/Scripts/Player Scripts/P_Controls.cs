@@ -7,12 +7,18 @@ public class P_Controls
     P_Movement _movement;
     P_View _view;
     P_Behaviour _playerScript;
+    P_Inventory _inventory;
+
     Camera _mainCamera;
     KeyCode switchCharacter = KeyCode.LeftShift;
     KeyCode basicAttack = KeyCode.Mouse0;
     KeyCode damageAbility = KeyCode.Mouse1;
     KeyCode ccAbility = KeyCode.Q;
     KeyCode utilityAbility = KeyCode.R;
+
+    KeyCode lifePU = KeyCode.Alpha1;
+    KeyCode feranaPU = KeyCode.Alpha2;
+    KeyCode markusPU = KeyCode.Alpha3;
 
     float dirX;
     float dirY;
@@ -23,13 +29,14 @@ public class P_Controls
     bool isRunning;
     bool isMarkus = false;
 
-    public P_Controls(P_Movement movementRef, P_View viewRef, MarkusState markusSRef, FeranaState feranaSRef, P_Behaviour playerRef)
+    public P_Controls(P_Movement movementRef, P_View viewRef, MarkusState markusSRef, FeranaState feranaSRef, P_Behaviour playerRef, P_Inventory inventoryRef)
     {
         _movement = movementRef;
         _view = viewRef;
         _markusState = markusSRef;
         _feranaState = feranaSRef;
         _playerScript = playerRef;
+        _inventory = inventoryRef;
 
         _mainCamera = Camera.main;
     }
@@ -39,6 +46,7 @@ public class P_Controls
         BasicControls();
         SwitchControls();
         Ability();
+        UseInventory();
     }
 
     public void BasicControls()
@@ -156,6 +164,22 @@ public class P_Controls
             {
                 _feranaState.UtilityAbility();
             }
+        }
+    }
+
+    public void UseInventory()
+    {
+        if (Input.GetKeyDown(lifePU))
+        {
+            _inventory.RunEffect(PickUpType.Life);
+        }
+        if (Input.GetKeyDown(markusPU))
+        {
+            _inventory.RunEffect(PickUpType.MarkusPU);
+        }
+        if (Input.GetKeyDown(feranaPU))
+        {
+            _inventory.RunEffect(PickUpType.FeranaPU);
         }
     }
 }
