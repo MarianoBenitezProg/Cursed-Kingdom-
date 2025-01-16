@@ -6,36 +6,52 @@ public class EyeScript : Enemy, ItakeDamage
 {
     float timer;
     public float shootTimer = 5f;
+    float angleToPlayer;
     public Vector3 spawnPoint;
     Vector3 directionToPlayer;
 
     public override void Attack()
     {
-        spawnPoint = transform.GetChild(0).position;
-        if (player != null && enemyHasSight)
+        if (player == null) return;
+
+        Vector3 retreatDirection = -(player.transform.position - transform.position).normalized;
+        transform.position += retreatDirection * speed * Time.deltaTime;
+
+        timer += Time.deltaTime;
+        if (timer >= shootTimer)
         {
+            Shoot();
+            timer = 0f;
+        }
+    }
 
-            if (needToAtack)
-            {
-                Vector3 retreatDirection = -(player.transform.position - transform.position).normalized;
-                transform.position += retreatDirection * speed * Time.deltaTime;
-            }
+    public override void Seek()
+    {
+        timer += Time.deltaTime;
+        if (timer >= shootTimer)
+        {
+            Shoot();
+            timer = 0f;
+        }
+        if (player == null) return;
+        directionToPlayer = (player.transform.position - transform.position).normalized;
+        angleToPlayer = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, angleToPlayer);
+    }
+    private void Shoot()
+    {
+        spawnPoint = transform.GetChild(0).position;
 
-            directionToPlayer = player.transform.position - transform.position;
-            float angle = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0f, 0f, angle);
-
-            timer += Time.deltaTime;
-            if (timer >= shootTimer)
-            {
-                GameObject disparo = ProyectilePool.Instance.GetObstacle(ProjectileType.EyeEnemy);
-                if (disparo != null)
-                {
-                    disparo.transform.position = spawnPoint;
-                    disparo.transform.rotation = Quaternion.Euler(0f, 0f, angle);
-                }
-                timer = 0f;
-            }
+        GameObject disparo = ProyectilePool.Instance.GetObstacle(ProjectileType.EyeEnemy);
+        if (disparo != null)
+        {
+            disparo.transform.position = spawnPoint;
+            disparo.transform.rotation = Quaternion.Euler(0f, 0f, angleToPlayer);
+            Debug.Log("Disparo generado.");
+        }
+        else
+        {
+            Debug.LogWarning("No hay proyectiles disponibles en el pool.");
         }
     }
     public void TakeDamage(int dmg)

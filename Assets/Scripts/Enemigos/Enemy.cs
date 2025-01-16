@@ -12,19 +12,21 @@ public class Enemy : MonoBehaviour
 
     public float viewAngle = 45f;
     public float viewRadius = 10f;
-    public float attackRadius = 5f;
+    public float attackRadius = 2f;
+
+
+    public float playerDist ;
 
     public LayerMask playerLayer;
     public LayerMask obstacleLayer;
 
     public GameObject player;
 
-    public bool enemyHasSight = false;
-    public bool needToAtack = false;
+    [SerializeField] public bool hasLockedTarget = false;
+    [SerializeField] public bool needToAtack = false;
+    [SerializeField] public bool needToSeek = false;
 
-    public float timeToLoseSight = 6f;
-    private float timeWithoutSight = 0f;
-
+    float OutOfSigth;
     IEnemyState currentState;
 
     protected virtual void Awake()
@@ -41,25 +43,18 @@ public class Enemy : MonoBehaviour
             Die();
         }
 
-        // Actualizar los estados de detección y ataque
-        enemyHasSight = CanSeeTarget();
-        needToAtack = IsPlayerInAttackRadius();
+        CanSeeTarget();
 
         if (needToAtack)
         {
+            hasLockedTarget = true; // Bloquea al jugador como objetivo
             SetState(new AtackState());
         }
-        else if (!enemyHasSight)
+        else if (needToSeek && !needToAtack)
         {
-            timeWithoutSight += Time.deltaTime;
-
-            if (timeWithoutSight >= timeToLoseSight)
-            {
-                ResetState();
-            }
+            SetState(new SeekState());
         }
     }
-
     #region Métodos básicos
     public virtual void Die()
     {
@@ -71,13 +66,9 @@ public class Enemy : MonoBehaviour
         Debug.Log("Ejecutando ataque base");
     }
 
-    private void ResetState()
+    public virtual void Seek()
     {
-        needToAtack = false;
-        enemyHasSight = false;
-        player = null;
-        timeWithoutSight = 0f;
-        SetState(new PatrolState());
+        Debug.Log("Ejecutando ataque base");
     }
     #endregion
 
@@ -94,84 +85,55 @@ public class Enemy : MonoBehaviour
     }
 
     #region Field Of View y Attack Radius
-    public bool CanSeeTarget()
+    public void CanSeeTarget()
     {
         Collider2D[] targetsInViewRadius = Physics2D.OverlapCircleAll(transform.position, viewRadius, playerLayer);
+        if(player != null)
+        {
+        playerDist = Vector3.Distance(transform.position, player.transform.position);
+        }
+
 
         foreach (Collider2D col in targetsInViewRadius)
         {
-            GameObject potentialTarget = col.gameObject;
-
-            Vector2 directionToTarget = potentialTarget.transform.position - transform.position;
-            float distanceToTarget = directionToTarget.magnitude;
-
-            // Si el jugador está muy cerca, asumir que está visible
-            if (distanceToTarget < 1f || IsPlayerInAttackRadius())
+            if (col.gameObject.layer == 3)
             {
-                player = potentialTarget;
-                timeWithoutSight = 0f;
-                return true;
-            }
-
-            directionToTarget.Normalize();
-
-            float angleToTarget = Vector2.Angle(transform.right, directionToTarget);
-
-            if (angleToTarget < viewAngle / 2f)
-            {
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToTarget, distanceToTarget, obstacleLayer | playerLayer);
-                if (hit.collider != null && hit.collider.gameObject == potentialTarget)
+                player = col.gameObject;
+                if (playerDist <= 5)
                 {
-                    player = potentialTarget;
-                    timeWithoutSight = 0f;
-                    return true;
+                    needToAtack = true;
+                    needToSeek = false;
+                    Debug.Log("Jugador está en radio de ataque");
+                }
+                else if (playerDist <= 10f && playerDist > 5f)
+                {
+                    needToSeek = true;
+                    Debug.Log("Jugador está en radio de Seek");
+                }
+                else if(playerDist > viewRadius  && (needToSeek == true || needToAtack == true))
+                {
+                    Debug.Log(" no esta en mi radio de vision ");
+
+                        SetState(new PatrolState());
+                        needToSeek = false;
+                        needToAtack = false;
+
                 }
             }
+                return;
         }
 
-        player = null;
-        return false;
     }
 
-    public bool IsPlayerInAttackRadius()
-    {
-        if (player == null)
-            return false;
-
-        return Vector3.Distance(transform.position, player.transform.position) <= attackRadius;
-    }
-
-    private Vector3 DirectionFromAngle(float angleInDegrees)
-    {
-        float radians = Mathf.Deg2Rad * (angleInDegrees + transform.eulerAngles.z);
-        return new Vector3(Mathf.Cos(radians), Mathf.Sin(radians), 0);
-    }
     #endregion
 
     #region OnDrawGizmos
     private void OnDrawGizmos()
     {
-        // Visualizar radio de visión
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, viewRadius);
-
-        // Visualizar radio de ataque
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRadius);
-
-        // Límites del ángulo de visión
-        Vector3 leftBoundary = DirectionFromAngle(-viewAngle / 2);
-        Vector3 rightBoundary = DirectionFromAngle(viewAngle / 2);
-
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(transform.position, transform.position + leftBoundary * viewRadius);
-        Gizmos.DrawLine(transform.position, transform.position + rightBoundary * viewRadius);
-
-        if (enemyHasSight && player != null)
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawLine(transform.position, player.transform.position);
-        }
     }
     #endregion
 
