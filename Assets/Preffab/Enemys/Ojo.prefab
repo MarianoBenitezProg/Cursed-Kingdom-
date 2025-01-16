@@ -99,23 +99,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: []
-  Health: 100
-  Speed: 5
-  RotationSpeed: 5
-  ViewAngle: 114
-  ViewRadius: 4.49
+  health: 100
+  speed: 5
+  rotationSpeed: 5
+  isStunned: 0
+  viewAngle: 45
+  viewRadius: 10
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
-  ObstacleLayer:
+  obstacleLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   player: {fileID: 0}
   enemyHasSight: 0
-  isAttacking: 0
+  needToAtack: 0
   timeToLoseSight: 6
-  timer: 0
-  Shoottimer: 2
+  shootTimer: 5
   spawnPoint: {x: 0, y: 0, z: 0}
 --- !u!1 &7791307725831216968
 GameObject:
