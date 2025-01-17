@@ -148,6 +148,8 @@ MonoBehaviour:
   dmg: 10
   destroyTimer: 5
   ProyectType: 2
+  isFerana: 0
+  damageBuff: 2
   stunTime: 3
 --- !u!50 &8696155941717699670
 Rigidbody2D:

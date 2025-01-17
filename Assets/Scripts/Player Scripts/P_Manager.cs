@@ -23,18 +23,27 @@ public class P_Manager : MonoBehaviour
         }
     }
     
-    public void RunMarkusBuff()
+    public void RunMarkusBuff(float waitSeconds)
     {
-        if(isMarkusBuff == true)
-        {
-            StartCoroutine(MarkusBuff(10));
-        }
+        isMarkusBuff = true;
+        StartCoroutine(MarkusBuff(waitSeconds));
     }
 
     public IEnumerator MarkusBuff(float waitSeconds)
     {
         yield return new WaitForSeconds(waitSeconds);
         isMarkusBuff = false;
+    }
+    public void RunFeranaBuff(float waitSeconds)
+    {
+        isFeranaBuff = true;
+        StartCoroutine(FeranaBuff(waitSeconds));
+    }
+
+    public IEnumerator FeranaBuff(float waitSeconds)
+    {
+        yield return new WaitForSeconds(waitSeconds);
+        isFeranaBuff = false;
     }
 }
 

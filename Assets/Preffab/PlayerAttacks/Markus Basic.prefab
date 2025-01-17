@@ -249,6 +249,8 @@ MonoBehaviour:
   dmg: 10
   destroyTimer: 5
   ProyectType: 0
+  isFerana: 0
+  damageBuff: 2
 --- !u!50 &2929550122571491081
 Rigidbody2D:
   serializedVersion: 4

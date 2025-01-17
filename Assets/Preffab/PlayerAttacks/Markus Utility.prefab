@@ -103,6 +103,8 @@ MonoBehaviour:
   dmg: 20
   destroyTimer: 5
   ProyectType: 3
+  isFerana: 0
+  damageBuff: 2
   originalSize: 0.5
   explotionSize: 2
   explotionTimer: 0

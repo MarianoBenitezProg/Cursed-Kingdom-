@@ -6,6 +6,7 @@ public class PU_Markus : MonoBehaviour, IPickableObject
 {
     [SerializeField] ItemStored selectedItem;
     P_Behaviour playerRef;
+    [SerializeField] int buffTime;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -27,6 +28,6 @@ public class PU_Markus : MonoBehaviour, IPickableObject
 
     public void PU_Effect()
     {
-        Debug.Log("PowerUp Markus");
+        P_Manager.Instance.RunMarkusBuff(buffTime);
     }
 }

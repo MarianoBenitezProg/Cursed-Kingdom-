@@ -8,6 +8,7 @@ public class Ability : Proyectile
     protected P_Behaviour playerRef;
     protected Direction shootingDir;
     public bool isFerana;
+    [SerializeField] protected int damageBuff;
 
     private void Awake()
     {

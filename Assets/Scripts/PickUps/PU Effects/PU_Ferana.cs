@@ -6,6 +6,7 @@ public class PU_Ferana : MonoBehaviour, IPickableObject
 {
     [SerializeField] ItemStored selectedItem;
     P_Behaviour playerRef;
+    [SerializeField] int buffTime;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -27,6 +28,6 @@ public class PU_Ferana : MonoBehaviour, IPickableObject
 
     public void PU_Effect()
     {
-        Debug.Log("PowerUp Ferana");
+        P_Manager.Instance.RunFeranaBuff(buffTime);
     }
 }

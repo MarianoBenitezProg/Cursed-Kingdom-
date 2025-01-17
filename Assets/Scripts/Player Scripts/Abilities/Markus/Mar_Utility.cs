@@ -64,6 +64,11 @@ public class Mar_Utility : Ability
     {
         if(collision.gameObject.layer == 6) //Obstacle/Enemy Layer, so that if for any reason it touches the player it wont hit it
         {
+            int damageDealt = dmg;
+            if (P_Manager.Instance.isMarkusBuff == true)
+            {
+                damageDealt *= damageBuff;
+            }
             isExploding = true;
             thisSprite.enabled = false;
             createParticles++;
@@ -72,7 +77,7 @@ public class Mar_Utility : Ability
             ItakeDamage takeDamage = collision.gameObject.GetComponent<ItakeDamage>();
             if (takeDamage != null)
             {
-                takeDamage.TakeDamage(dmg);
+                takeDamage.TakeDamage(damageDealt);
             }
         }
     }
