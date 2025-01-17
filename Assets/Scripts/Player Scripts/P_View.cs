@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class P_View
 {
-    GameObject _markus;
-    GameObject _ferana;
+    GameObject _markusGO;
+    GameObject _feranaGO;
 
     SpriteRenderer _markusRenderer;
     SpriteRenderer _feranaRenderer;
@@ -13,28 +13,31 @@ public class P_View
     Animator _feranaAnimator;
     Animator _markusAnimator;
 
+    MaterialTintColor _tintMarkus;
+    MaterialTintColor _tintFerana;
+
 
     public P_View(P_Behaviour playerRef ,GameObject markusRef, GameObject feranaRef)
     {
-        _markus = markusRef;
-        _ferana = feranaRef;
+        _markusGO = markusRef;
+        _feranaGO = feranaRef;
 
-        _markusAnimator = _markus.GetComponent<Animator>();
-        _feranaAnimator = _ferana.GetComponent<Animator>();
+        _markusAnimator = _markusGO.GetComponent<Animator>();
+        _feranaAnimator = _feranaGO.GetComponent<Animator>();
 
-        _markusRenderer = _markus.GetComponent<SpriteRenderer>();
-        _feranaRenderer = _ferana.GetComponent<SpriteRenderer>();
+        _markusRenderer = _markusGO.GetComponent<SpriteRenderer>();
+        _feranaRenderer = _feranaGO.GetComponent<SpriteRenderer>();
     }
 
     public void SwitchToMarkus()
     {
-        _markus.SetActive(true);
-        _ferana.SetActive(false);
+        _markusGO.SetActive(true);
+        _feranaGO.SetActive(false);
     }
     public void SwitchToFerana()
     {
-        _markus.SetActive(false);
-        _ferana.SetActive(true);
+        _markusGO.SetActive(false);
+        _feranaGO.SetActive(true);
     }
 
     public void SetAnimations(bool IsRunning, float dirX, float dirY)
@@ -64,6 +67,28 @@ public class P_View
         {
             _markusRenderer.flipX = true;
             _feranaRenderer.flipX = true;
+        }
+    }
+
+    public void TintDamage()
+    {
+        if(_tintFerana == null)
+        {
+            _tintFerana = _feranaGO.GetComponent<MaterialTintColor>();
+            _tintFerana.SetTintColor(new Color(1, 0, 0, 1f));
+        }
+        else
+        {
+            _tintFerana.SetTintColor(new Color(1, 0, 0, 1f));
+        }
+        if (_tintMarkus == null)
+        {
+            _tintMarkus = _feranaGO.GetComponent<MaterialTintColor>();
+            _tintMarkus.SetTintColor(new Color(1, 0, 0, 1f));
+        }
+        else
+        {
+            _tintMarkus.SetTintColor(new Color(1, 0, 0, 1f));
         }
     }
 }

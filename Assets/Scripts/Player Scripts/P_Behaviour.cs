@@ -86,6 +86,8 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp
     {
         life -= dmg;
         Debug.Log("Recibi daño");
+        _view.TintDamage();
+
     }
 
     #region Efectos de CC
