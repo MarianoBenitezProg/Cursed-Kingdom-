@@ -17,8 +17,9 @@ public class P_Controls
     KeyCode utilityAbility = KeyCode.R;
 
     KeyCode lifePU = KeyCode.Alpha1;
-    KeyCode feranaPU = KeyCode.Alpha2;
-    KeyCode markusPU = KeyCode.Alpha3;
+    KeyCode cooldownReset = KeyCode.Alpha2;
+    KeyCode feranaPU = KeyCode.Alpha3;
+    KeyCode markusPU = KeyCode.Alpha4;
 
     float dirX;
     float dirY;
@@ -172,6 +173,10 @@ public class P_Controls
         if (Input.GetKeyDown(lifePU))
         {
             _inventory.RunEffect(PickUpType.Life);
+        }
+        if(Input.GetKeyDown(cooldownReset))
+        {
+            _inventory.RunEffect(PickUpType.CooldownReset);
         }
         if (Input.GetKeyDown(markusPU))
         {

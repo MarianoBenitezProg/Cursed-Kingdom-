@@ -96,4 +96,26 @@ public class AbilityTimers : MonoBehaviour
     {
         return currentCooldowns.ContainsKey(abilityName) ? currentCooldowns[abilityName] : 0f;
     }
+    public void ResetAllCooldowns()
+    {
+        // Get all ability names
+        var abilityNames = currentCooldowns.Keys.ToList();
+
+        // Set all current cooldowns to 0
+        foreach (var abilityName in abilityNames)
+        {
+            currentCooldowns[abilityName] = 0f;
+
+            // Trigger the completion callback if one exists
+            if (cooldownCallbacks.ContainsKey(abilityName))
+            {
+                cooldownCallbacks[abilityName]?.Invoke();
+            }
+
+            // Update the UI to show cooldown is complete
+            OnCooldownUpdated.Invoke(abilityName, 1f);
+
+            Debug.Log($"Cooldown reset for {abilityName}");
+        }
+    }
 }

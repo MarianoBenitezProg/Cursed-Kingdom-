@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PU_Ferana : MonoBehaviour, IPickableObject
+public class PU_Cooldowns : MonoBehaviour, IPickableObject
 {
+
     [SerializeField] ItemStored selectedItem;
-    P_Behaviour playerRef;
+    AbilityTimers abilityScript;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        playerRef = collision.gameObject.GetComponent<P_Behaviour>();
+        abilityScript = collision.gameObject.GetComponent<AbilityTimers>();
         ICanPickUp obj = collision.gameObject.GetComponent<ICanPickUp>();
         if (obj != null)
         {
@@ -27,6 +28,6 @@ public class PU_Ferana : MonoBehaviour, IPickableObject
 
     public void PU_Effect()
     {
-        Debug.Log("PowerUp Ferana");
+        abilityScript.ResetAllCooldowns();
     }
 }

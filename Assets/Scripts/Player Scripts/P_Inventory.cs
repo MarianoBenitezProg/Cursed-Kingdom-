@@ -7,7 +7,8 @@ using System;
 {
     Life,
     MarkusPU,
-    FeranaPU
+    FeranaPU,
+    CooldownReset
 }
 
 [System.Serializable]public struct ItemStored
