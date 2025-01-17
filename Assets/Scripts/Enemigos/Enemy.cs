@@ -12,10 +12,10 @@ public class Enemy : MonoBehaviour
 
     public float viewAngle = 45f;
     public float viewRadius = 10f;
-    public float attackRadius = 2f;
+    public float attackRadius = 5f;
 
 
-    public float playerDist ;
+    public float playerDist;
 
     public LayerMask playerLayer;
     public LayerMask obstacleLayer;
@@ -37,6 +37,11 @@ public class Enemy : MonoBehaviour
     public void Update()
     {
         currentState?.UpdateState(this);
+
+        // Forzar el Z a 0f
+        Vector3 position = transform.position;
+        position.z = 0; 
+        transform.position = position;
 
         if (health <= 0)
         {
@@ -88,41 +93,39 @@ public class Enemy : MonoBehaviour
     public void CanSeeTarget()
     {
         Collider2D[] targetsInViewRadius = Physics2D.OverlapCircleAll(transform.position, viewRadius, playerLayer);
-        if(player != null)
-        {
-        playerDist = Vector3.Distance(transform.position, player.transform.position);
-        }
-
 
         foreach (Collider2D col in targetsInViewRadius)
         {
-            if (col.gameObject.layer == 3)
+            if (((1 << col.gameObject.layer) & playerLayer) != 0)
             {
                 player = col.gameObject;
-                if (playerDist <= 5)
-                {
-                    needToAtack = true;
-                    needToSeek = false;
-                    Debug.Log("Jugador está en radio de ataque");
-                }
-                else if (playerDist <= 10f && playerDist > 5f)
-                {
-                    needToSeek = true;
-                    Debug.Log("Jugador está en radio de Seek");
-                }
-                else if(playerDist > viewRadius  && (needToSeek == true || needToAtack == true))
-                {
-                    Debug.Log(" no esta en mi radio de vision ");
-
-                        SetState(new PatrolState());
-                        needToSeek = false;
-                        needToAtack = false;
-
-                }
+                break; 
             }
-                return;
         }
+        if (player != null)
+        {
+            playerDist = Vector2.Distance(transform.position, player.transform.position);
+            if (playerDist <= attackRadius)
+            {
+                needToAtack = true;
+                needToSeek = false;
+                Debug.Log("Jugador está en radio de ataque");
+            }
+            else if (playerDist <= viewRadius && playerDist > attackRadius)
+            {
+                needToSeek = true;
+                Debug.Log("Jugador está en radio de Seek");
+            }
+            else if (playerDist > viewRadius )
+            {
+                Debug.Log(" no esta en mi radio de vision ");
+                SetState(new PatrolState());
+                needToSeek = false;
+                needToAtack = false;
 
+            }
+
+        }
     }
 
     #endregion
