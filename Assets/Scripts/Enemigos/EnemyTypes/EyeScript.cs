@@ -14,8 +14,16 @@ public class EyeScript : Enemy, ItakeDamage
     {
         if (player == null) return;
 
+        directionToPlayer = (player.transform.position - transform.position).normalized;
+        angleToPlayer = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, angleToPlayer);
+
+        if (playerDist < attackRadius - 1  && playerDist > 1f)
+        {
         Vector3 retreatDirection = -(player.transform.position - transform.position).normalized;
         transform.position += retreatDirection * speed * Time.deltaTime;
+        }
+
 
         timer += Time.deltaTime;
         if (timer >= shootTimer)

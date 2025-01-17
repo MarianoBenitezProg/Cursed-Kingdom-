@@ -60,6 +60,8 @@ public class Enemy : MonoBehaviour
             SetState(new SeekState());
         }
     }
+
+
     #region Métodos básicos
     public virtual void Die()
     {
@@ -75,8 +77,6 @@ public class Enemy : MonoBehaviour
     {
         Debug.Log("Ejecutando ataque base");
     }
-    #endregion
-
     public void SetState(IEnemyState newState)
     {
         if (currentState != null && currentState.GetType() == newState.GetType())
@@ -88,6 +88,9 @@ public class Enemy : MonoBehaviour
         currentState = newState;
         currentState.EnterState(this);
     }
+#endregion
+
+
 
     #region Field Of View y Attack Radius
     public void CanSeeTarget()
@@ -124,11 +127,12 @@ public class Enemy : MonoBehaviour
                 needToAtack = false;
 
             }
-
         }
     }
 
     #endregion
+
+
 
     #region OnDrawGizmos
     private void OnDrawGizmos()
