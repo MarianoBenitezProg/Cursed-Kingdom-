@@ -7,7 +7,7 @@ public class Ability : Proyectile
     protected GameObject shootingPivot;
     protected P_Behaviour playerRef;
     protected Direction shootingDir;
-    [SerializeField]protected bool isFerana;
+    public bool isFerana;
 
     private void Awake()
     {
