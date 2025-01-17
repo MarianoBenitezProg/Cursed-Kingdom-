@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4089b9e2b8a1206449c76f8baf143684
+guid: ee8d88d05fb92054dbb153bd7b60157a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -132,7 +132,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures:
-    - texture: {fileID: 2800000, guid: 62c35cdeb8b2f0348bf3c74cd1c48649, type: 3}
+    - texture: {fileID: 2800000, guid: c8a7cf38d063396469ff30d26f362011, type: 3}
       name: normal
     nameFileIdTable: {}
   mipmapLimitGroupName: 
