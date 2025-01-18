@@ -70,25 +70,25 @@ public class P_View
         }
     }
 
-    public void TintDamage()
+    public void TintCharacter(Color colorChange)
     {
         if(_tintFerana == null)
         {
             _tintFerana = _feranaGO.GetComponent<MaterialTintColor>();
-            _tintFerana.SetTintColor(new Color(1, 0, 0, 1f));
+            _tintFerana.SetTintColor(colorChange);
         }
         else
         {
-            _tintFerana.SetTintColor(new Color(1, 0, 0, 1f));
+            _tintFerana.SetTintColor(colorChange);
         }
         if (_tintMarkus == null)
         {
             _tintMarkus = _feranaGO.GetComponent<MaterialTintColor>();
-            _tintMarkus.SetTintColor(new Color(1, 0, 0, 1f));
+            _tintMarkus.SetTintColor(colorChange);
         }
         else
         {
-            _tintMarkus.SetTintColor(new Color(1, 0, 0, 1f));
+            _tintMarkus.SetTintColor(colorChange);
         }
     }
 }

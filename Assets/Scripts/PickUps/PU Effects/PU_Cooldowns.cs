@@ -7,10 +7,12 @@ public class PU_Cooldowns : MonoBehaviour, IPickableObject
 
     [SerializeField] ItemStored selectedItem;
     AbilityTimers abilityScript;
+    P_Behaviour playerRef;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         abilityScript = collision.gameObject.GetComponent<AbilityTimers>();
+        playerRef = collision.gameObject.GetComponent<P_Behaviour>();
         ICanPickUp obj = collision.gameObject.GetComponent<ICanPickUp>();
         if (obj != null)
         {
@@ -29,5 +31,6 @@ public class PU_Cooldowns : MonoBehaviour, IPickableObject
     public void PU_Effect()
     {
         abilityScript.ResetAllCooldowns();
+        playerRef._view.TintCharacter(new Color(0, 0.48f, 1, 1f)); ;
     }
 }

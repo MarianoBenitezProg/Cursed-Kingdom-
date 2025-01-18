@@ -598,7 +598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsMarkus: 0
   _playerRef: {fileID: 1743117000}
-  _distanceForAction: 2
+  _distanceForAction: 1
   _distanceWithPlayer: 0
   _distanceWithDoor: 0
   _roomDoor: {fileID: 2067597007}
@@ -1302,6 +1302,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6525987886302722827, guid: 18452a62cbfcca64f8b1a7e125cd76fa, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525987886302722827, guid: 18452a62cbfcca64f8b1a7e125cd76fa, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525987886302722827, guid: 18452a62cbfcca64f8b1a7e125cd76fa, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7722224960287011291, guid: 18452a62cbfcca64f8b1a7e125cd76fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.19

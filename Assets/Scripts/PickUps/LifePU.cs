@@ -32,6 +32,7 @@ public class LifePU : MonoBehaviour, IPickableObject
         if(playerRef != null)
         {
             playerRef.life += addLife;
+            playerRef._view.TintCharacter(new Color(0, 1, 0, 1f));
         }
     }
 }

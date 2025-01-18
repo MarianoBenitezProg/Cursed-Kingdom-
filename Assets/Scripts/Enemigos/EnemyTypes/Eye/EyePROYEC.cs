@@ -32,6 +32,7 @@ public class EyePROYEC : Proyectile
         if (check != null)
         {
             check.TakeDamage(dmg);
+            ProyectilePool.Instance.ReturnObstacle(gameObject, ProjectileType.EyeEnemy);
         }else
         {
             Debug.Log("no se le puede hacer daño ");

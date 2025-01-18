@@ -18,7 +18,7 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp
     #region Scripts Variables
     P_Movement _movement;
     P_Controls _controls;
-    P_View _view;
+    public P_View _view;
     P_Inventory _inventory;
     MarkusState _markusState;
     FeranaState _feranaState;
@@ -86,7 +86,7 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp
     {
         life -= dmg;
         Debug.Log("Recibi daño");
-        _view.TintDamage();
+        _view.TintCharacter(new Color (1, 0, 0, 1f));
 
     }
 
