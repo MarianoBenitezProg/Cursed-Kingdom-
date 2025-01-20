@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class P_View
 {
+    P_Behaviour _playerScript;
+
     GameObject _markusGO;
     GameObject _feranaGO;
 
@@ -19,6 +21,7 @@ public class P_View
 
     public P_View(P_Behaviour playerRef ,GameObject markusRef, GameObject feranaRef)
     {
+        _playerScript = playerRef;
         _markusGO = markusRef;
         _feranaGO = feranaRef;
 
@@ -72,23 +75,33 @@ public class P_View
 
     public void TintCharacter(Color colorChange)
     {
-        if(_tintFerana == null)
+        if(_playerScript.isMarkus == false)
         {
-            _tintFerana = _feranaGO.GetComponent<MaterialTintColor>();
-            _tintFerana.SetTintColor(colorChange);
+            if (_tintFerana == null)
+            {
+                _tintFerana = _feranaGO.GetComponent<MaterialTintColor>();
+                _tintFerana.SetTintColor(colorChange);
+            }
+            else
+            {
+                _tintFerana.SetTintColor(colorChange);
+            }
         }
+
         else
         {
-            _tintFerana.SetTintColor(colorChange);
+            if (_tintMarkus == null)
+            {
+                _tintMarkus = _markusGO.GetComponent<MaterialTintColor>();
+                _tintMarkus.SetTintColor(colorChange);
+                Debug.Log(_tintMarkus);
+            }
+            else
+            {
+                _tintMarkus.SetTintColor(colorChange);
+                Debug.Log("Markus change Color");
+            }
         }
-        if (_tintMarkus == null)
-        {
-            _tintMarkus = _feranaGO.GetComponent<MaterialTintColor>();
-            _tintMarkus.SetTintColor(colorChange);
-        }
-        else
-        {
-            _tintMarkus.SetTintColor(colorChange);
-        }
+        
     }
 }

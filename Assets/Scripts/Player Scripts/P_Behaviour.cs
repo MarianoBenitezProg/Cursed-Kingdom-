@@ -73,6 +73,8 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp
 
         _markusState.AddTransition("SwitchToFerana", _feranaState);
         _feranaState.AddTransition("SwitchToMarkus", _markusState);
+
+        _markusSprite.SetActive(false);
         #endregion
     }
     private void Update()
@@ -87,7 +89,7 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp
         life -= dmg;
         Debug.Log("Recibi daño");
         _view.TintCharacter(new Color (1, 0, 0, 1f));
-
+        StartCoroutine(Cam_Manager.instance.ShakeCamera());
     }
 
     #region Efectos de CC
