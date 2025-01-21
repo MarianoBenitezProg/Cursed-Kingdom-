@@ -2,8 +2,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
+[System.Serializable]
+public struct InventoryUI
+{
+    public Image _uiImage;
+    public PickUpType _item;
+}
+
 public class HUD_Manager : MonoBehaviour
 {
+    public static HUD_Manager instance;
     [SerializeField] private P_Behaviour _playerScript;
     private AbilityTimers _timersRef;
 
@@ -13,10 +21,21 @@ public class HUD_Manager : MonoBehaviour
     private Dictionary<string, Image> feranaImages = new Dictionary<string, Image>();
     private Dictionary<string, Image> markusImages = new Dictionary<string, Image>();
 
+    [SerializeField] List<InventoryUI> _inventory = new List<InventoryUI>();
+
     private bool isMarkusRef;
 
     private void Awake()
     {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         isMarkusRef = _playerScript.isMarkus;
         _timersRef = _playerScript.GetComponent<AbilityTimers>();
 
@@ -70,5 +89,17 @@ public class HUD_Manager : MonoBehaviour
 
         if (feranaImages.ContainsKey(abilityName))
             feranaImages[abilityName].fillAmount = progress;
+    }
+
+    public void SetInventoryUI(PickUpType itemPicked, bool isActive)
+    {
+        for (int i = 0; i < _inventory.Count; i++)
+        {
+            if(_inventory[i]._item == itemPicked)
+            {
+                _inventory[i]._uiImage.enabled = isActive;
+                return;
+            }
+        }
     }
 }

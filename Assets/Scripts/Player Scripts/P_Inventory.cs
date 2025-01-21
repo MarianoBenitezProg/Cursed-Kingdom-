@@ -37,6 +37,7 @@ public class P_Inventory
                     ItemStored updatedItem = itemsList[i];
                     updatedItem.isPicked = true;
                     itemsList[i] = updatedItem;
+                    HUD_Manager.instance.SetInventoryUI(pickedObject.objectType, true);
                     Debug.Log($"StoredEffect is {(itemsList[i].storedEffect == null ? "null" : "valid")}");
                     Debug.Log("<color=green>Item marked as picked</color>");
                 }
@@ -44,6 +45,7 @@ public class P_Inventory
             }
         }
         itemsList.Add(pickedObject);
+        HUD_Manager.instance.SetInventoryUI(pickedObject.objectType, true);
         Debug.Log("<color=blue>New item added to list</color>");
     }
 
@@ -60,6 +62,7 @@ public class P_Inventory
                     ItemStored updatedItem = itemsList[i];
                     updatedItem.isPicked = false;
                     itemsList[i] = updatedItem;
+                    HUD_Manager.instance.SetInventoryUI(effectToRun, false);
                     return;
                 }
             }
