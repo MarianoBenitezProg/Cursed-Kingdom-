@@ -11,13 +11,14 @@ GameObject:
   - component: {fileID: 5223325776414046699}
   - component: {fileID: 9104972167276626682}
   - component: {fileID: 8257316701653960354}
+  - component: {fileID: 254891404600028506}
   m_Layer: 3
   m_Name: MarkusSprite
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5223325776414046699
 Transform:
   m_ObjectHideFlags: 0
@@ -53,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e5a3e9ffb7018a3408eec92e8980fb42, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,6 +107,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &254891404600028506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252700974833455941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b917c2a2e2de9f741a4bc8ca5bb1dc8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &671736223783957560
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,7 +131,6 @@ GameObject:
   - component: {fileID: 2609805296733518972}
   - component: {fileID: 9028951259923947142}
   - component: {fileID: 1729751175894394358}
-  - component: {fileID: 781299040167068258}
   m_Layer: 3
   m_Name: FeranaSprite
   m_TagString: Untagged
@@ -226,19 +238,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b917c2a2e2de9f741a4bc8ca5bb1dc8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &781299040167068258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 671736223783957560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 535e3eb3b1143364e8a85fd40e104233, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaterialTintColor: {fileID: 1729751175894394358}
 --- !u!1 &2495860812310279837
 GameObject:
   m_ObjectHideFlags: 0
