@@ -44,7 +44,7 @@ public class SkeletonScript : Enemy,ItakeDamage
 
     public override void Seek()
     {
-        if (playerDist > 1)
+        if (playerDist > 1 )
         {
             Vector3 FowardDirection = (player.transform.position - transform.position).normalized;
             transform.position += FowardDirection * speed * Time.deltaTime;

@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
     public float viewRadius = 10f;
     public float attackRadius = 5f;
 
+    public float lostTimer;
+
 
     public float playerDist;
 
@@ -22,7 +24,6 @@ public class Enemy : MonoBehaviour
 
     public GameObject player;
 
-    [SerializeField] public bool hasLockedTarget = false;
     [SerializeField] public bool needToAtack = false;
     [SerializeField] public bool needToSeek = false;
 
@@ -38,9 +39,8 @@ public class Enemy : MonoBehaviour
     {
         currentState?.UpdateState(this);
 
-        // Forzar el Z a 0f
         Vector3 position = transform.position;
-        position.z = 0; 
+        position.z = 0;
         transform.position = position;
 
         if (health <= 0)
@@ -50,12 +50,11 @@ public class Enemy : MonoBehaviour
 
         CanSeeTarget();
 
-        if (needToAtack)
+        if (needToAtack && player != null)
         {
-            hasLockedTarget = true; // Bloquea al jugador como objetivo
             SetState(new AtackState());
         }
-        else if (needToSeek && !needToAtack)
+        else if (needToSeek && player != null)
         {
             SetState(new SeekState());
         }
@@ -88,44 +87,57 @@ public class Enemy : MonoBehaviour
         currentState = newState;
         currentState.EnterState(this);
     }
-#endregion
+    #endregion
 
 
 
-    #region Field Of View y Attack Radius
+    #region Field Of View 
     public void CanSeeTarget()
     {
         Collider2D[] targetsInViewRadius = Physics2D.OverlapCircleAll(transform.position, viewRadius, playerLayer);
 
+        // Detectar al jugador dentro del rango
         foreach (Collider2D col in targetsInViewRadius)
         {
             if (((1 << col.gameObject.layer) & playerLayer) != 0)
             {
                 player = col.gameObject;
-                break; 
+                break;
             }
         }
+
         if (player != null)
         {
             playerDist = Vector2.Distance(transform.position, player.transform.position);
+
             if (playerDist <= attackRadius)
             {
                 needToAtack = true;
                 needToSeek = false;
+                lostTimer = 0; // Reiniciar el temporizador
                 Debug.Log("Jugador está en radio de ataque");
             }
             else if (playerDist <= viewRadius && playerDist > attackRadius)
             {
                 needToSeek = true;
+                needToAtack = false;
+                lostTimer = 0; // Reiniciar el temporizador
                 Debug.Log("Jugador está en radio de Seek");
             }
-            else if (playerDist > viewRadius )
+            else
             {
-                Debug.Log(" no esta en mi radio de vision ");
-                SetState(new PatrolState());
-                needToSeek = false;
-                needToAtack = false;
+                lostTimer += Time.deltaTime;
 
+                // Si se pierde al jugador por mucho tiempo, volver a patrulla
+                if (lostTimer > 4)
+                {
+                    needToSeek = false;
+                    needToAtack = false;
+                    player = null;
+                    SetState(new PatrolState());
+                    Debug.Log("Perdí al jugador, vuelvo a patrullar");
+                    lostTimer = 0;
+                }
             }
         }
     }
