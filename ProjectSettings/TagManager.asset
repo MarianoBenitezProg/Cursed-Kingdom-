@@ -41,6 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Walls Behind
+    uniqueID: 1789967343
+    locked: 0
   - name: Player
     uniqueID: 769220169
+    locked: 0
+  - name: Walls Infront
+    uniqueID: 712512473
     locked: 0

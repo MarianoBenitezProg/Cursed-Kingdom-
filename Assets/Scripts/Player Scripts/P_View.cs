@@ -94,7 +94,7 @@ public class P_View
             {
                 _tintMarkus = _markusGO.GetComponent<MaterialTintColor>();
                 _tintMarkus.SetTintColor(colorChange);
-                Debug.Log(_tintMarkus);
+                Debug.Log("Markus change Color");
             }
             else
             {
