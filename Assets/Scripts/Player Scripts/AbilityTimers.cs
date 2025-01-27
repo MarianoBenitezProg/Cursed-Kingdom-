@@ -56,7 +56,7 @@ public class AbilityTimers : MonoBehaviour
                     if (cooldownCallbacks.ContainsKey(key))
                     {
                         cooldownCallbacks[key]?.Invoke();
-                        Debug.Log($"Cooldown finished for {key}");
+                        //Debug.Log($"Cooldown finished for {key}");
                     }
                     // Final update when cooldown ends
                     OnCooldownUpdated.Invoke(key, 1f);
@@ -82,7 +82,7 @@ public class AbilityTimers : MonoBehaviour
         {
             currentCooldowns[abilityName] = cooldowns[abilityName];
             cooldownCallbacks[abilityName] = onCooldownComplete;
-            Debug.Log($"Started cooldown for {abilityName}: {cooldowns[abilityName]} seconds");
+            //Debug.Log($"Started cooldown for {abilityName}: {cooldowns[abilityName]} seconds");
             OnCooldownUpdated.Invoke(abilityName, 0f); // Trigger UI update immediately
         }
     }

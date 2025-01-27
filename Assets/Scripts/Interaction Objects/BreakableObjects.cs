@@ -4,6 +4,6 @@ using UnityEngine;
 
 public abstract class BreakableObjects : MonoBehaviour
 {
-    protected int objectLife;
-
+    [SerializeField]protected int objectLife;
+    protected abstract void Destruction();
 }
