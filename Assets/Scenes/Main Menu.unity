@@ -123,6 +123,40 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &47852498 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4410116182862231223, guid: 91ef11d614805634bbd10b4138c58caf, type: 3}
+  m_PrefabInstance: {fileID: 7909854993624669172}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &47852502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47852498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1331886438}
+          m_TargetAssemblyTypeName: CanvasManager, Assembly-CSharp
+          m_MethodName: BTN_CallScreen
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Select Save
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1152713444
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,40 +338,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d34f77cf3e312843b4e73327c727991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1894222485 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6948278915673088464, guid: 91ef11d614805634bbd10b4138c58caf, type: 3}
-  m_PrefabInstance: {fileID: 8363688351868751194}
+--- !u!114 &1331886438 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7138183610848232500, guid: 91ef11d614805634bbd10b4138c58caf, type: 3}
+  m_PrefabInstance: {fileID: 7909854993624669172}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1894222489
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfb35b4ba7ee1e845a3c2045794ee34c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1817063266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1817063268}
+  - component: {fileID: 1817063267}
+  m_Layer: 0
+  m_Name: GamesData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1817063267
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1894222485}
+  m_GameObject: {fileID: 1817063266}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e03de0f728f4594fa3cde8dace6aa5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 8363688351868751195}
-          m_TargetAssemblyTypeName: CanvasManager, Assembly-CSharp
-          m_MethodName: BTN_CallScreen
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: OptionTest
-            m_BoolArgument: 0
-          m_CallState: 2
+  selectedSaveSlot: 0
+--- !u!4 &1817063268
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817063266}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 987.184, y: 591.2085, z: -4.810493}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2054352332
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +462,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &8363688351868751194
+--- !u!1001 &7909854993624669172
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -502,26 +558,16 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6948278915673088464, guid: 91ef11d614805634bbd10b4138c58caf, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 4410116182862231223, guid: 91ef11d614805634bbd10b4138c58caf, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1894222489}
+      addedObject: {fileID: 47852502}
   m_SourcePrefab: {fileID: 100100000, guid: 91ef11d614805634bbd10b4138c58caf, type: 3}
---- !u!114 &8363688351868751195 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7138183610848232500, guid: 91ef11d614805634bbd10b4138c58caf, type: 3}
-  m_PrefabInstance: {fileID: 8363688351868751194}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfb35b4ba7ee1e845a3c2045794ee34c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1152713447}
-  - {fileID: 8363688351868751194}
   - {fileID: 2054352335}
   - {fileID: 1313297188}
+  - {fileID: 7909854993624669172}
+  - {fileID: 1817063268}

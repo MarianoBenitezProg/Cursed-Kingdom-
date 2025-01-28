@@ -12,6 +12,10 @@ public class CanvasManager : MonoBehaviour, IScreen
     {
         ScreenManager.Instance.Pop();
     }
+    public void BTN_ExitGame()
+    {
+
+    }
 
     public void Activate()
     {
