@@ -14,6 +14,7 @@ public enum ProjectileType
     Ferrana3,
     Ferrana4,
 
-    EyeEnemy
+    EyeEnemy,
+    PlantAtack,
 
 }
