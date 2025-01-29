@@ -378,6 +378,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e03de0f728f4594fa3cde8dace6aa5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveSlots:
+  - slot: 0
+    level: 0
+    checkpoint: 0
+    life: 0
+    items:
+    - objectType: 0
+      isPicked: 0
+    - objectType: 1
+      isPicked: 0
+    - objectType: 2
+      isPicked: 0
+    - objectType: 3
+      isPicked: 0
+  - slot: 1
+    level: 0
+    checkpoint: 0
+    life: 0
+    items:
+    - objectType: 0
+      isPicked: 0
+    - objectType: 1
+      isPicked: 0
+    - objectType: 2
+      isPicked: 0
+    - objectType: 3
+      isPicked: 0
+  - slot: 2
+    level: 0
+    checkpoint: 0
+    life: 0
+    items:
+    - objectType: 0
+      isPicked: 0
+    - objectType: 1
+      isPicked: 0
+    - objectType: 2
+      isPicked: 0
+    - objectType: 3
+      isPicked: 0
   selectedSaveSlot: 0
 --- !u!4 &1817063268
 Transform:

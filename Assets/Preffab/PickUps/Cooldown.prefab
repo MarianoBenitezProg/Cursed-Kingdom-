@@ -134,5 +134,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedItem:
-    objectType: 3
+    objectType: 1
     isPicked: 0

@@ -172,19 +172,19 @@ public class P_Controls
     {
         if (Input.GetKeyDown(lifePU))
         {
-            _inventory.RunEffect(PickUpType.Life);
+            _inventory.RunEffect(PickUpType.Life, TypeEvent.PowerUpLife);
         }
         if(Input.GetKeyDown(cooldownReset))
         {
-            _inventory.RunEffect(PickUpType.CooldownReset);
+            _inventory.RunEffect(PickUpType.CooldownReset, TypeEvent.PowerUpCooldown);
         }
         if (Input.GetKeyDown(markusPU))
         {
-            _inventory.RunEffect(PickUpType.MarkusPU);
+            _inventory.RunEffect(PickUpType.MarkusPU, TypeEvent.PowerUpMarkus);
         }
         if (Input.GetKeyDown(feranaPU))
         {
-            _inventory.RunEffect(PickUpType.FeranaPU);
+            _inventory.RunEffect(PickUpType.FeranaPU, TypeEvent.PowerUpFerana);
         }
     }
 }

@@ -99,8 +99,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedItem:
-    objectType: 1
+    objectType: 3
     isPicked: 0
+  buffTime: 0
 --- !u!61 &4089006422040117640
 BoxCollider2D:
   m_ObjectHideFlags: 0

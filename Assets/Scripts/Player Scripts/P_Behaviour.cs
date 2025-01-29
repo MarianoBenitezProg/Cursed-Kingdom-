@@ -22,21 +22,30 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp
     P_Inventory _inventory;
     MarkusState _markusState;
     FeranaState _feranaState;
-    [SerializeField]AbilityTimers _timersScript;
+    [SerializeField] AbilityTimers _timersScript;
     #endregion
 
     #region Ability variables
-    [Header ("Ferana Timers")]
+
+    [Header("Ferana Timers")]
     public float fer_Basic;
     public float fer_Damage;
     public float fer_CC;
     public float fer_Utility;
 
-    [Header ("Markus Timers")]
+    [Header("Markus Timers")]
     public float mar_Basic;
     public float mar_Damage;
     public float mar_CC;
     public float mar_Utility;
+    #endregion
+
+    #region Power Up Effects
+    PowerUps _powerUpScripts;
+    [Header("Power Ups Variables")]
+    public int lifeAddedEffect;
+    public int buffTime;
+
     #endregion
 
     [HideInInspector] public FSM _fsm;
@@ -71,11 +80,16 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp
         _movement = new P_Movement(this, _speed, _rb, _aimPosition);
         _controls = new P_Controls(_movement, _view, _markusState, _feranaState, this,_inventory);
 
+        _powerUpScripts = new PowerUps(this, _timersScript);
+        _powerUpScripts.SubscribeEffects();//Subscribe all the effects to the Event Manager
+
         _markusState.AddTransition("SwitchToFerana", _feranaState);
         _feranaState.AddTransition("SwitchToMarkus", _markusState);
 
         _markusSprite.SetActive(false);
         #endregion
+
+        _inventory.RestoreInventory(); //Sets the inventory == to the saved File
     }
     private void Update()
     {
@@ -110,6 +124,12 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp
     public void StoreObject(ItemStored pickedObject)
     {
         _inventory.StoreItem(pickedObject);
+    }
+
+    private void OnDestroy()
+    {
+        _inventory.SaveInventory();
+        _powerUpScripts.UnsubscribeEffects();//Unsubscribe all the effects to the Event Manager
     }
 
     #endregion

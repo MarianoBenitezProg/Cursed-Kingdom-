@@ -4,11 +4,11 @@ using UnityEngine;
 
 [System.Serializable] public struct SavedGameData
 {
-    [SerializeField] SaveSlot slot;
-    [SerializeField] int currentLevel;
-    [SerializeField] int currentCheckpoint;
-    [SerializeField] int currentLife;
-    [SerializeField] int currentItems;
+    public SaveSlot slot;
+    public int level;
+    public int checkpoint;
+    public int life;
+    public ItemStored[] items;
 }
 [System.Serializable] public enum SaveSlot
 {
@@ -19,6 +19,8 @@ using UnityEngine;
 
 public class SavedGameManager : MonoBehaviour
 {
+    public List<SavedGameData> saveSlots= new List<SavedGameData>();
+
     public static SavedGameManager instance;
     public SaveSlot selectedSaveSlot;
 

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2489886443072389003}
   - component: {fileID: 5523028572419604911}
-  - component: {fileID: 6837604693976759875}
   - component: {fileID: 1594726135510674057}
+  - component: {fileID: 7156368503499378624}
   m_Layer: 0
   m_Name: Life Pu
   m_TagString: Untagged
@@ -86,22 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6837604693976759875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3753797846839081397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f0db368e8ec3748a135eb0bb60573c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedItem:
-    objectType: 0
-    isPicked: 0
-  addLife: 30
 --- !u!58 &1594726135510674057
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -137,3 +121,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &7156368503499378624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3753797846839081397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05ac7cddf4a5bc14ba9e9bc4b0ad32f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedItem:
+    objectType: 0
+    isPicked: 0
+  addLife: 3
