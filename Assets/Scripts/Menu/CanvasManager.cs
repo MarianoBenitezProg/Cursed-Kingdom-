@@ -59,6 +59,23 @@ public class CanvasManager : MonoBehaviour, IScreen
 
     }
 
+    public void BTN_ResetSaveSlot(int saveSlot)
+    {
+        if(saveSlot == 1)
+        {
+            SavedGameManager.instance.RestoreData(SaveSlot.SlotOne);
+        }
+        if (saveSlot == 2)
+        {
+            SavedGameManager.instance.RestoreData(SaveSlot.SlotTwo);
+        }
+        if (saveSlot == 3)
+        {
+            SavedGameManager.instance.RestoreData(SaveSlot.SlotThree);
+        }
+    }
+
+
     public void Activate()
     {
     }

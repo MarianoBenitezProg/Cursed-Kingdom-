@@ -382,7 +382,7 @@ MonoBehaviour:
   - slot: 0
     level: 0
     checkpoint: 0
-    life: 0
+    life: 100
     items:
     - objectType: 0
       isPicked: 0
@@ -395,7 +395,7 @@ MonoBehaviour:
   - slot: 1
     level: 0
     checkpoint: 0
-    life: 0
+    life: 100
     items:
     - objectType: 0
       isPicked: 0
@@ -408,7 +408,20 @@ MonoBehaviour:
   - slot: 2
     level: 0
     checkpoint: 0
-    life: 0
+    life: 100
+    items:
+    - objectType: 0
+      isPicked: 0
+    - objectType: 1
+      isPicked: 0
+    - objectType: 2
+      isPicked: 0
+    - objectType: 3
+      isPicked: 0
+  - slot: 3
+    level: 0
+    checkpoint: 0
+    life: 100
     items:
     - objectType: 0
       isPicked: 0

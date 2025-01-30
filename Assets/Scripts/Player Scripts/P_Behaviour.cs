@@ -68,7 +68,7 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp
         _timersScript.Initialize(cooldowns);
 
         #endregion
-
+        RestoreData();
 
         _inventory = new P_Inventory();
         _rb = GetComponent<Rigidbody2D>();
@@ -106,6 +106,47 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp
         StartCoroutine(Cam_Manager.instance.ShakeCamera());
     }
 
+    private void OnDestroy()
+    {
+        _inventory.SaveInventory();
+        SaveData();
+        _powerUpScripts.UnsubscribeEffects();//Unsubscribe all the effects to the Event Manager
+    }
+    
+    public void StoreObject(ItemStored pickedObject)
+    {
+        _inventory.StoreItem(pickedObject);
+    }
+
+    public void SaveData()
+    {
+        if (SavedGameManager.instance != null)
+        {
+            for (int i = 0; i < SavedGameManager.instance.saveSlots.Count; i++)
+            {
+                if (SavedGameManager.instance.selectedSaveSlot == SavedGameManager.instance.saveSlots[i].slot)
+                {
+                    SavedGameData UpdateLifeData = SavedGameManager.instance.saveSlots[i]; //You can´t just change the Life from the save slot, you gotta change the whole SaveSlot
+                    UpdateLifeData.life = life;
+                    SavedGameManager.instance.saveSlots[i] = UpdateLifeData;
+                }
+            }
+        }
+    }
+    public void RestoreData()
+    {
+        if (SavedGameManager.instance != null)
+        {
+            for (int i = 0; i < SavedGameManager.instance.saveSlots.Count; i++)
+            {
+                if (SavedGameManager.instance.selectedSaveSlot == SavedGameManager.instance.saveSlots[i].slot)
+                {
+                    life = SavedGameManager.instance.saveSlots[i].life;
+                }
+            }
+        }
+    }
+
     #region Efectos de CC
     public void Stunned(float timeToWait, float slowSpeed, bool stunned)
     {
@@ -121,16 +162,5 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp
         _speed = originalSpeed;
         isStunned = false;
     }
-    public void StoreObject(ItemStored pickedObject)
-    {
-        _inventory.StoreItem(pickedObject);
-    }
-
-    private void OnDestroy()
-    {
-        _inventory.SaveInventory();
-        _powerUpScripts.UnsubscribeEffects();//Unsubscribe all the effects to the Event Manager
-    }
-
     #endregion
 }
