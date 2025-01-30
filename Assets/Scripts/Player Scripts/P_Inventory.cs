@@ -59,46 +59,53 @@ public class P_Inventory
 
     public void SaveInventory()
     {
-        for (int i = 0; i < SavedGameManager.instance.saveSlots.Count; i++)
+        if(SavedGameManager.instance != null)
         {
-            if(SavedGameManager.instance.selectedSaveSlot == SavedGameManager.instance.saveSlots[i].slot)
+            for (int i = 0; i < SavedGameManager.instance.saveSlots.Count; i++)
             {
-                for (int y = 0; y < SavedGameManager.instance.saveSlots[i].items.Length; y++)
+                if (SavedGameManager.instance.selectedSaveSlot == SavedGameManager.instance.saveSlots[i].slot)
                 {
-                    for (int z = 0; z < itemsList.Count; z++)
+                    for (int y = 0; y < SavedGameManager.instance.saveSlots[i].items.Length; y++)
                     {
-                        if(SavedGameManager.instance.saveSlots[i].items[y].objectType == itemsList[z].objectType)
+                        for (int z = 0; z < itemsList.Count; z++)
                         {
-                            SavedGameManager.instance.saveSlots[i].items[y] = itemsList[z];
+                            if (SavedGameManager.instance.saveSlots[i].items[y].objectType == itemsList[z].objectType)
+                            {
+                                SavedGameManager.instance.saveSlots[i].items[y] = itemsList[z];
+                            }
                         }
                     }
                 }
             }
         }
+        
     }
 
     public void RestoreInventory()
     {
         //Here also i miss the conditions if its a new lvl, so the inventory should be empty.
         Debug.Log("Restoration Start");
-
-        for (int i = 0; i < SavedGameManager.instance.saveSlots.Count; i++)
+        if(SavedGameManager.instance != null)
         {
-            Debug.Log("Entro 1");
-            if (SavedGameManager.instance.selectedSaveSlot == SavedGameManager.instance.saveSlots[i].slot)
+            for (int i = 0; i < SavedGameManager.instance.saveSlots.Count; i++)
             {
-                Debug.Log("Entro 2");
-                for (int y = 0; y < SavedGameManager.instance.saveSlots[i].items.Length; y++)
+                Debug.Log("Entro 1");
+                if (SavedGameManager.instance.selectedSaveSlot == SavedGameManager.instance.saveSlots[i].slot)
                 {
-                    Debug.Log("Entro 3");
-                    if(SavedGameManager.instance.saveSlots[i].items[y].isPicked == true)
+                    Debug.Log("Entro 2");
+                    for (int y = 0; y < SavedGameManager.instance.saveSlots[i].items.Length; y++)
                     {
-                        itemsList.Add(SavedGameManager.instance.saveSlots[i].items[y]);
-                        HUD_Manager.instance.SetInventoryUI(SavedGameManager.instance.saveSlots[i].items[y].objectType, true);
-                        Debug.Log("Item Restored" + SavedGameManager.instance.saveSlots[i].items[y].objectType);
+                        Debug.Log("Entro 3");
+                        if (SavedGameManager.instance.saveSlots[i].items[y].isPicked == true)
+                        {
+                            itemsList.Add(SavedGameManager.instance.saveSlots[i].items[y]);
+                            HUD_Manager.instance.SetInventoryUI(SavedGameManager.instance.saveSlots[i].items[y].objectType, true);
+                            Debug.Log("Item Restored" + SavedGameManager.instance.saveSlots[i].items[y].objectType);
+                        }
                     }
                 }
             }
         }
+        
     }   
 }
