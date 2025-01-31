@@ -44,6 +44,7 @@ public enum TypeEvent
     PowerUpLife,
     PowerUpCooldown,
     PowerUpFerana,
-    PowerUpMarkus
+    PowerUpMarkus,
+    DamageTaken
 }
 

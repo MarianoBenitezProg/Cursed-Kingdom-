@@ -17,6 +17,7 @@ public class HUD_Manager : MonoBehaviour
 
     [SerializeField] private GameObject[] _markusUI;
     [SerializeField] private GameObject[] _feranaUI;
+    [SerializeField] private Image _lifeBar;
 
     private Dictionary<string, Image> feranaImages = new Dictionary<string, Image>();
     private Dictionary<string, Image> markusImages = new Dictionary<string, Image>();
@@ -45,6 +46,13 @@ public class HUD_Manager : MonoBehaviour
         _timersRef.OnCooldownUpdated.AddListener(UpdateCooldownUI);
 
         UpdateUIState();
+        UpdateHealthBar(null);
+        EventManager.Subscribe(TypeEvent.DamageTaken, UpdateHealthBar);
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.Unsubscribe(TypeEvent.DamageTaken, UpdateHealthBar);
     }
 
     private void InitializeAbilityUI(GameObject[] uiElements, Dictionary<string, Image> imageDict, string prefix)
@@ -101,5 +109,12 @@ public class HUD_Manager : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public void UpdateHealthBar(object param)
+    {
+        float fillAmount = (float)_playerScript.life / _playerScript.maxLife;
+
+        _lifeBar.fillAmount = Mathf.Clamp01(fillAmount);
     }
 }

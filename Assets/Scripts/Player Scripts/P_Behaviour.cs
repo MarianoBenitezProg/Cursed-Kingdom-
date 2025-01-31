@@ -7,6 +7,7 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp
 {
     Rigidbody2D _rb;
     public int life = 100;
+    public int maxLife = 100;
     public Direction lookingDir;
     [SerializeField] float _speed;
     [SerializeField] GameObject _markusSprite;
@@ -104,6 +105,7 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp
         Debug.Log("Recibi daño");
         _view.TintCharacter(new Color (1, 0, 0, 1f));
         StartCoroutine(Cam_Manager.instance.ShakeCamera());
+        EventManager.Trigger(TypeEvent.DamageTaken);
     }
 
     private void OnDestroy()

@@ -49,7 +49,6 @@ public class FeranaState : State
 
         if (_canUseBasicAttack && !_timersScript.IsOnCooldown("FeranaBasicAttack"))
         {
-            Debug.Log("Ataque Basico Ferana");
             _canUseBasicAttack = false;
             _timersScript.StartCooldown("FeranaBasicAttack", () => _canUseBasicAttack = true);
         }
@@ -63,7 +62,6 @@ public class FeranaState : State
 
         if (_canUseDamageAbility && !_timersScript.IsOnCooldown("FeranaDamage"))
         {
-            Debug.Log("Habilidad de Daño Ferana");
             _canUseDamageAbility = false;
             _timersScript.StartCooldown("FeranaDamage", () => _canUseDamageAbility = true);
         }
@@ -77,7 +75,6 @@ public class FeranaState : State
 
         if (_canUseCCAbility && !_timersScript.IsOnCooldown("FeranaCC"))
         {
-            Debug.Log("Habilidad de CC Ferana");
             _canUseCCAbility = false;
             _timersScript.StartCooldown("FeranaCC", () => _canUseCCAbility = true);
         }
@@ -92,7 +89,6 @@ public class FeranaState : State
 
         if (_canUseUtilityAbility && !_timersScript.IsOnCooldown("FeranaUtility"))
         {
-            Debug.Log("Habilidad de Utilidad Ferana");
             _canUseUtilityAbility = false;
             _timersScript.StartCooldown("FeranaUtility", () => _canUseUtilityAbility = true);
         }

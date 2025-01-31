@@ -50,7 +50,6 @@ public class MarkusState : State
 
         if (_canUseBasicAttack && !_timersScript.IsOnCooldown("MarkusBasicAttack"))
         {
-            Debug.Log("Ataque Basico Markus");
             _canUseBasicAttack = false;
             _timersScript.StartCooldown("MarkusBasicAttack", () => _canUseBasicAttack = true);
         }
@@ -64,7 +63,6 @@ public class MarkusState : State
 
         if (_canUseDamageAbility && !_timersScript.IsOnCooldown("MarkusDamage"))
         {
-            Debug.Log("Habilidad de Daño Markus");
             _canUseDamageAbility = false;
             _timersScript.StartCooldown("MarkusDamage", () => _canUseDamageAbility = true);
         }
@@ -78,7 +76,6 @@ public class MarkusState : State
 
         if (_canUseCCAbility && !_timersScript.IsOnCooldown("MarkusCC"))
         {
-            Debug.Log("Habilidad de CC Markus");
             _canUseCCAbility = false;
             _timersScript.StartCooldown("MarkusCC", () => _canUseCCAbility = true);
         }
@@ -93,7 +90,6 @@ public class MarkusState : State
 
         if (_canUseUtilityAbility && !_timersScript.IsOnCooldown("MarkusUtility"))
         {
-            Debug.Log("Habilidad de Utilidad Markus");
             _canUseUtilityAbility = false;
             _timersScript.StartCooldown("MarkusUtility", () => _canUseUtilityAbility = true);
         }
