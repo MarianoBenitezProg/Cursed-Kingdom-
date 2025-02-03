@@ -49,6 +49,12 @@ public class P_Movement
         UpdateDirection(angle);
     }
 
+    public P_Movement SetSpeed(float newSpeed)
+    {
+        _speed = newSpeed;
+        return this;
+    }
+
     public void UpdateDirection(float rotationAngle)
     {
         // Determine new direction

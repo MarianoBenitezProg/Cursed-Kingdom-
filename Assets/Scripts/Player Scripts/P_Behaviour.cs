@@ -160,9 +160,11 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp
         isStunned = stunned;
         float originalSpeed = _speed;
         _speed = slowSpeed;
+        _movement.SetSpeed(_speed);
         yield return new WaitForSeconds(timeToWait);
         _speed = originalSpeed;
         isStunned = false;
+        _movement.SetSpeed(_speed);
     }
     #endregion
 }
