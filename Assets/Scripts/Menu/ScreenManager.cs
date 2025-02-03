@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class ScreenManager : MonoBehaviour
 {
@@ -36,6 +38,7 @@ public class ScreenManager : MonoBehaviour
 
         Push(screenGameObject.GetComponent<IScreen>());
     }
+
     public void Pop()
     {
         if (_screens.Count < 1) return;

@@ -12,9 +12,12 @@ public class CanvasManager : MonoBehaviour, IScreen
     public float timer;
     public bool isGameCanvas;
 
+    [Header("Dialogue")]
+    public Text dialogueText;
+
     private void Update()
     {
-        if(isGameCanvas == true)
+        if (isGameCanvas == true)
         {
             if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
             {
