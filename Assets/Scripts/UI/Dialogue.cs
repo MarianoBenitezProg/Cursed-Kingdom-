@@ -3,90 +3,74 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+[System.Serializable] public struct Dialogues
+{
+    public GameObject dialoguePanel;
+    public TMP_Text dialogueText;
+    [SerializeField, TextArea(4, 6)] public string[] dialogueLines;
+}
+
 public class Dialogue : MonoBehaviour
 {
-    [SerializeField] private GameObject dialogueMark;
-    [SerializeField] private GameObject dialoguePanel;
-    [SerializeField] private TMP_Text dialogueText;
-    [SerializeField, TextArea(4, 6)] private string[] dialogueLines;
-    private bool isPLayerRange;
-    private bool didDialogueStart;
-    private int lineIndex;
+    [SerializeField] private Dialogues[] dialogueSequences;
+
+    private int currentSequenceIndex = 0;
+    private int currentLineIndex = 0;
+    private bool canProceed = true;
     private float typingTime = 0.05f;
-
-    void Update()
-    {
-        if (isPLayerRange && Input.GetKeyDown(KeyCode.E))
-        {
-            if (!didDialogueStart)
-            {
-                StartDialogue();
-            }
-            else if (dialogueText.text == dialogueLines[lineIndex])
-            {
-                NextDialaguoeLine();
-            }
-            else
-            {
-                StopAllCoroutines();
-                dialogueText.text = dialogueLines[lineIndex];
-            }
-
-        }
-    }
-
-    private void StartDialogue()
-    {
-        didDialogueStart = true;
-        dialoguePanel.SetActive(true);
-        lineIndex = 0;
-        Time.timeScale = 0;
-        StartCoroutine(showLine());
-    }
-
-    private void NextDialaguoeLine()
-    {
-        lineIndex++;
-        if (lineIndex < dialogueLines.Length)
-        {
-            StartCoroutine(showLine());
-        }
-        else
-        {
-            didDialogueStart = false;
-            dialoguePanel.SetActive(false);
-            Time.timeScale = 1;
-        }
-    }
-
-    private IEnumerator showLine()
-    {
-        dialogueText.text = string.Empty;
-
-        foreach (char ch in dialogueLines[lineIndex])
-        {
-            dialogueText.text += ch;
-            yield return new WaitForSecondsRealtime(typingTime);
-        }
-    }
+    private bool sawDialogue;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if(sawDialogue == false)
         {
-            isPLayerRange = true;
-            Debug.Log("Puedo Hbalar");
+            if (collision.gameObject.layer == 3)
+            {
+                StartDialogue();
+                sawDialogue = true;
+            }
         }
-
+        
+    }
+    private void Update()
+    {
+        if(canProceed == true && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            currentLineIndex++;
+            if(currentLineIndex < dialogueSequences[currentSequenceIndex].dialogueLines.Length)
+            {
+                Debug.Log(dialogueSequences[currentSequenceIndex]);
+                StartDialogue();
+            }
+            else
+            {
+                dialogueSequences[currentSequenceIndex].dialoguePanel.SetActive(false);
+                currentSequenceIndex++;
+                currentLineIndex = 0;
+                if(currentSequenceIndex < dialogueSequences.Length)
+                {
+                    StartDialogue();
+                }
+            }
+        }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    public void StartDialogue()
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            isPLayerRange = false;
-            Debug.Log("No se puede iniciar");
-        }
+        canProceed = false;
+        dialogueSequences[currentSequenceIndex].dialoguePanel.SetActive(true);
+        StartCoroutine(ShowLine(dialogueSequences[currentSequenceIndex].dialogueText));
+    }
 
+    private IEnumerator ShowLine(TMP_Text text)
+    {
+        text.text = string.Empty;
+
+        foreach (char ch in dialogueSequences[currentSequenceIndex].dialogueLines[currentLineIndex])
+        {
+            text.text += ch;
+            yield return new WaitForSecondsRealtime(typingTime);
+        }
+        canProceed = true;
     }
 }
