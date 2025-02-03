@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RataScript : Enemy
+public class RataScript : Enemy, ItakeDamage
 {
 
     float Atacktimer;
@@ -34,12 +34,17 @@ public class RataScript : Enemy
 
     }
 
-
     public override void Seek()
     {
         if (player == null) return;
         directionToPlayer = (player.transform.position - transform.position).normalized;
         angleToPlayer = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, angleToPlayer);
+    }
+
+    public void TakeDamage(int dmg)
+    {
+        health -= dmg;
+        Debug.Log(health);
     }
 }
