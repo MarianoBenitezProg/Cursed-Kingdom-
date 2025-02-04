@@ -51,6 +51,10 @@ public class Dialogue : MonoBehaviour
                 {
                     StartDialogue();
                 }
+                else
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }
