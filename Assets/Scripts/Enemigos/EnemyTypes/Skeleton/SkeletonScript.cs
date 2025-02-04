@@ -11,16 +11,14 @@ public class SkeletonScript : Enemy,ItakeDamage
 
     public override void Attack()
     {
-        if(escudo != null)
+        if (escudo != null)
         {
-        escudo = gameObject.transform.GetChild(0).gameObject;
-        }else
+            escudo = gameObject.transform.GetChild(0).gameObject;
+        }
+        else
         {
             IsDamageable = true;
-        }
-      
-           
-        
+        }             
 
         if (playerDist > 2)
         {
