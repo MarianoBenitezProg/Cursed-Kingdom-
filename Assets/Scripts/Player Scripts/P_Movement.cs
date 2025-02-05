@@ -55,6 +55,16 @@ public class P_Movement
         return this;
     }
 
+    public void SetSpeedToCero(object param)
+    {
+        _originalSpeed = _speed;
+        _speed = 0;
+    }
+    public void ResetSpeed(object param)
+    {
+        _speed = _originalSpeed;
+    }
+
     public void UpdateDirection(float rotationAngle)
     {
         // Determine new direction

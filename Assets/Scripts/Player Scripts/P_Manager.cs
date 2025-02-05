@@ -9,6 +9,9 @@ public class P_Manager : MonoBehaviour
     public static P_Manager Instance { get; private set; }
     public bool isMarkusBuff;
     public bool isFeranaBuff;
+    public bool isCCAbilityUnlocked;
+    public bool isUtilityAbilityUnlocked;
+    public bool isTutorialFinished;
 
     private void Awake()
     {

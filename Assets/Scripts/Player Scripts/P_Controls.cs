@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class P_Controls
 {
+    float hor;
+    float ver;
+
     P_Movement _movement;
     P_View _view;
     P_Behaviour _playerScript;
@@ -46,8 +49,11 @@ public class P_Controls
     {
         BasicControls();
         SwitchControls();
-        Ability();
-        UseInventory();
+        if(_playerScript.isCinematicPlaying == false)
+        {
+            UseInventory();
+            Ability();
+        }
     }
 
     public void BasicControls()
@@ -57,10 +63,20 @@ public class P_Controls
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         float normalizedAngle = (angle + 360) % 360;
 
-        var hor = Input.GetAxisRaw("Horizontal");
-        var ver = Input.GetAxisRaw("Vertical");
+        
 
-        if(hor != 0 || ver != 0)
+        if(_playerScript.isCinematicPlaying == true)
+        {
+            hor = 0;
+            ver = 0;
+        }
+        else if(_playerScript.isCinematicPlaying == false)
+        {
+            hor = Input.GetAxisRaw("Horizontal");
+            ver = Input.GetAxisRaw("Vertical");
+        }
+
+        if (hor != 0 || ver != 0)
         {
             isRunning = true;
         }
@@ -73,6 +89,7 @@ public class P_Controls
         LookingDirection(normalizedAngle);
         _view.SetAnimations(isRunning, dirX, dirY);
     }
+
     public void SwitchControls()
     {
         if(Input.GetKeyDown(switchCharacter))
@@ -146,24 +163,30 @@ public class P_Controls
         }
         if (Input.GetKeyDown(ccAbility))
         {
-            if (isMarkus == true)
+            if(P_Manager.Instance.isCCAbilityUnlocked == true)
             {
-                _markusState.CCAbility();
-            }
-            else
-            {
-                _feranaState.CCAbility();
+                if (isMarkus == true)
+                {
+                    _markusState.CCAbility();
+                }
+                else
+                {
+                    _feranaState.CCAbility();
+                }
             }
         }
         if (Input.GetKeyDown(utilityAbility))
         {
-            if (isMarkus == true)
+            if (P_Manager.Instance.isUtilityAbilityUnlocked)
             {
-                _markusState.UtilityAbility();
-            }
-            else
-            {
-                _feranaState.UtilityAbility();
+                if (isMarkus == true)
+                {
+                    _markusState.UtilityAbility();
+                }
+                else
+                {
+                    _feranaState.UtilityAbility();
+                }
             }
         }
     }

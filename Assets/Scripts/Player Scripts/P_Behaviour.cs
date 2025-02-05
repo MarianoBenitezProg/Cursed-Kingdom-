@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp
 {
+    public bool isCinematicPlaying = false;
     Rigidbody2D _rb;
     public int life = 100;
     public int maxLife = 100;
@@ -90,6 +91,9 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp
         _markusSprite.SetActive(false);
         #endregion
 
+        EventManager.Subscribe(TypeEvent.CinematicOn, StartingCinematic);
+        EventManager.Subscribe(TypeEvent.CinematicOff, StopCinematic);
+
         _inventory.RestoreInventory(); //Sets the inventory == to the saved File
     }
     private void Update()
@@ -110,6 +114,8 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp
 
     private void OnDestroy()
     {
+        EventManager.Unsubscribe(TypeEvent.CinematicOn, StartingCinematic);
+        EventManager.Unsubscribe(TypeEvent.CinematicOff, StopCinematic);
         _inventory.SaveInventory();
         SaveData();
         _powerUpScripts.UnsubscribeEffects();//Unsubscribe all the effects to the Event Manager
@@ -165,6 +171,17 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp
         _speed = originalSpeed;
         isStunned = false;
         _movement.SetSpeed(_speed);
+    }
+    #endregion
+
+    #region Cinematic
+    public void StartingCinematic(object param)
+    {
+        isCinematicPlaying = true;
+    }
+    public void StopCinematic(object param)
+    {
+        isCinematicPlaying = false;
     }
     #endregion
 }

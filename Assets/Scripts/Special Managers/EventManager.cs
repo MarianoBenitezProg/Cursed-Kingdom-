@@ -45,6 +45,8 @@ public enum TypeEvent
     PowerUpCooldown,
     PowerUpFerana,
     PowerUpMarkus,
-    DamageTaken
+    DamageTaken,
+    CinematicOn,
+    CinematicOff
 }
 

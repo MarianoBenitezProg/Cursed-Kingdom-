@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class TutorialsTriggers : MonoBehaviour
 {
-    [SerializeField]Animator Ui_animator;
+    [SerializeField]Animator ui_animator;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.layer == 3)
         {
-            Ui_animator.SetBool("IsTrigger", true);
+            ui_animator.SetBool("IsTrigger", true);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.layer == 3)
         {
-            Ui_animator.SetBool("IsTrigger", false);
+            ui_animator.SetBool("IsTrigger", false);
         }
     }
 }

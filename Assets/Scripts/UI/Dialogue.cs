@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Cinemachine;
 
 [System.Serializable] public struct Dialogues
 {
@@ -20,6 +21,8 @@ public class Dialogue : MonoBehaviour
     private float typingTime = 0.05f;
     private bool sawDialogue;
 
+    [SerializeField] CinemachineVirtualCameraBase[] cinematicCamera;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(sawDialogue == false)
@@ -28,13 +31,15 @@ public class Dialogue : MonoBehaviour
             {
                 StartDialogue();
                 sawDialogue = true;
+                EventManager.Trigger(TypeEvent.CinematicOn);
+                SingleCameraTransition();
             }
         }
         
     }
     private void Update()
     {
-        if(canProceed == true && Input.GetKeyDown(KeyCode.Mouse0))
+        if(canProceed == true && Input.GetKeyDown(KeyCode.Mouse0) && sawDialogue == true)
         {
             currentLineIndex++;
             if(currentLineIndex < dialogueSequences[currentSequenceIndex].dialogueLines.Length)
@@ -53,6 +58,8 @@ public class Dialogue : MonoBehaviour
                 }
                 else
                 {
+                    ResetCameras();
+                    EventManager.Trigger(TypeEvent.CinematicOff);
                     Destroy(gameObject);
                 }
             }
@@ -77,4 +84,27 @@ public class Dialogue : MonoBehaviour
         }
         canProceed = true;
     }
+
+
+    #region Camera Control
+    public void SingleCameraTransition()
+    {
+        if (cinematicCamera.Length > 0)
+        {
+            cinematicCamera[0].Priority = 20;
+        }
+    }
+    public void ResetCameras()
+    {
+        if(cinematicCamera.Length > 0)
+        {
+            for (int i = 0; i < cinematicCamera.Length; i++)
+            {
+                cinematicCamera[i].Priority = 0;
+            }
+        }
+        
+    }
+
+    #endregion
 }
