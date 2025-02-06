@@ -47,6 +47,7 @@ public enum TypeEvent
     PowerUpMarkus,
     DamageTaken,
     CinematicOn,
-    CinematicOff
+    CinematicOff,
+    EnemyKilled
 }
 

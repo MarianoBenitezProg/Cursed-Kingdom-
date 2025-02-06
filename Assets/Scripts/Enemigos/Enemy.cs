@@ -65,6 +65,7 @@ public class Enemy : MonoBehaviour
     #region Métodos básicos
     public virtual void Die()
     {
+        EventManager.Trigger(TypeEvent.EnemyKilled);
         Destroy(gameObject);
     }
 
