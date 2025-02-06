@@ -8,7 +8,6 @@ public class DarkPaladin : MonoBehaviour, ItakeDamage
     public int health = 100;
     public float speed = 5f;
     public int dmg = 40;
-    private float rotationSpeed = 5f;
     public bool isStunned;
 
     float angleToPlayer;
