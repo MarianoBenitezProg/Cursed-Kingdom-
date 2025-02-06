@@ -11,9 +11,18 @@ using Cinemachine;
     [SerializeField, TextArea(4, 6)] public string[] dialogueLines;
 }
 
+[System.Serializable] public enum TutorialEvent
+{
+    None,
+    CcAbilityIntro,
+    UtilityAbilityIntro,
+    InventoryIntro
+}
+
 public class Dialogue : MonoBehaviour
 {
     [SerializeField] private Dialogues[] dialogueSequences;
+    public TutorialEvent tutEvent;
 
     private int currentSequenceIndex = 0;
     private int currentLineIndex = 0;
@@ -58,6 +67,11 @@ public class Dialogue : MonoBehaviour
                 }
                 else
                 {
+                    if(tutEvent != TutorialEvent.None)
+                    {
+                        RunTutorialEvent();
+
+                    }
                     ResetCameras();
                     EventManager.Trigger(TypeEvent.CinematicOff);
                     Destroy(gameObject);
@@ -85,6 +99,24 @@ public class Dialogue : MonoBehaviour
         canProceed = true;
     }
 
+    public void RunTutorialEvent()
+    {
+        if(tutEvent == TutorialEvent.CcAbilityIntro)
+        {
+            P_Manager.Instance.isCCAbilityUnlocked = true;
+            HUD_Manager.instance.CCabilityUnlocked();
+        }
+        if(tutEvent == TutorialEvent.UtilityAbilityIntro)
+        {
+            P_Manager.Instance.isUtilityAbilityUnlocked = true;
+            HUD_Manager.instance.UtilityAbilityUnlocked();
+        }
+        if(tutEvent == TutorialEvent.InventoryIntro)
+        {
+            P_Manager.Instance.isTutorialFinished = true;
+            HUD_Manager.instance.TurnOnInventoryHUD();
+        }
+    }
 
     #region Camera Control
     public void SingleCameraTransition()
@@ -103,8 +135,6 @@ public class Dialogue : MonoBehaviour
                 cinematicCamera[i].Priority = 0;
             }
         }
-        
     }
-
     #endregion
 }
