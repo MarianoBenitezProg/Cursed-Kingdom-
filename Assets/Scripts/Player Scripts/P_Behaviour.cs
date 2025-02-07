@@ -184,4 +184,9 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp
         isCinematicPlaying = false;
     }
     #endregion
+
+    public void AnimationCoroutineManage()
+    {
+        StartCoroutine(_view.ResetAttackBool());
+    }
 }

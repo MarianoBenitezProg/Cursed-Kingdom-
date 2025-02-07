@@ -5,7 +5,7 @@ using UnityEngine;
 public class FeranaState : State
 {
     P_Behaviour _playerScript;
-    P_View _viewScript;
+    P_View _view;
     AbilityTimers _timersScript;
 
     private bool _canUseBasicAttack = true;
@@ -16,14 +16,14 @@ public class FeranaState : State
     public FeranaState(P_Behaviour playerRef, P_View viewRef, AbilityTimers timerRef)
     {
         _playerScript = playerRef;
-        _viewScript = viewRef;
+        _view = viewRef;
         _timersScript = timerRef;
     }
 
     protected override void OnEnter()
     {
         Debug.Log("Enter Ferana State");
-        _viewScript.SwitchToFerana();
+        _view.SwitchToFerana();
     }
 
     protected override void OnExit()
@@ -45,6 +45,7 @@ public class FeranaState : State
         if(_canUseBasicAttack == true)
         {
             ProyectilePool.Instance.GetObstacle(ProjectileType.Ferrana1);
+            _view.TriggerFeranaBasic();
         }
 
         if (_canUseBasicAttack && !_timersScript.IsOnCooldown("FeranaBasicAttack"))
@@ -58,6 +59,7 @@ public class FeranaState : State
         if (_canUseDamageAbility == true)
         {
             ProyectilePool.Instance.GetObstacle(ProjectileType.Ferrana2);
+            _view.TriggerFeranaSlash();
         }
 
         if (_canUseDamageAbility && !_timersScript.IsOnCooldown("FeranaDamage"))
@@ -71,6 +73,7 @@ public class FeranaState : State
         if (_canUseCCAbility == true)
         {
             ProyectilePool.Instance.GetObstacle(ProjectileType.Ferrana3);
+            _view.TriggerFeranaSlam();
         }
 
         if (_canUseCCAbility && !_timersScript.IsOnCooldown("FeranaCC"))
@@ -85,6 +88,7 @@ public class FeranaState : State
         if (_canUseUtilityAbility == true)
         {
             ProyectilePool.Instance.GetObstacle(ProjectileType.Ferrana4);
+            _view.TriggerFeranaDagger();
         }
 
         if (_canUseUtilityAbility && !_timersScript.IsOnCooldown("FeranaUtility"))

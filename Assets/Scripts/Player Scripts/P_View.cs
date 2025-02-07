@@ -59,6 +59,34 @@ public class P_View
         }
 
     }
+
+    #region Animation Triggers
+    public void TriggerFeranaAttack()
+    {
+        _feranaAnimator.SetBool("IsAttacking",true);
+        _playerScript.AnimationCoroutineManage();
+    }
+    public void TriggerFeranaSlam()
+    {
+        TriggerFeranaAttack();
+        _feranaAnimator.SetTrigger("Slam");
+    }
+    public void TriggerFeranaSlash()
+    {
+        TriggerFeranaAttack();
+        _feranaAnimator.SetTrigger("Slash");
+    }
+    public void TriggerFeranaBasic()
+    {
+        TriggerFeranaAttack();
+        _feranaAnimator.SetTrigger("Basic");
+    }
+    public void TriggerFeranaDagger()
+    {
+        TriggerFeranaAttack();
+        _feranaAnimator.SetTrigger("Dagger");
+    }
+    #endregion
     public void FlipRenderer(Direction lookingDir)
     {
         if (lookingDir == Direction.Left)
@@ -103,5 +131,12 @@ public class P_View
             }
         }
         
+    }
+
+    public IEnumerator ResetAttackBool()
+    {
+        yield return new WaitForSeconds(.5f);
+        _feranaAnimator.SetBool("IsAttacking",false);
+
     }
 }
