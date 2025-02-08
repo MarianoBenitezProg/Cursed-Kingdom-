@@ -25,7 +25,9 @@ public class FaseUno : BossState
         boss.BasicShootTimer += Time.deltaTime;
         if (boss.BasicShootTimer > 1.5f)
         {
+            if(waitingAtOriginalPos == false)
             BasicShot(boss);
+
             boss.BasicShootTimer = 0f;
         }
 

@@ -17,18 +17,22 @@ public class FaseDos : BossState
     public void EnterState(FirstBoss boss)
     {
         Debug.Log("Entré en la Fase dos");
+        //desactivo el colider
         boss.colider.enabled = false;
 
         foreach (GameObject plataforma in boss.Plataformas)
         {
+            //restauro la vida de las plataformas
             var vidaPlataforma = plataforma.GetComponent<PlatformSc>();
             vidaPlataforma.Currenthealth = vidaPlataforma.health;
+            // las apago 
             plataforma.SetActive(false);
         }
-
+        // prendo las que necesito 
         boss.Plataformas[2].SetActive(true);
         boss.Plataformas[5].SetActive(true);
 
+        //variables de movimiento y disparos 
         moveTimer = 0f;
         currentStep = 0;
         basicShootTimer = 0f;
@@ -45,11 +49,14 @@ public class FaseDos : BossState
         basicShootTimer += Time.deltaTime;
         warningTimer += Time.deltaTime;
 
+        //bool de vulnerabilidad
         if (waitingAtOriginalPos)
         {
+            //activo el colider y me dejo pegar
             boss.colider.enabled = true;
             waitTimer += Time.deltaTime;
 
+            //tiempo de vulnerabilidad
             if (waitTimer >= 2f)
             {
                 ReactivatePlatforms(boss);
@@ -60,6 +67,7 @@ public class FaseDos : BossState
             return;
         }
 
+        //si no tengo plataformas
         if (!boss.Plataformas[2].activeSelf && !boss.Plataformas[5].activeSelf)
         {
             boss.transform.position = boss.originalPos;
@@ -103,8 +111,13 @@ public class FaseDos : BossState
                 currentStep = 1;
                 break;
             case 1:
-
+                if (boss.Plataformas[5].active == true)
+                {
                 boss.transform.position = boss.Plataformas[5].transform.position;
+                }else
+                {
+                    boss.transform.position = boss.originalPos;
+                }
                 currentStep = 2;
                 break;
             case 2:
@@ -112,8 +125,18 @@ public class FaseDos : BossState
                 currentStep = 3;
                 break;
             case 3:
-                boss.transform.position = boss.Plataformas[2].transform.position;
+
+                if (boss.Plataformas[2].active == true)
+                {
+                    boss.transform.position = boss.Plataformas[2].transform.position;
+                }
+                else
+                {
+                    boss.transform.position = boss.originalPos;
+                }
+
                 currentStep = 0;
+
                 break;
         }
 
