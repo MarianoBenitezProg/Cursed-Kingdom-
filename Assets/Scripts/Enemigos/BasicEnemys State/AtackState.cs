@@ -8,6 +8,7 @@ public class AtackState : IEnemyState
     {
         Debug.Log("estoy en modo ataque");
     }
+
     public void UpdateState(Enemy enemy)
     {
         enemy.Attack();

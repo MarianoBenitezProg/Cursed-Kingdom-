@@ -17,5 +17,6 @@ public enum ProjectileType
     EyeEnemy,
     PlantAtack,
     DarkPaladinAtack,
+    FirstBossAtack,
 
 }
