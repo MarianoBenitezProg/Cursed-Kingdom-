@@ -28,7 +28,7 @@ public class FirstBoss : MonoBehaviour, ItakeDamage
     protected virtual void Awake()
     {
         colider = gameObject.GetComponent<CapsuleCollider2D>();
-        SetState(new FaseInicial());
+        SetState(new FaseInicial());w
         originalPos = transform.position;
         health = maxhealth;
     }
