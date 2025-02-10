@@ -21,7 +21,7 @@ public class Fer_Damage : Ability
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 6 || collision.gameObject.layer == 7) //Obstacle/Enemy Layer, so that if for any reason it touches the player it wont hit it
+        if (collision.gameObject.layer == 6) //Obstacle/Enemy Layer, so that if for any reason it touches the player it wont hit it
         {
             int damageDealt = dmg;
             if (P_Manager.Instance.isFeranaBuff == true)

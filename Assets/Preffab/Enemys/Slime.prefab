@@ -99,12 +99,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 40
-  damage: 20
+  damage: 5
   generationLevel: 0
   slimeScale: 4
   slimePrefab: {fileID: 455245011889459780}
-  moveStep: 5
-  moveCooldown: 2
+  moveStep: 3
+  moveCooldown: 3
   detectionRange: 10
   player: {fileID: 0}
 --- !u!58 &5258210105710144950
