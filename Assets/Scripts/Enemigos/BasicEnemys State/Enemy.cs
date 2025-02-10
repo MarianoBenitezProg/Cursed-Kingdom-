@@ -27,6 +27,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] public bool needToAtack = false;
     [SerializeField] public bool needToSeek = false;
 
+    protected MaterialTintColor _tintMaterial;
+
     float OutOfSigth;
     IEnemyState currentState;
 
@@ -35,6 +37,10 @@ public class Enemy : MonoBehaviour
         SetState(new PatrolState());
     }
 
+    protected virtual void Start()
+    {
+        _tintMaterial = GetComponent<MaterialTintColor>();
+    }
     public void Update()
     {
         currentState?.UpdateState(this);

@@ -9,6 +9,7 @@ public class RataScript : Enemy, ItakeDamage
     int dmg = 5;
     float angleToPlayer;
     Vector3 directionToPlayer;
+
     public override void Attack()
     {
         if (player == null) return;
@@ -46,5 +47,10 @@ public class RataScript : Enemy, ItakeDamage
     {
         health -= dmg;
         Debug.Log(health);
+        if(_tintMaterial != null)
+        {
+            _tintMaterial.SetTintColor(new Color(1, 0, 0, 1f));
+            Debug.Log("TintColor");
+        }
     }
 }

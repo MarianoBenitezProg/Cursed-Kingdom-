@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3752594999545805720}
   - component: {fileID: 8027391059738661711}
-  - component: {fileID: 4238977959109660891}
   - component: {fileID: 4842528205037089863}
+  - component: {fileID: 8329568134657038349}
+  - component: {fileID: 6899671959966241276}
   m_Layer: 0
   m_Name: Rata
   m_TagString: Untagged
@@ -54,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: e5a3e9ffb7018a3408eec92e8980fb42, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5def6d93e9821094395f16c9e04edfa3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,8 +87,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &4238977959109660891
-PolygonCollider2D:
+--- !u!114 &4842528205037089863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5251428383370063044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db5da948a440924488d9fee8bd183ae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  path: []
+  health: 100
+  speed: 2.5
+  rotationSpeed: 5
+  isStunned: 0
+  viewRadius: 3
+  attackRadius: 3
+  lostTimer: 0
+  playerDist: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  player: {fileID: 0}
+  obstaculos: []
+  needToAtack: 0
+  needToSeek: 0
+--- !u!114 &8329568134657038349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5251428383370063044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b917c2a2e2de9f741a4bc8ca5bb1dc8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &6899671959966241276
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -121,47 +165,13 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.28866667}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.69, y: 1.82}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0, y: 0.5773587}
-      - {x: -0.5, y: -0.28866667}
-      - {x: 0.5, y: -0.28866667}
-  m_UseDelaunayMesh: 0
---- !u!114 &4842528205037089863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5251428383370063044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db5da948a440924488d9fee8bd183ae9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  path: []
-  health: 100
-  speed: 2.5
-  rotationSpeed: 5
-  isStunned: 0
-  viewRadius: 3
-  attackRadius: 3
-  lostTimer: 0
-  playerDist: 0
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  player: {fileID: 0}
-  obstaculos: []
-  needToAtack: 0
-  needToSeek: 0
+  serializedVersion: 2
+  m_Size: {x: 0.69, y: 1.82}
+  m_EdgeRadius: 0
