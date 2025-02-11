@@ -133,11 +133,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63d30fde0c7f85846beed909bad8f5e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
-  dmg: 2
+  speed: 15
+  dmg: 5
   destroyTimer: 5
   ProyectType: 10
-  amplitude: 0.01
   player: {fileID: 0}
   Father: {fileID: 0}
   pullForce: 5
+  pullDuration: 0.5
