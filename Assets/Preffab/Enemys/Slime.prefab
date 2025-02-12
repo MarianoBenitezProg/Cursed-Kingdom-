@@ -103,7 +103,7 @@ MonoBehaviour:
   maxHealth: 40
   damage: 5
   generationLevel: 0
-  slimeScale: 4
+  slimeScale: 3
   slimePrefab: {fileID: 455245011889459780}
   moveStep: 3
   moveCooldown: 3

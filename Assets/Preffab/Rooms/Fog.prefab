@@ -160,8 +160,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.26345003, y: 1.5973, z: 0}
-    m_Extent: {x: 4.10175, y: 4.7255, z: 0}
+    m_Center: {x: 0.2571, y: 1.5959, z: 0}
+    m_Extent: {x: 4.1011, y: 4.7233, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -3984,7 +3984,8 @@ ParticleSystem:
     exit: 0
     colliderQueryMode: 0
     radiusScale: 1
-    primitives: []
+    primitives:
+    - {fileID: 0}
   SubModule:
     serializedVersion: 2
     enabled: 0
