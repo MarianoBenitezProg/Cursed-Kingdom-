@@ -27,6 +27,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] public bool needToAtack = false;
     [SerializeField] public bool needToSeek = false;
 
+    [SerializeField]protected Direction lookingDir;
+    [SerializeField] Animator _animator;
+
     protected MaterialTintColor _tintMaterial;
 
     float OutOfSigth;
@@ -35,6 +38,13 @@ public class Enemy : MonoBehaviour
     protected virtual void Awake()
     {
         SetState(new PatrolState());
+        if(GetComponent<Animator>() != null)
+        {
+            _animator = GetComponent<Animator>();
+            lookingDir = Direction.Down;
+            UpdateAnimation();
+        }
+
     }
 
     protected virtual void Start()
@@ -142,6 +152,8 @@ public class Enemy : MonoBehaviour
                     needToAtack = false;
                     player = null;
                     SetState(new PatrolState());
+                    lookingDir = Direction.Down;
+                    UpdateAnimation();
                     Debug.Log("Perdí al jugador, vuelvo a patrullar");
                     lostTimer = 0;
                 }
@@ -149,6 +161,48 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public Direction GetLookDirection(Vector3 playerPosition, Vector3 enemyPosition)
+    {
+        Vector2 direction = playerPosition - enemyPosition;
+        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+        {
+            // The player is more to the left or right
+            return direction.x > 0 ? Direction.Right : Direction.Left;
+        }
+        else
+        {
+            // The player is more up or down
+            return direction.y > 0 ? Direction.Up : Direction.Down;
+        }
+    }
+
+    public void UpdateAnimation()
+    {
+        if(_animator != null)
+        {
+            if (lookingDir == Direction.Up)
+            {
+                _animator.SetFloat("Y", 1f);
+                _animator.SetFloat("X", 0f);
+            }
+            if (lookingDir == Direction.Down)
+            {
+                _animator.SetFloat("Y", -1f);
+                _animator.SetFloat("X", 0f);
+            }
+            if (lookingDir == Direction.Left)
+            {
+                _animator.SetFloat("Y", 0f);
+                _animator.SetFloat("X", -1f);
+            }
+            if (lookingDir == Direction.Right)
+            {
+                _animator.SetFloat("Y", 0f);
+                _animator.SetFloat("X", 1f);
+            }
+        }
+        
+    }
     #endregion
 
     void HasAnObstacle()

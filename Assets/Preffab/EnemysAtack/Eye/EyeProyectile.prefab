@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  dmg: 30
+  dmg: 15
   destroyTimer: 3
   ProyectType: 8
   amplitude: 0.02

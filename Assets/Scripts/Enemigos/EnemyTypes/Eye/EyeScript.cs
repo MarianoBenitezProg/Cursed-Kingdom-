@@ -16,12 +16,14 @@ public class EyeScript : Enemy, ItakeDamage
 
         directionToPlayer = (player.transform.position - transform.position).normalized;
         angleToPlayer = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, angleToPlayer);
 
-        if (playerDist < attackRadius - 1  && playerDist > 1f)
+        lookingDir = GetLookDirection(player.transform.position, this.transform.position);
+        UpdateAnimation();
+
+        if (playerDist < attackRadius - 1 && playerDist > 1f)
         {
-        Vector3 retreatDirection = -(player.transform.position - transform.position).normalized;
-        transform.position += retreatDirection * speed * Time.deltaTime;
+            Vector3 retreatDirection = -(player.transform.position - transform.position).normalized;
+            transform.position += retreatDirection * speed * Time.deltaTime;
         }
 
 
@@ -36,6 +38,8 @@ public class EyeScript : Enemy, ItakeDamage
     public override void Seek()
     {
         timer += Time.deltaTime;
+        lookingDir = GetLookDirection(player.transform.position, this.transform.position);
+        UpdateAnimation();
         if (timer >= shootTimer)
         {
             Shoot();
@@ -44,7 +48,6 @@ public class EyeScript : Enemy, ItakeDamage
         if (player == null) return;
         directionToPlayer = (player.transform.position - transform.position).normalized;
         angleToPlayer = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, angleToPlayer);
     }
     private void Shoot()
     {

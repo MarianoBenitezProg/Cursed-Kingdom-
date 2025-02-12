@@ -16,11 +16,11 @@ public class PatrolState : IEnemyState
         {
             Transform target = enemy.path[currentPathIndex];
             Vector3 direction = target.position - enemy.transform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
+            //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            //Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
             
             enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, target.position, enemy.speed * Time.deltaTime);
-            enemy.transform.rotation = Quaternion.Lerp(enemy.transform.rotation, targetRotation, enemy.rotationSpeed * Time.deltaTime);
+            //enemy.transform.rotation = Quaternion.Lerp(enemy.transform.rotation, targetRotation, enemy.rotationSpeed * Time.deltaTime);
 
             if (Vector3.Distance(enemy.transform.position, target.position) < 0.1f)
             {
