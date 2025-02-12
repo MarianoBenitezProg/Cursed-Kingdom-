@@ -79,6 +79,7 @@ public class Mar_Utility : Ability
             {
                 takeDamage.TakeDamage(damageDealt);
             }
+            timer = 0;
         }
     }
     private void OnDrawGizmos()

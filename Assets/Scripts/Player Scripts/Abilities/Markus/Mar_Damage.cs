@@ -27,6 +27,7 @@ public class Mar_Damage : Ability
             int damageDealt = dmg;
             if (P_Manager.Instance.isMarkusBuff == true)
             {
+                Debug.Log(P_Manager.Instance.isMarkusBuff);
                 damageDealt *= damageBuff;
             }
             Debug.Log("Pego");
@@ -35,7 +36,8 @@ public class Mar_Damage : Ability
             {
                 takeDamage.TakeDamage(damageDealt);
             }
-        ProyectilePool.Instance.ReturnObstacle(this.gameObject, ProyectType);
+            timer = 0;
+            ProyectilePool.Instance.ReturnObstacle(this.gameObject, ProyectType);
         }
     }
 }

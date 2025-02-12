@@ -39,6 +39,7 @@ public class Mar_CC : Ability
                 Enemy enemyScript = collision.gameObject.GetComponent<Enemy>();
                 enemyScript.Stunned(stunTime, 0, true);
             }
+            timer = 0;
             ProyectilePool.Instance.ReturnObstacle(this.gameObject, ProyectType);
         }
     }

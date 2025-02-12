@@ -18,9 +18,19 @@ public class SlimeFather : MonoBehaviour, ItakeDamage
     [SerializeField] private float detectionRange = 5f;
     private float jumpTimer = 0f;
 
+    public GameObject particlesPrefab;
+    public SpriteRenderer objectRenderer;
+    public GameObject slimeLight;
     public Transform player;
+    bool _dieEvent = false;
 
     private float currentHealth;
+    private void Awake()
+    {
+        objectRenderer = GetComponent<SpriteRenderer>();
+        objectRenderer.enabled = true;
+        slimeLight.SetActive(true);
+    }
     private void Start()
     {
         currentHealth = maxHealth;
@@ -29,9 +39,10 @@ public class SlimeFather : MonoBehaviour, ItakeDamage
 
     private void Update()
     {
-        if(currentHealth <= 0 )
+        if(currentHealth <= 0 && _dieEvent == false )
         {
-            Die();
+            StartCoroutine(DieCoroutine());
+            _dieEvent = true;
         }
 
         if (player != null && Vector2.Distance(transform.position, player.position) <= detectionRange)
@@ -52,6 +63,19 @@ public class SlimeFather : MonoBehaviour, ItakeDamage
 
         // Mover al slime en pasos de 1f en esa dirección
         transform.position += direction * moveStep;
+    }
+
+    private IEnumerator DieCoroutine()
+    {
+        if(generationLevel < 2)
+        {
+            Instantiate(particlesPrefab, this.transform.position, Quaternion.identity);
+        }
+        objectRenderer.enabled = false;
+        slimeLight.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        Debug.Log("test");
+        Die();
     }
 
     private void Die()
