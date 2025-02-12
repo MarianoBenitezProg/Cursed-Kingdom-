@@ -21,9 +21,6 @@ public class SlimeFather : MonoBehaviour, ItakeDamage
     public Transform player;
 
     private float currentHealth;
-
-
-
     private void Start()
     {
         currentHealth = maxHealth;
