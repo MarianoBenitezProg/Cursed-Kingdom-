@@ -18,15 +18,20 @@ public class SlimeFather : MonoBehaviour, ItakeDamage
     [SerializeField] private float detectionRange = 5f;
     private float jumpTimer = 0f;
 
+    [Header ("Effects")]
     public GameObject particlesPrefab;
     public SpriteRenderer objectRenderer;
     public GameObject slimeLight;
+    MaterialTintColor _tintMaterial;
+
+
     public Transform player;
     bool _dieEvent = false;
 
     private float currentHealth;
     private void Awake()
     {
+        _tintMaterial = GetComponent<MaterialTintColor>();
         objectRenderer = GetComponent<SpriteRenderer>();
         objectRenderer.enabled = true;
         slimeLight.SetActive(true);
@@ -119,6 +124,7 @@ public class SlimeFather : MonoBehaviour, ItakeDamage
     public void TakeDamage(int dmg)
     {
         currentHealth -= dmg;
+        _tintMaterial.SetTintColor(Color.green);
         Debug.Log(currentHealth);
     }
 

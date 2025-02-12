@@ -4710,6 +4710,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &463469481 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 455245011889459780, guid: df5e74e976bf59446972fb339fb0d666, type: 3}
+  m_PrefabInstance: {fileID: 1197269379}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &463469482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463469481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b917c2a2e2de9f741a4bc8ca5bb1dc8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &465530253
 GameObject:
   m_ObjectHideFlags: 0
@@ -27697,7 +27714,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 455245011889459780, guid: df5e74e976bf59446972fb339fb0d666, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 463469482}
   m_SourcePrefab: {fileID: 100100000, guid: df5e74e976bf59446972fb339fb0d666, type: 3}
 --- !u!1 &1197983052
 GameObject:
@@ -54454,8 +54474,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.037100077, y: -3.4694502, z: 0}
-    m_Extent: {x: 6.1899004, y: 7.0364504, z: 0}
+    m_Center: {x: -0.028249979, y: -3.4763498, z: 0}
+    m_Extent: {x: 6.19485, y: 7.02855, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
