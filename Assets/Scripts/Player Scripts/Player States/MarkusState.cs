@@ -46,6 +46,7 @@ public class MarkusState : State
         if (_canUseBasicAttack == true)
         {
             ProyectilePool.Instance.GetObstacle(ProjectileType.Markus1);
+            _viewScript.TriggerMarkusShot();
         }
 
         if (_canUseBasicAttack && !_timersScript.IsOnCooldown("MarkusBasicAttack"))
@@ -59,6 +60,7 @@ public class MarkusState : State
         if (_canUseDamageAbility == true)
         {
             ProyectilePool.Instance.GetObstacle(ProjectileType.Markus2);
+            _viewScript.TriggerMarkusShot();
         }
 
         if (_canUseDamageAbility && !_timersScript.IsOnCooldown("MarkusDamage"))
@@ -72,6 +74,7 @@ public class MarkusState : State
         if (_canUseCCAbility == true)
         {
             ProyectilePool.Instance.GetObstacle(ProjectileType.Markus3);
+            _viewScript.TriggerMarkusThrow();
         }
 
         if (_canUseCCAbility && !_timersScript.IsOnCooldown("MarkusCC"))
@@ -86,6 +89,7 @@ public class MarkusState : State
         if (_canUseUtilityAbility == true)
         {
             ProyectilePool.Instance.GetObstacle(ProjectileType.Markus4);
+            _viewScript.TriggerMarkusThrow();
         }
 
         if (_canUseUtilityAbility && !_timersScript.IsOnCooldown("MarkusUtility"))

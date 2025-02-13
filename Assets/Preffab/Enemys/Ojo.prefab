@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5534230232217486585}
   - component: {fileID: 7083253858591048721}
   - component: {fileID: 6182621854949411503}
+  - component: {fileID: 1863179103513945774}
   m_Layer: 6
   m_Name: Ojo
   m_TagString: Untagged
@@ -56,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e5a3e9ffb7018a3408eec92e8980fb42, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -103,7 +104,7 @@ MonoBehaviour:
   path:
   - {fileID: 0}
   - {fileID: 0}
-  health: 80
+  health: 60
   speed: 5
   rotationSpeed: 5
   isStunned: 0
@@ -181,6 +182,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.9568323
+--- !u!114 &1863179103513945774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7573863032267090120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b917c2a2e2de9f741a4bc8ca5bb1dc8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7791307725831216968
 GameObject:
   m_ObjectHideFlags: 0

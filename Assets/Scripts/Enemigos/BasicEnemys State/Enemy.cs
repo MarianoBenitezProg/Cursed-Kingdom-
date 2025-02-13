@@ -112,6 +112,8 @@ public class Enemy : MonoBehaviour
     #region Field Of View 
     public void CanSeeTarget()
     {
+        
+
         Collider2D[] targetsInViewRadius = Physics2D.OverlapCircleAll(transform.position, viewRadius, playerLayer);
 
         foreach (Collider2D col in targetsInViewRadius)
@@ -201,7 +203,6 @@ public class Enemy : MonoBehaviour
                 _animator.SetFloat("X", 1f);
             }
         }
-        
     }
     #endregion
 

@@ -185,8 +185,4 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp
     }
     #endregion
 
-    public void AnimationCoroutineManage()
-    {
-        StartCoroutine(_view.ResetAttackBool());
-    }
 }

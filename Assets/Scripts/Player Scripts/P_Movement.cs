@@ -19,6 +19,7 @@ public class P_Movement
     float _speed;
     float _originalSpeed;
     Rigidbody2D _rb;
+    bool currentCharacter;
     
 
 
@@ -37,6 +38,7 @@ public class P_Movement
         
         _aimPosition = aimPositionRef;
         playerTransform = _playerRef.transform;
+        currentCharacter = _playerRef.isMarkus;
     }
 
     public void Movement(float hor, float ver, float angle)
@@ -92,28 +94,57 @@ public class P_Movement
 
 
         // Only update rotation if direction has changed
-        if (newDirection != _currentDirection)
+        if (newDirection != _currentDirection || currentCharacter != _playerRef.isMarkus)
         {
             _currentDirection = newDirection;
+            currentCharacter = _playerRef.isMarkus;
             Vector3 newScale = playerTransform.localScale;
 
             switch (newDirection)
             {
                 case Direction.Up:
                     //_playerTransform.rotation = Quaternion.Euler(0, 0, 90);
-                    _aimPosition.transform.position = new Vector3(playerTransform.position.x, playerTransform.position.y + 1.5f, 0);
+                    if (_playerRef.isMarkus == true)
+                    {
+                        _aimPosition.transform.position = new Vector3(playerTransform.position.x, playerTransform.position.y + 1.5f, 0);
+                    }
+                    else if(_playerRef.isMarkus == false)
+                    {
+                        _aimPosition.transform.position = new Vector3(playerTransform.position.x, playerTransform.position.y + 2f, 0);
+                    }
                     break;
                 case Direction.Left:
                     //_playerTransform.rotation = Quaternion.Euler(0, 0, 180);
-                    _aimPosition.transform.position = new Vector3(playerTransform.position.x - 1, playerTransform.position.y, 0);
+                    if(_playerRef.isMarkus == true)
+                    {
+                        _aimPosition.transform.position = new Vector3(playerTransform.position.x - 1, playerTransform.position.y - 0.8f, 0);
+                    }
+                    else if(_playerRef.isMarkus == false)
+                    {
+                        _aimPosition.transform.position = new Vector3(playerTransform.position.x - 2, playerTransform.position.y, 0);
+                    }
                     break;
                 case Direction.Down:
                     //_playerTransform.rotation = Quaternion.Euler(0, 0, 270);
-                    _aimPosition.transform.position = new Vector3(playerTransform.position.x, playerTransform.position.y - 1.5f, 0);
+                    if(_playerRef.isMarkus == true)
+                    { 
+                        _aimPosition.transform.position = new Vector3(playerTransform.position.x, playerTransform.position.y - 1.5f, 0);
+                    }
+                    else if (_playerRef.isMarkus == false)
+                    {
+                        _aimPosition.transform.position = new Vector3(playerTransform.position.x, playerTransform.position.y - 2, 0);
+                    }
                     break;
                 case Direction.Right:
                     //_playerTransform.rotation = Quaternion.Euler(0, 0, 0);
-                    _aimPosition.transform.position = new Vector3(playerTransform.position.x + 1, playerTransform.position.y, 0);
+                    if(_playerRef.isMarkus == true)
+                    {
+                        _aimPosition.transform.position = new Vector3(playerTransform.position.x + 1, playerTransform.position.y - 0.8f, 0);
+                    }
+                    else if(_playerRef.isMarkus == false)
+                    {
+                        _aimPosition.transform.position = new Vector3(playerTransform.position.x + 2, playerTransform.position.y, 0);
+                    }
                     break;
             }
 

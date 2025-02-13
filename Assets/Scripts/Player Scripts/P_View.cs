@@ -61,30 +61,31 @@ public class P_View
     }
 
     #region Animation Triggers
-    public void TriggerFeranaAttack()
-    {
-        _feranaAnimator.SetBool("IsAttacking",true);
-        _playerScript.AnimationCoroutineManage();
-    }
+    
     public void TriggerFeranaSlam()
     {
-        TriggerFeranaAttack();
         _feranaAnimator.SetTrigger("Slam");
     }
     public void TriggerFeranaSlash()
     {
-        TriggerFeranaAttack();
         _feranaAnimator.SetTrigger("Slash");
     }
     public void TriggerFeranaBasic()
     {
-        TriggerFeranaAttack();
         _feranaAnimator.SetTrigger("Basic");
     }
     public void TriggerFeranaDagger()
     {
-        TriggerFeranaAttack();
         _feranaAnimator.SetTrigger("Dagger");
+    }
+
+    public void TriggerMarkusShot()
+    {
+        _markusAnimator.SetTrigger("IsShooting");
+    }
+    public void TriggerMarkusThrow()
+    {
+        _markusAnimator.SetTrigger("IsThrowing");
     }
     #endregion
     public void FlipRenderer(Direction lookingDir)

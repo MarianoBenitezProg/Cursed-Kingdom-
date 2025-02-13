@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6683107800464089494}
   - component: {fileID: 5258210105710144950}
   - component: {fileID: 176240636486081005}
+  - component: {fileID: 6103035725341005720}
   m_Layer: 6
   m_Name: Slime
   m_TagString: Untagged
@@ -168,6 +169,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6103035725341005720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455245011889459780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b917c2a2e2de9f741a4bc8ca5bb1dc8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7125684662071491289
 GameObject:
   m_ObjectHideFlags: 0

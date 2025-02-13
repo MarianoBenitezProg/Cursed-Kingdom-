@@ -6,19 +6,14 @@ public class SkeletonScript : Enemy,ItakeDamage
 {
     float Atacktimer;
     int dmg = 20;
-    bool IsDamageable;
+    public bool IsDamageable;
     GameObject escudo;
 
     public override void Attack()
     {
-        if (escudo != null)
-        {
-            escudo = gameObject.transform.GetChild(0).gameObject;
-        }
-        else
-        {
-            IsDamageable = true;
-        }             
+        lookingDir = GetLookDirection(player.transform.position, this.transform.position);
+        UpdateAnimation();
+            
 
         if (playerDist > 2)
         {
@@ -42,24 +37,22 @@ public class SkeletonScript : Enemy,ItakeDamage
 
     public override void Seek()
     {
+        lookingDir = GetLookDirection(player.transform.position, this.transform.position);
+        UpdateAnimation();
         if (playerDist > 1 )
-        {
+        {   
+            
             Vector3 FowardDirection = (player.transform.position - transform.position).normalized;
             transform.position += FowardDirection * speed * Time.deltaTime;
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        var abilty = collision.gameObject.GetComponent<Ability>();
-        if (abilty != null && IsDamageable == true)
-        {
-            TakeDamage(abilty.dmg);
-        }
-    }
     public void TakeDamage(int dmg)
     {
-        health -= dmg;
-        Debug.Log(health);
+        if(IsDamageable == true)
+        {
+            health -= dmg;
+            Debug.Log(health);
+        }
     }
 }

@@ -69,5 +69,10 @@ public class EyeScript : Enemy, ItakeDamage
     {
         health -= dmg;
         Debug.Log(health);
+
+        if(_tintMaterial != null)
+        {
+            _tintMaterial.SetTintColor(Color.red);
+        }
     }
 }
