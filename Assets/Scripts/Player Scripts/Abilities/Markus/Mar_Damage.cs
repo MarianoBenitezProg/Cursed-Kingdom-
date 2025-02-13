@@ -39,5 +39,10 @@ public class Mar_Damage : Ability
             timer = 0;
             ProyectilePool.Instance.ReturnObstacle(this.gameObject, ProyectType);
         }
+        if (collision.gameObject.layer == 9)
+        {
+            timer = 0;
+            ProyectilePool.Instance.ReturnObstacle(this.gameObject, ProyectType);
+        }
     }
 }

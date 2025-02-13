@@ -38,6 +38,12 @@ public class Fer_Utility : Ability
                 Enemy enemyScript = collision.gameObject.GetComponent<Enemy>();
                 enemyScript.Stunned(stunTime, 3, false);
             }
+            timer = 0;
+            ProyectilePool.Instance.ReturnObstacle(this.gameObject, ProyectType);
+        }
+        if(collision.gameObject.layer == 10)
+        {
+            timer = 0;
             ProyectilePool.Instance.ReturnObstacle(this.gameObject, ProyectType);
         }
     }

@@ -56,6 +56,7 @@ public class Mar_Utility : Ability
                 speed = originalSpeed;
                 createParticles = 0;
                 isExploding = false;
+                timer = 0;
             }
         }
     }
@@ -79,7 +80,6 @@ public class Mar_Utility : Ability
             {
                 takeDamage.TakeDamage(damageDealt);
             }
-            timer = 0;
         }
     }
     private void OnDrawGizmos()

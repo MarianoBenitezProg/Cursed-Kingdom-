@@ -36,5 +36,10 @@ public class Fer_Damage : Ability
             }
             ProyectilePool.Instance.ReturnObstacle(this.gameObject, ProyectType);
         }
+        if (collision.gameObject.layer == 10)
+        {
+            timer = 0;
+            ProyectilePool.Instance.ReturnObstacle(this.gameObject, ProyectType);
+        }
     }
 }

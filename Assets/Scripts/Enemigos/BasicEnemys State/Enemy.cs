@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] public bool needToAtack = false;
     [SerializeField] public bool needToSeek = false;
 
-    [SerializeField]protected Direction lookingDir;
+    public Direction lookingDir;
     [SerializeField] Animator _animator;
 
     protected MaterialTintColor _tintMaterial;
@@ -45,12 +45,9 @@ public class Enemy : MonoBehaviour
             UpdateAnimation();
         }
 
-    }
-
-    protected virtual void Start()
-    {
         _tintMaterial = GetComponent<MaterialTintColor>();
     }
+
     public void Update()
     {
         currentState?.UpdateState(this);

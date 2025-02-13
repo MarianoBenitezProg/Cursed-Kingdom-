@@ -41,7 +41,12 @@ public class Fer_CC : Ability
                     enemyScript.Stunned(stunTime, 0, true);
                 }
             }
-
+            timer = 0;
+            ProyectilePool.Instance.ReturnObstacle(this.gameObject, ProyectType);
+        }
+        if (collision.gameObject.layer == 10)
+        {
+            timer = 0;
             ProyectilePool.Instance.ReturnObstacle(this.gameObject, ProyectType);
         }
     }

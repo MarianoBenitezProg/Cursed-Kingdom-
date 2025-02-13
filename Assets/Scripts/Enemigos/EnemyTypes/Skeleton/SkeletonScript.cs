@@ -8,7 +8,12 @@ public class SkeletonScript : Enemy,ItakeDamage
     int dmg = 20;
     public bool IsDamageable;
     GameObject escudo;
-
+    public CapsuleCollider2D thisCollider;
+    private void Start()
+    {
+        thisCollider = GetComponent<CapsuleCollider2D>();
+        thisCollider.enabled = false;
+    }
     public override void Attack()
     {
         lookingDir = GetLookDirection(player.transform.position, this.transform.position);
@@ -53,6 +58,7 @@ public class SkeletonScript : Enemy,ItakeDamage
         {
             health -= dmg;
             Debug.Log(health);
+            _tintMaterial.SetTintColor(Color.red);
         }
     }
 }

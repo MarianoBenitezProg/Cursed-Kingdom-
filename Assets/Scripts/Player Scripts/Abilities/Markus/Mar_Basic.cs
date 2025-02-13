@@ -36,7 +36,12 @@ public class Mar_Basic : Ability
                 takeDamage.TakeDamage(damageDealt);
             }
             timer = 0;
-        ProyectilePool.Instance.ReturnObstacle(this.gameObject, ProyectType);
+            ProyectilePool.Instance.ReturnObstacle(this.gameObject, ProyectType);
+        }
+        if(collision.gameObject.layer == 9)
+        {
+            timer = 0;
+            ProyectilePool.Instance.ReturnObstacle(this.gameObject, ProyectType);
         }
     }
 }

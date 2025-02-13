@@ -117,11 +117,11 @@ public class P_Movement
                     //_playerTransform.rotation = Quaternion.Euler(0, 0, 180);
                     if(_playerRef.isMarkus == true)
                     {
-                        _aimPosition.transform.position = new Vector3(playerTransform.position.x - 1, playerTransform.position.y - 0.8f, 0);
+                        _aimPosition.transform.position = new Vector3(playerTransform.position.x - 1, playerTransform.position.y - 0.6f, 0);
                     }
                     else if(_playerRef.isMarkus == false)
                     {
-                        _aimPosition.transform.position = new Vector3(playerTransform.position.x - 2, playerTransform.position.y, 0);
+                        _aimPosition.transform.position = new Vector3(playerTransform.position.x - 1.5f, playerTransform.position.y, 0);
                     }
                     break;
                 case Direction.Down:
@@ -139,11 +139,11 @@ public class P_Movement
                     //_playerTransform.rotation = Quaternion.Euler(0, 0, 0);
                     if(_playerRef.isMarkus == true)
                     {
-                        _aimPosition.transform.position = new Vector3(playerTransform.position.x + 1, playerTransform.position.y - 0.8f, 0);
+                        _aimPosition.transform.position = new Vector3(playerTransform.position.x + 1, playerTransform.position.y - 0.6f, 0);
                     }
                     else if(_playerRef.isMarkus == false)
                     {
-                        _aimPosition.transform.position = new Vector3(playerTransform.position.x + 2, playerTransform.position.y, 0);
+                        _aimPosition.transform.position = new Vector3(playerTransform.position.x + 1.5f, playerTransform.position.y, 0);
                     }
                     break;
             }

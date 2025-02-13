@@ -15,8 +15,8 @@ TagManager:
   - 'Obstacles '
   - Breakables
   - Enemy
-  - 
-  - 
+  - NotHittableMarkus
+  - NotHittableFerana
   - 
   - 
   - 
