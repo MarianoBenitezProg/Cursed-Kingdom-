@@ -54997,8 +54997,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.034849882, y: -3.4678001, z: 0}
-    m_Extent: {x: 6.2002497, y: 7.0245, z: 0}
+    m_Center: {x: -0.031949997, y: -3.4724002, z: 0}
+    m_Extent: {x: 6.19005, y: 7.0237, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -56050,7 +56050,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 278739389715031489, guid: f5d02b84c6d5e994787dbf7f5ee8b7b8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2018918058907902586, guid: f5d02b84c6d5e994787dbf7f5ee8b7b8, type: 3}
       propertyPath: TriggerModule.enabled
