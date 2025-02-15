@@ -5,9 +5,10 @@ using UnityEngine;
 public class Chest : Interaction
 {
     [SerializeField] SpriteRenderer closedChest;
-    [SerializeField] SpriteRenderer openChest;
+    [SerializeField] GameObject openChest;
     [SerializeField] GameObject[] loot;
     [SerializeField] GameObject lootSpawnPoint;
+    [SerializeField] GameObject tutorialText;
 
     private void Update()
     {
@@ -34,8 +35,13 @@ public class Chest : Interaction
 
     public override void Action()
     {
+        if(tutorialText != null)
+        {
+            tutorialText.SetActive(false);
+        }
+
         closedChest.enabled = false;
-        openChest.enabled = true;
+        openChest.SetActive(true);
 
         Instantiate(loot[Random.Range(0,loot.Length)], lootSpawnPoint.transform.position, Quaternion.identity);
     }
