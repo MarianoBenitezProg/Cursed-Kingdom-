@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 15
-  timerLimit: 1
+  timerLimit: 0.75
 --- !u!1 &4354400816867498639
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,8 +160,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.25530016, y: 1.6015501, z: 0}
-    m_Extent: {x: 4.0974, y: 4.72755, z: 0}
+    m_Center: {x: 0.26460004, y: 1.6006, z: 0}
+    m_Extent: {x: 4.0975, y: 4.7174997, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

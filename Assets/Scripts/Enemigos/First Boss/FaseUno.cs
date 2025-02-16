@@ -8,9 +8,11 @@ public class FaseUno : BossState
     private int currentIndex;
     private bool waitingAtOriginalPos;
     private float waitTimer;
+    FirstBoss _bossScript;
 
     public  void EnterState(FirstBoss boss)
     {
+        _bossScript = boss;
         Debug.Log("Entré en la Fase Uno");
         pathTimer = 0f;
         waitTimer = 0f;
@@ -23,10 +25,14 @@ public class FaseUno : BossState
     {
         // Disparo cada 1.5 segundos
         boss.BasicShootTimer += Time.deltaTime;
+
         if (boss.BasicShootTimer > 1.5f)
         {
             if(waitingAtOriginalPos == false)
-            BasicShot(boss);
+            {
+                _bossScript._animator.SetTrigger("IsAttacking");
+                BasicShot(boss);
+            }
 
             boss.BasicShootTimer = 0f;
         }
@@ -78,7 +84,6 @@ public class FaseUno : BossState
             Debug.LogWarning("No se ha asignado un jugador en FirstBoss.");
             return;
         }
-
         Vector3 direction = (boss.player.transform.position - boss.ShootPoint).normalized;
         float angleToPlayer = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 

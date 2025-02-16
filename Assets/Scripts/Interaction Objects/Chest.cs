@@ -39,7 +39,7 @@ public class Chest : Interaction
         {
             tutorialText.SetActive(false);
         }
-
+        SoundManager.instance.PlaySound("Chest Open", 1f);
         closedChest.enabled = false;
         openChest.SetActive(true);
 

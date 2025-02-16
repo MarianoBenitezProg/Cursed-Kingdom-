@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FaseDos : BossState
 {
+    FirstBoss bossScript;
     private float moveTimer;
     private int currentStep;
     private float basicShootTimer;
@@ -16,6 +17,7 @@ public class FaseDos : BossState
 
     public void EnterState(FirstBoss boss)
     {
+        bossScript = boss;
         Debug.Log("Entré en la Fase dos");
         //desactivo el colider
         boss.colider.enabled = false;
@@ -87,6 +89,7 @@ public class FaseDos : BossState
         if (basicShootTimer >= 1.5f)
         {
             BasicShot(boss);
+            bossScript._animator.SetTrigger("IsAttacking");
             basicShootTimer = 0f;
         }
 
@@ -111,7 +114,7 @@ public class FaseDos : BossState
                 currentStep = 1;
                 break;
             case 1:
-                if (boss.Plataformas[5].active == true)
+                if (boss.Plataformas[5].activeInHierarchy == true)
                 {
                 boss.transform.position = boss.Plataformas[5].transform.position;
                 }else
@@ -126,7 +129,7 @@ public class FaseDos : BossState
                 break;
             case 3:
 
-                if (boss.Plataformas[2].active == true)
+                if (boss.Plataformas[2].activeInHierarchy == true)
                 {
                     boss.transform.position = boss.Plataformas[2].transform.position;
                 }

@@ -22,12 +22,14 @@ public class Enemy : MonoBehaviour
     public LayerMask obstacleLayer;
 
     public GameObject player;
+    public GameObject shootingPoint;
     public List<GameObject> obstaculos = new List<GameObject>();
 
     [SerializeField] public bool needToAtack = false;
     [SerializeField] public bool needToSeek = false;
 
     public Direction lookingDir;
+    Direction currentDir;
     [SerializeField] Animator _animator;
 
     protected MaterialTintColor _tintMaterial;
@@ -61,6 +63,7 @@ public class Enemy : MonoBehaviour
             Die();
         }
 
+        UpdateShootingPoint();
         CanSeeTarget();
         HasAnObstacle();
 
@@ -172,6 +175,21 @@ public class Enemy : MonoBehaviour
         {
             // The player is more up or down
             return direction.y > 0 ? Direction.Up : Direction.Down;
+        }
+    }
+
+    public void UpdateShootingPoint()
+    {
+        if(shootingPoint != null)
+        {
+            if (currentDir != lookingDir)
+            {
+                if (lookingDir == Direction.Up) shootingPoint.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1, 0);
+                else if (lookingDir == Direction.Down) shootingPoint.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - 1, 0);
+                else if (lookingDir == Direction.Left) shootingPoint.transform.position = new Vector3(this.transform.position.x - 1.1f, this.transform.position.y -.5f, 0);
+                else if (lookingDir == Direction.Right) shootingPoint.transform.position = new Vector3(this.transform.position.x + 1.1f, this.transform.position.y-.5f, 0);
+            }
+            currentDir = lookingDir;
         }
     }
 

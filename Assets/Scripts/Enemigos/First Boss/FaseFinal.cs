@@ -51,6 +51,7 @@ public class FaseFinal : BossState
         if (basicShootTimer >= 1.5f)
         {
             BasicShot(boss);
+            boss._animator.SetTrigger("IsAttacking");
             basicShootTimer = 0f; // ?? Reinicia el timer
         }
 

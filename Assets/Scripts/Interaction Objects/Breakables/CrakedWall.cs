@@ -21,6 +21,7 @@ public class CrakedWall : BreakableObjects, ItakeDamage
     {
         if(_secretRoom != null)
         {
+            SoundManager.instance.PlaySound("Wall Break",3f);
             _secretRoom.SetActive(true);
         }
         //Particles Effects. Trigger Sound.

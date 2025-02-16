@@ -33,6 +33,7 @@ public class SecretRooms : Interaction
                 _playerRef.transform.position = this.transform.position;
                 isInRoom = false;
             }
+            SoundManager.instance.PlaySound("Hatchdoor");
         }
         
     }

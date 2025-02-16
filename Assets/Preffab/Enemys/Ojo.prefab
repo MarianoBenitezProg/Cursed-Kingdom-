@@ -119,6 +119,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   player: {fileID: 0}
+  shootingPoint: {fileID: 7791307725831216968}
   obstaculos: []
   needToAtack: 0
   needToSeek: 0

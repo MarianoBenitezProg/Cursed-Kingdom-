@@ -7,7 +7,7 @@ public class Fog : MonoBehaviour
     bool isOnFog;
     float timer;
     public int damage;
-    public int timerLimit;
+    public float timerLimit;
     P_Behaviour _playerScript;
 
     private void OnTriggerEnter2D(Collider2D collision)

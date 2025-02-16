@@ -73,6 +73,7 @@ public class P_View
     public void TriggerFeranaBasic()
     {
         _feranaAnimator.SetTrigger("Basic");
+        SoundManager.instance.PlaySound("Sword");
     }
     public void TriggerFeranaDagger()
     {
@@ -82,12 +83,14 @@ public class P_View
     public void TriggerMarkusShot()
     {
         _markusAnimator.SetTrigger("IsShooting");
+        SoundManager.instance.PlaySound("Basic Arrow");
     }
     public void TriggerMarkusThrow()
     {
         _markusAnimator.SetTrigger("IsThrowing");
     }
     #endregion
+
     public void FlipRenderer(Direction lookingDir)
     {
         if (lookingDir == Direction.Left)
