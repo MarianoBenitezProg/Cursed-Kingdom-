@@ -39,7 +39,10 @@ public class SecretRooms : Interaction
     }
     void CheckDistance()
     {
-        _distanceWithPlayer = Vector3.Distance(this.transform.position, _playerRef.transform.position);
-        _distanceWithDoor = Vector3.Distance(_roomDoor.transform.position, _playerRef.transform.position);
+        if(_playerRef != null)
+        {
+            _distanceWithPlayer = Vector3.Distance(this.transform.position, _playerRef.transform.position);
+            _distanceWithDoor = Vector3.Distance(_roomDoor.transform.position, _playerRef.transform.position);
+        }
     }
 }

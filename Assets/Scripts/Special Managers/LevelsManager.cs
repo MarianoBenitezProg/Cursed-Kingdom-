@@ -16,7 +16,8 @@ public class LevelsManager : MonoBehaviour
 
     [SerializeField] Dictionary<string, GameObject> levelsDictionary = new Dictionary<string, GameObject>();
     public Level[] levels;
-    public string currentLevel;
+    public string currentLevelName;
+    public GameObject currentLevelGO;
 
     private void Awake()
     {
@@ -45,11 +46,40 @@ public class LevelsManager : MonoBehaviour
                     if(levelsDictionary.ContainsKey(SavedGameManager.instance.saveSlots[i].level))
                     {
                         GameObject levelPrefab = levelsDictionary[SavedGameManager.instance.saveSlots[i].level];
-                        Debug.Log(levelsDictionary[SavedGameManager.instance.saveSlots[i].level]);
-                        Instantiate(levelPrefab);
+                        currentLevelGO = Instantiate(levelPrefab);
                     }
                 }
             }
+        }
+    }
+    private void OnDestroy()
+    {
+        SaveData();
+    }
+
+    public void SaveData()
+    {
+        if (SavedGameManager.instance != null)
+        {
+            for (int i = 0; i < SavedGameManager.instance.saveSlots.Count; i++)
+            {
+                if (SavedGameManager.instance.selectedSaveSlot == SavedGameManager.instance.saveSlots[i].slot)
+                {
+                    SavedGameData UpdateLifeData = SavedGameManager.instance.saveSlots[i]; //You can´t just change the Life from the save slot, you gotta change the whole SaveSlot
+                    UpdateLifeData.level = currentLevelName;
+                    SavedGameManager.instance.saveSlots[i] = UpdateLifeData;
+                }
+            }
+        }
+    }
+
+    public void ChangeLevel(string newLevel)
+    {
+        Destroy(currentLevelGO);
+        if (levelsDictionary.ContainsKey(newLevel))
+        {
+            GameObject levelPrefab = levelsDictionary[newLevel];
+            currentLevelGO = Instantiate(levelPrefab);
         }
     }
 }

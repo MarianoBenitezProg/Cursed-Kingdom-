@@ -594,7 +594,10 @@ MonoBehaviour:
   levels:
   - name: Level One
     levelGO: {fileID: 4429722512805911734, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
-  currentLevel: 
+  - name: Level Two
+    levelGO: {fileID: 2127723595781718426, guid: a93ab90622728d5449ddb8416772bb5e, type: 3}
+  currentLevelName: 
+  currentLevelGO: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
