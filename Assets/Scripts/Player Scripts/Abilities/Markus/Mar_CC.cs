@@ -37,7 +37,11 @@ public class Mar_CC : Ability
             {
                 takeDamage.TakeDamage(damageDealt);
                 Enemy enemyScript = collision.gameObject.GetComponent<Enemy>();
-                enemyScript.Stunned(stunTime, 0, true);
+                IStunned stunned = collision.gameObject.GetComponent<IStunned>();
+                if(stunned != null)
+                {
+                    enemyScript.Stunned(stunTime, 0, true);
+                }
             }
             timer = 0;
             ProyectilePool.Instance.ReturnObstacle(this.gameObject, ProyectType);

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IStunned
 {
     public List<Transform> path = new List<Transform>();
     public int health = 100;
@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
 
     public Direction lookingDir;
     Direction currentDir;
-    [SerializeField] Animator _animator;
+    public Animator _animator;
 
     protected MaterialTintColor _tintMaterial;
 

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp
+public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp, IStunned
 {
     public bool isCinematicPlaying = false;
     Rigidbody2D _rb;
@@ -184,5 +184,4 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp
         isCinematicPlaying = false;
     }
     #endregion
-
 }

@@ -6,7 +6,8 @@ public class PlantScript : Enemy, ItakeDamage
 {
     private float timer; 
     private bool warningPlaced; 
-    private Vector3 warningPosition; 
+    private Vector3 warningPosition;
+    public float warningTime;
 
     public GameObject warningGB; 
 
@@ -18,13 +19,19 @@ public class PlantScript : Enemy, ItakeDamage
         {
             warningPosition = player.transform.position;
             GameObject warningInstance = Instantiate(warningGB, warningPosition, Quaternion.identity); // Instancia del aviso
-            Destroy(warningInstance, 3f);
+            Destroy(warningInstance, warningTime);
             warningPlaced = true; 
         }
 
-        if (warningPlaced && timer >= 3f)
+        if (warningPlaced && timer >= warningTime)
         {
             GameObject attackProjectile = ProyectilePool.Instance.GetObstacle(ProjectileType.PlantAtack);
+            
+            if(_animator != null)
+            {
+                _animator.SetTrigger("IsAttacking");
+            }
+
             if (attackProjectile != null)
             {
                 attackProjectile.transform.position = warningPosition; 

@@ -28,7 +28,7 @@ public class SoundManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource = gameObject.GetComponent<AudioSource>();
 
         // Initialize sounds from inspector
         foreach (Sound sound in sounds)

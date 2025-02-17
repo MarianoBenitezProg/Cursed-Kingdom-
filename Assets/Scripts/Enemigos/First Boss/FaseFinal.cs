@@ -31,7 +31,7 @@ public class FaseFinal : BossState
             var vidaPlataforma = plataforma.GetComponent<PlatformSc>();
             vidaPlataforma.Currenthealth = vidaPlataforma.health;
             BoxCollider2D platformCol =  plataforma.GetComponent<BoxCollider2D>();
-            platformCol.enabled = false;
+            platformCol.enabled = true;
             plataforma.SetActive(true);
 
         }
