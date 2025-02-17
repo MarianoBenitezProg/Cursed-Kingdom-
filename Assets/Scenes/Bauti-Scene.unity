@@ -634,6 +634,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6526951042699228977, guid: f5d02b84c6d5e994787dbf7f5ee8b7b8, type: 3}
   m_PrefabInstance: {fileID: 33868702}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &36845472 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8803160912670391125, guid: a0cc3d52b72066648af8c0c4feb836f5, type: 3}
+  m_PrefabInstance: {fileID: 110634836}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &44714973 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1473113695294080885, guid: d081a0875a017e94faa816bbe7d50610, type: 3}
@@ -1739,6 +1744,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1676394478}
+    - target: {fileID: 7707241979952138210, guid: a0cc3d52b72066648af8c0c4feb836f5, type: 3}
+      propertyPath: shootingPoint
+      value: 
+      objectReference: {fileID: 36845472}
     - target: {fileID: 7707241979952138210, guid: a0cc3d52b72066648af8c0c4feb836f5, type: 3}
       propertyPath: Plataformas.Array.size
       value: 6
@@ -23706,7 +23715,7 @@ Transform:
   m_GameObject: {fileID: 762549408}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21.27, y: 32.55, z: 0}
+  m_LocalPosition: {x: -18.37, y: 91.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -25444,7 +25453,7 @@ Transform:
   m_GameObject: {fileID: 868330404}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21.27, y: 32.55, z: 0}
+  m_LocalPosition: {x: -18.37, y: 91.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -55647,8 +55656,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.043849945, y: -3.4688501, z: 0}
-    m_Extent: {x: 6.19555, y: 7.02715, z: 0}
+    m_Center: {x: -0.035949945, y: -3.4689, z: 0}
+    m_Extent: {x: 6.19575, y: 7.0311003, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -69137,11 +69146,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4169056789867597775, guid: cb05c134acb0f4e4883a7c1921d6fde4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -31.6
+      value: -28.7
       objectReference: {fileID: 0}
     - target: {fileID: 4169056789867597775, guid: cb05c134acb0f4e4883a7c1921d6fde4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 39.7
+      value: 99
       objectReference: {fileID: 0}
     - target: {fileID: 4169056789867597775, guid: cb05c134acb0f4e4883a7c1921d6fde4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -69412,6 +69421,10 @@ PrefabInstance:
       propertyPath: _playerScript
       value: 
       objectReference: {fileID: 1743117000}
+    - target: {fileID: 8739949729297157821, guid: 55792c646c5c363448fddfbd7d59035e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.4984703
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

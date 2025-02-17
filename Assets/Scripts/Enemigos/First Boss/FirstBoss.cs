@@ -14,6 +14,12 @@ public class FirstBoss : MonoBehaviour, ItakeDamage
     public Vector3 originalPos;
     public CapsuleCollider2D colider;
 
+    public Direction lookingDir;
+    public Direction currentDir;
+    SpriteRenderer sprite;
+
+    public GameObject shootingPoint;
+
     public Animator _animator;
     private BossState currentState;
 
@@ -30,12 +36,17 @@ public class FirstBoss : MonoBehaviour, ItakeDamage
         health = maxhealth;
         _animator = GetComponent<Animator>();
         SetState(faseInicial);
+        currentDir = lookingDir;
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     public void Update()
     {
         ShootPoint = transform.GetChild(0).transform.position;
         currentState?.UpdateState(this);
+        lookingDir = GetLookDirection(player.transform.position, this.transform.position);
+        UpdateShootingPoint();
+        UpdateAnimation();
     }
 
     public void SetState(BossState newState)
@@ -73,6 +84,58 @@ public class FirstBoss : MonoBehaviour, ItakeDamage
         if (health <= 0)
         {
             Destroy(gameObject);
+        }
+    }
+
+    public Direction GetLookDirection(Vector3 playerPosition, Vector3 enemyPosition)
+    {
+        Vector2 direction = playerPosition - enemyPosition;
+        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+        {
+            // The player is more to the left or right
+            return direction.x > 0 ? Direction.Right : Direction.Left;
+        }
+        else
+        {
+            // The player is more up or down
+            return direction.y > 0 ? Direction.Up : Direction.Down;
+        }
+    }
+    public void UpdateAnimation()
+    {
+        if (_animator != null)
+        {
+            if (lookingDir == Direction.Down)
+            {
+                _animator.SetFloat("Y", -1f);
+                _animator.SetFloat("X", 0f);
+            }
+            if (lookingDir == Direction.Left)
+            {
+                _animator.SetFloat("Y", 0f);
+                _animator.SetFloat("X", 1f);
+                sprite.flipX = true;
+            }
+            if (lookingDir == Direction.Right)
+            {
+                _animator.SetFloat("Y", 0f);
+                _animator.SetFloat("X", 1f);
+                sprite.flipX = false;
+            }
+        }
+    }
+
+    public void UpdateShootingPoint()
+    {
+        if (shootingPoint != null)
+        {
+            if (currentDir != lookingDir)
+            {
+                if (lookingDir == Direction.Down) shootingPoint.transform.position = new Vector3(this.transform.position.x +.5f, this.transform.position.y + 2, 0);
+                else if (lookingDir == Direction.Left) shootingPoint.transform.position = new Vector3(this.transform.position.x - .6f, this.transform.position.y + 2f, 0);
+                else if (lookingDir == Direction.Right) shootingPoint.transform.position = new Vector3(this.transform.position.x + .6f, this.transform.position.y + 2f, 0);
+            }
+            currentDir = lookingDir;
         }
     }
 }
