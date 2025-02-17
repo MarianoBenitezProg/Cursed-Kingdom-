@@ -300,13 +300,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Basic Arrow
-    clip: {fileID: 8300000, guid: f3280ba36a5541349abfd834a28d2771, type: 3}
+    clip:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   - name: Hatchdoor
-    clip: {fileID: 8300000, guid: b3ebcfc21d4de094b99ee7c8b258ec83, type: 3}
+    clip:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   - name: Sword
-    clip: {fileID: 8300000, guid: 7caa0bd1483c91b49936edc1f213109e, type: 3}
+    clip:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   - name: Wall Break
-    clip: {fileID: 8300000, guid: 2b6b8a8eb735ab348b966a75bd60816d, type: 3}
+    clip:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   audioSource: {fileID: 0}
 --- !u!1 &1152713444
 GameObject:
@@ -562,7 +574,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveSlots:
   - slot: 0
-    level: 0
+    level: Level One
     checkpoint: 0
     life: 100
     items:
@@ -575,7 +587,7 @@ MonoBehaviour:
     - objectType: 3
       isPicked: 0
   - slot: 1
-    level: 0
+    level: Level One
     checkpoint: 0
     life: 100
     items:
@@ -588,7 +600,7 @@ MonoBehaviour:
     - objectType: 3
       isPicked: 0
   - slot: 2
-    level: 0
+    level: Level One
     checkpoint: 0
     life: 100
     items:
@@ -601,7 +613,7 @@ MonoBehaviour:
     - objectType: 3
       isPicked: 0
   - slot: 3
-    level: 0
+    level: Level One
     checkpoint: 0
     life: 100
     items:

@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +6,7 @@ using System.Linq;
 [System.Serializable] public struct SavedGameData
 {
     public SaveSlot slot;
-    public int level;
+    public string level;
     public int checkpoint;
     public int life;
     public ItemStored[] items;

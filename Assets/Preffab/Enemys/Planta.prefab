@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6185533663203993187}
   - component: {fileID: 498139724170273280}
   - component: {fileID: 3977146836219130262}
+  - component: {fileID: 5424153412985922999}
   m_Layer: 0
   m_Name: Planta
   m_TagString: Untagged
@@ -148,9 +149,8 @@ MonoBehaviour:
   speed: 5
   rotationSpeed: 5
   isStunned: 0
-  viewAngle: 45
-  viewRadius: 9.8
-  attackRadius: 9.8
+  viewRadius: 10
+  attackRadius: 10
   lostTimer: 0
   playerDist: 0
   playerLayer:
@@ -160,6 +160,32 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   player: {fileID: 0}
+  shootingPoint: {fileID: 0}
+  obstaculos: []
   needToAtack: 0
   needToSeek: 0
+  lookingDir: 0
+  _animator: {fileID: 0}
+  warningTime: 2
   warningGB: {fileID: 7236731561823598918, guid: 80fd651c14651eb4e954dc9baeb38147, type: 3}
+--- !u!95 &5424153412985922999
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8180235206601829802}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5f311bcd9c54c464ca9337a73c6f3a26, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
