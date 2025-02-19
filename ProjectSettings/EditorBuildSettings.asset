@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Bauti-Scene.unity
     guid: 50aeb8b5d9e8ea44aaa723957a5cea0c
+  - enabled: 1
+    path: Assets/Scenes/Level Scenes/Level One.unity
+    guid: 86193ff1d4b8baa4696a83c580dbe0fa
+  - enabled: 1
+    path: Assets/Scenes/Level Scenes/Level Two.unity
+    guid: ed90ac3124c860c49a3aa02ab6694d48
   m_configObjects: {}

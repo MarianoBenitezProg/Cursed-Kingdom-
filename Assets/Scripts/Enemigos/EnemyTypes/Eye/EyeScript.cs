@@ -28,7 +28,7 @@ public class EyeScript : Enemy, ItakeDamage
 
 
         timer += Time.deltaTime;
-        if (timer >= shootTimer)
+        if (timer >= shootTimer && isDying == false)
         {
             Shoot();
             timer = 0f;
@@ -40,7 +40,7 @@ public class EyeScript : Enemy, ItakeDamage
         timer += Time.deltaTime;
         lookingDir = GetLookDirection(player.transform.position, this.transform.position);
         UpdateAnimation();
-        if (timer >= shootTimer)
+        if (timer >= shootTimer && isDying == false)
         {
             Shoot();
             timer = 0f;

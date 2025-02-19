@@ -25,6 +25,10 @@ public class Enemy : MonoBehaviour, IStunned
     public GameObject shootingPoint;
     public List<GameObject> obstaculos = new List<GameObject>();
 
+    public Material thisMaterial;
+    protected bool isDying;
+    private float dissolveAmount = 1f;
+
     [SerializeField] public bool needToAtack = false;
     [SerializeField] public bool needToSeek = false;
 
@@ -48,6 +52,7 @@ public class Enemy : MonoBehaviour, IStunned
         }
 
         _tintMaterial = GetComponent<MaterialTintColor>();
+        thisMaterial = GetComponent<Material>();
     }
 
     public void Update()
@@ -81,8 +86,10 @@ public class Enemy : MonoBehaviour, IStunned
     #region Métodos básicos
     public virtual void Die()
     {
+        isDying = true;
+        StartCoroutine(DissolveCoroutine());
         EventManager.Trigger(TypeEvent.EnemyKilled);
-        Destroy(gameObject);
+
     }
 
     public virtual void Attack()
@@ -107,13 +114,9 @@ public class Enemy : MonoBehaviour, IStunned
     }
     #endregion
 
-
-
     #region Field Of View 
     public void CanSeeTarget()
     {
-        
-
         Collider2D[] targetsInViewRadius = Physics2D.OverlapCircleAll(transform.position, viewRadius, playerLayer);
 
         foreach (Collider2D col in targetsInViewRadius)
@@ -276,9 +279,6 @@ public class Enemy : MonoBehaviour, IStunned
     }
 
     #endregion
-
-
-
     #region Efectos de CC
     public void Stunned(float timeToWait, float slowSpeed, bool stunned)
     {
@@ -295,4 +295,34 @@ public class Enemy : MonoBehaviour, IStunned
         isStunned = false;
     }
     #endregion
+
+
+    private IEnumerator DissolveCoroutine()
+    {
+        float elapsedTime = 0f;
+        float startValue = dissolveAmount;
+        float duration = 1f; // 1 second duration
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            dissolveAmount = Mathf.Lerp(startValue, 0f, elapsedTime / duration);
+
+            // Update the shader parameter
+            thisMaterial.SetFloat("_DissolveAmount", dissolveAmount);
+
+            yield return null;
+        }
+
+        // Ensure we reach exactly 0
+        Destroy(gameObject);
+        dissolveAmount = 0f;
+        thisMaterial.SetFloat("_DissolveAmount", dissolveAmount);
+
+        // Optional: Destroy the game object after dissolution
+        // Uncomment the next line if you want the object to be destroyed
+        // Destroy(gameObject);
+    }
+
+
 }

@@ -1,24 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-
-[System.Serializable]
-public struct Level
-{
-    public string name;
-    public GameObject levelGO;
-}
+using UnityEngine.SceneManagement;
 
 public class LevelsManager : MonoBehaviour
 {
     public static LevelsManager instance;
-
-    [SerializeField] Dictionary<string, GameObject> levelsDictionary = new Dictionary<string, GameObject>();
-    public Level[] levels;
     public string currentLevelName;
-    public GameObject currentLevelGO;
-
+    float timer;
+    float minimumLoadTime;
     private void Awake()
     {
         if (instance == null)
@@ -30,56 +19,45 @@ public class LevelsManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
 
-        // Initialize sounds from inspector
-        foreach (Level lvl in levels)
-        {
-            levelsDictionary.Add(lvl.name, lvl.levelGO);
-        }
+    public void LoadScene(string sceneName)
+    {
+        StartCoroutine(LoadSceneAsync(sceneName));
+    }
 
-        if (SavedGameManager.instance != null)
+
+    private IEnumerator LoadSceneAsync(string sceneName)
+    {
+        timer = 0;
+        // Start async loading
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+
+        // Prevent scene activation until loading is complete
+        asyncLoad.allowSceneActivation = false;
+
+        timer += Time.deltaTime;
+
+        // Wait until loading progress reaches 0.9 (90%)
+        while (!asyncLoad.isDone)
         {
-            for (int i = 0; i < SavedGameManager.instance.saveSlots.Count; i++)
+            // Update timer
+            timer += Time.deltaTime;
+
+            // Calculate loading progress (normalized)
+            float progress = Mathf.Clamp01(asyncLoad.progress / 0.9f);
+
+            // Update loading bar
+
+            // Allow scene activation after minimum load time and progress is complete
+            if (asyncLoad.progress >= 0.9f && timer >= minimumLoadTime)
             {
-                if (SavedGameManager.instance.selectedSaveSlot == SavedGameManager.instance.saveSlots[i].slot)
-                {
-                    if(levelsDictionary.ContainsKey(SavedGameManager.instance.saveSlots[i].level))
-                    {
-                        GameObject levelPrefab = levelsDictionary[SavedGameManager.instance.saveSlots[i].level];
-                        currentLevelGO = Instantiate(levelPrefab);
-                    }
-                }
+                asyncLoad.allowSceneActivation = true;
             }
-        }
-    }
-    private void OnDestroy()
-    {
-        SaveData();
-    }
 
-    public void SaveData()
-    {
-        if (SavedGameManager.instance != null)
-        {
-            for (int i = 0; i < SavedGameManager.instance.saveSlots.Count; i++)
-            {
-                if (SavedGameManager.instance.selectedSaveSlot == SavedGameManager.instance.saveSlots[i].slot)
-                {
-                    SavedGameData UpdateLifeData = SavedGameManager.instance.saveSlots[i]; //You can´t just change the Life from the save slot, you gotta change the whole SaveSlot
-                    UpdateLifeData.level = currentLevelName;
-                    SavedGameManager.instance.saveSlots[i] = UpdateLifeData;
-                }
-            }
+            yield return null;
         }
-    }
 
-    public void ChangeLevel(string newLevel)
-    {
-        Destroy(currentLevelGO);
-        if (levelsDictionary.ContainsKey(newLevel))
-        {
-            GameObject levelPrefab = levelsDictionary[newLevel];
-            currentLevelGO = Instantiate(levelPrefab);
-        }
+        // Optional: Deactivate loading screen
     }
 }

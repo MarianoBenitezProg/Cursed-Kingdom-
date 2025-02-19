@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+
 
 public class CanvasManager : MonoBehaviour, IScreen
 {
@@ -31,22 +31,25 @@ public class CanvasManager : MonoBehaviour, IScreen
         if (selectedSlot == 1)
         {
             SavedGameManager.instance.selectedSaveSlot = SaveSlot.SlotOne;
+            LevelsManager.instance.LoadScene(SavedGameManager.instance.saveSlots[1].level);
         }
         else if (selectedSlot == 2)
         {
             SavedGameManager.instance.selectedSaveSlot = SaveSlot.SlotTwo;
+            LevelsManager.instance.LoadScene(SavedGameManager.instance.saveSlots[2].level);
         }
         else if (selectedSlot == 3)
         {
             SavedGameManager.instance.selectedSaveSlot = SaveSlot.SlotThree;
+            LevelsManager.instance.LoadScene(SavedGameManager.instance.saveSlots[3].level);
         }
 
-        StartCoroutine(LoadSceneAsync(1)); // Load Levels Scene
+         // Load Levels Scene
     }
 
     public void BTN_BackToMenu()
     {
-        StartCoroutine(LoadSceneAsync(0)); // Load Menu Scene
+        LevelsManager.instance.LoadScene("Main Menu"); // Load Menu Scene
     }
 
     public void BTN_CallScreen(string screenName)
@@ -90,46 +93,5 @@ public class CanvasManager : MonoBehaviour, IScreen
     public void Free()
     {
         Destroy(gameObject);
-    }
-
-    private IEnumerator LoadSceneAsync(int sceneIndex)
-    {
-        // Optional: Activate loading screen
-        if (loadingScreen != null)
-            loadingScreen.SetActive(true);
-
-        // Start async loading
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneIndex);
-
-        // Prevent scene activation until loading is complete
-        asyncLoad.allowSceneActivation = false;
-
-        timer += Time.deltaTime;
-
-        // Wait until loading progress reaches 0.9 (90%)
-        while (!asyncLoad.isDone)
-        {
-            // Update timer
-            timer += Time.deltaTime;
-
-            // Calculate loading progress (normalized)
-            float progress = Mathf.Clamp01(asyncLoad.progress / 0.9f);
-
-            // Update loading bar
-            if (loadingBar != null)
-                loadingBar.fillAmount = progress;
-
-            // Allow scene activation after minimum load time and progress is complete
-            if (asyncLoad.progress >= 0.9f && timer >= minimumLoadTime)
-            {
-                asyncLoad.allowSceneActivation = true;
-            }
-
-            yield return null;
-        }
-
-        // Optional: Deactivate loading screen
-        if (loadingScreen != null)
-            loadingScreen.SetActive(false);
     }
 }
