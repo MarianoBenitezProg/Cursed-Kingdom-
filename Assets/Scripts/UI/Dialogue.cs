@@ -29,6 +29,7 @@ public class Dialogue : MonoBehaviour
     private bool canProceed = true;
     private float typingTime = 0.05f;
     private bool sawDialogue;
+    public bool isBossRoom;
 
     [SerializeField] CinemachineVirtualCameraBase[] cinematicCamera;
 
@@ -128,11 +129,14 @@ public class Dialogue : MonoBehaviour
     }
     public void ResetCameras()
     {
-        if(cinematicCamera.Length > 0)
+        if(isBossRoom == false)
         {
-            for (int i = 0; i < cinematicCamera.Length; i++)
+            if (cinematicCamera.Length > 0)
             {
-                cinematicCamera[i].Priority = 0;
+                for (int i = 0; i < cinematicCamera.Length; i++)
+                {
+                    cinematicCamera[i].Priority = 0;
+                }
             }
         }
     }
