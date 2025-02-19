@@ -52,7 +52,10 @@ public class Enemy : MonoBehaviour, IStunned
         }
 
         _tintMaterial = GetComponent<MaterialTintColor>();
-        thisMaterial = GetComponent<Material>();
+
+        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+        thisMaterial = new Material(renderer.material);
+        renderer.material = thisMaterial;
     }
 
     public void Update()
