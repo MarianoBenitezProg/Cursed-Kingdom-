@@ -131,14 +131,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1963157846417227781, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -22.049995
-      objectReference: {fileID: 0}
-    - target: {fileID: 1963157846417227781, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 33.620003
-      objectReference: {fileID: 0}
     - target: {fileID: 4060827338496318711, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
       propertyPath: m_LocalPosition.x
       value: 50.33
@@ -182,38 +174,6 @@ PrefabInstance:
     - target: {fileID: 4429722512805911734, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
       propertyPath: m_Name
       value: Level 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5588909846159483396, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -22.049995
-      objectReference: {fileID: 0}
-    - target: {fileID: 5588909846159483396, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 33.620003
-      objectReference: {fileID: 0}
-    - target: {fileID: 7338572338665095875, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
-      propertyPath: m_LocalBounds.m_Center.x
-      value: -0.030500174
-      objectReference: {fileID: 0}
-    - target: {fileID: 7338572338665095875, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
-      propertyPath: m_LocalBounds.m_Center.y
-      value: -3.4716
-      objectReference: {fileID: 0}
-    - target: {fileID: 7338572338665095875, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
-      propertyPath: m_LocalBounds.m_Extent.x
-      value: 6.1947002
-      objectReference: {fileID: 0}
-    - target: {fileID: 7338572338665095875, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
-      propertyPath: m_LocalBounds.m_Extent.y
-      value: 7.022
-      objectReference: {fileID: 0}
-    - target: {fileID: 7586784137183992841, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -82.71
-      objectReference: {fileID: 0}
-    - target: {fileID: 7586784137183992841, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -107.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
