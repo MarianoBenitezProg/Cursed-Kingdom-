@@ -73,6 +73,7 @@ public class EyeScript : Enemy, ItakeDamage
         if(_tintMaterial != null)
         {
             _tintMaterial.SetTintColor(Color.red);
+            Debug.Log("Tint");
         }
     }
 }
