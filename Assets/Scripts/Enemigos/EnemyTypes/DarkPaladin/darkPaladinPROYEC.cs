@@ -13,6 +13,10 @@ public class darkPaladinPROYEC : Proyectile
     private bool isPulling = false;
     private float pullTimer = 0f;
 
+    public void OnEnable()
+    {
+        StartCoroutine(WaitToAttack());
+    }
     public override void Behaviour()
     {
         Lifetimer += Time.deltaTime;
@@ -20,11 +24,15 @@ public class darkPaladinPROYEC : Proyectile
         {
             ProyectilePool.Instance.ReturnObstacle(gameObject, ProjectileType.DarkPaladinAtack);
             Lifetimer = 0;
+            isActive = false;
         }
 
         if (gameObject.activeSelf)
         {
-            transform.position += transform.right * speed * Time.deltaTime;
+            if(isActive == true)
+            {
+                transform.position += transform.right * speed * Time.deltaTime;
+            }
         }
 
         if (isPulling)
@@ -41,6 +49,12 @@ public class darkPaladinPROYEC : Proyectile
                 pullTimer = 0f;
             }
         }
+    }
+
+    IEnumerator WaitToAttack()
+    {
+        yield return new WaitForSeconds(1f);
+        isActive = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
