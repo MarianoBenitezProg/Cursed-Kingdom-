@@ -186,8 +186,8 @@ public class DarkPaladin : MonoBehaviour, ItakeDamage
         {
             if (currentDir != lookingDir)
             {
-                if (lookingDir == Direction.Up) shootingPoint.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1, 0);
-                else if (lookingDir == Direction.Down) shootingPoint.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - 1, 0);
+                if (lookingDir == Direction.Up) shootingPoint.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 4, 0);
+                else if (lookingDir == Direction.Down) shootingPoint.transform.position = new Vector3(this.transform.position.x - .1f, this.transform.position.y - 1, 0);
                 else if (lookingDir == Direction.Left) shootingPoint.transform.position = new Vector3(this.transform.position.x - 1.1f, this.transform.position.y - .5f, 0);
                 else if (lookingDir == Direction.Right) shootingPoint.transform.position = new Vector3(this.transform.position.x + 1.1f, this.transform.position.y - .5f, 0);
             }

@@ -20,7 +20,7 @@ public class darkPaladinPROYEC : Proyectile
     public override void Behaviour()
     {
         Lifetimer += Time.deltaTime;
-        if (Lifetimer >= destroyTimer)
+        if (Lifetimer >= destroyTimer && isPulling == false)
         {
             ProyectilePool.Instance.ReturnObstacle(gameObject, ProjectileType.DarkPaladinAtack);
             Lifetimer = 0;
@@ -29,7 +29,7 @@ public class darkPaladinPROYEC : Proyectile
 
         if (gameObject.activeSelf)
         {
-            if(isActive == true)
+            if(isActive == true && isPulling == false)
             {
                 transform.position += transform.right * speed * Time.deltaTime;
             }
@@ -42,11 +42,14 @@ public class darkPaladinPROYEC : Proyectile
             {
                 float pullAmount = (pullForce * Time.deltaTime) / pullDuration;
                 player.transform.position += pullDirection * pullAmount;
+                transform.position = player.transform.position;
             }
             else
             {
                 isPulling = false;
                 pullTimer = 0f;
+                Lifetimer = 0f;
+                ProyectilePool.Instance.ReturnObstacle(gameObject, ProjectileType.DarkPaladinAtack);
             }
         }
     }

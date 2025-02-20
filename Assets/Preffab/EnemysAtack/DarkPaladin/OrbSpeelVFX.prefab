@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
-  dmg: 30
+  dmg: 15
   destroyTimer: 3
   ProyectType: 10
   player: {fileID: 0}
