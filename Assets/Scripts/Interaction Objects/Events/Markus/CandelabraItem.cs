@@ -26,7 +26,7 @@ public class CandelabraItem : MarkusEvent
 
         if(mainScript.isActive == true && isActive == false)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && player.isMarkus == true)
             {
                 distance = Vector3.Distance(player.transform.position, this.transform.position);
                 if (distance <= distanceToAction)
