@@ -154,6 +154,7 @@ MonoBehaviour:
   player: {fileID: 0}
   shootingPoint: {fileID: 0}
   obstaculos: []
+  thisMaterial: {fileID: 0}
   needToAtack: 0
   needToSeek: 0
   lookingDir: 0

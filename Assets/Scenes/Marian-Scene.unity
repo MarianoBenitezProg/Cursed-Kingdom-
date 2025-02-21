@@ -360,6 +360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxhealth: 200
+  damage: 10
   speed: 15
   originPoint: {x: 0, y: 0, z: 0}
   colider: {fileID: 0}
@@ -1201,7 +1202,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 15
+  orthographic size: 22
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1415,7 +1416,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 15
+    OrthographicSize: 22
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
