@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CandelabraItem : MarkusEvent
+public class CandelabraItem : CharactersEvent
 {
     public bool isActive;
     public bool actionTrigger;

@@ -131,6 +131,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1609171013173916293, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
+      propertyPath: dialogueSequences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1609171013173916293, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
+      propertyPath: dialogueSequences.Array.data[0].dialogueText
+      value: 
+      objectReference: {fileID: 165119952}
+    - target: {fileID: 1609171013173916293, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
+      propertyPath: dialogueSequences.Array.data[1].dialogueText
+      value: 
+      objectReference: {fileID: 165119954}
+    - target: {fileID: 1609171013173916293, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
+      propertyPath: dialogueSequences.Array.data[0].dialoguePanel
+      value: 
+      objectReference: {fileID: 165119953}
+    - target: {fileID: 1609171013173916293, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
+      propertyPath: dialogueSequences.Array.data[1].dialoguePanel
+      value: 
+      objectReference: {fileID: 165119955}
+    - target: {fileID: 1609171013173916293, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
+      propertyPath: dialogueSequences.Array.data[0].dialogueLines.Array.data[0]
+      value: There are many of them, we will have to use everything we got.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1609171013173916293, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
+      propertyPath: dialogueSequences.Array.data[1].dialogueLines.Array.data[0]
+      value: Good, i have one final ace up my sleeve
+      objectReference: {fileID: 0}
     - target: {fileID: 4060827338496318711, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
       propertyPath: m_LocalPosition.x
       value: 50.33
@@ -180,6 +208,38 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
+--- !u!114 &165119952 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3201782235110970544, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
+  m_PrefabInstance: {fileID: 165119951}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &165119953 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2126934554973673578, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
+  m_PrefabInstance: {fileID: 165119951}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &165119954 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5083675835166630783, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
+  m_PrefabInstance: {fileID: 165119951}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &165119955 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3731391501644508462, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
+  m_PrefabInstance: {fileID: 165119951}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &346558934
 GameObject:
   m_ObjectHideFlags: 0

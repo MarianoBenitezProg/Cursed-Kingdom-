@@ -5,7 +5,7 @@ using UnityEngine;
 public class LifeEffect : IPowerUpEffect
 {
     P_Behaviour playerScript;
-    int addLife;
+    int addLife = 15;
     public LifeEffect(P_Behaviour playerRef)
     {
         playerScript = playerRef;

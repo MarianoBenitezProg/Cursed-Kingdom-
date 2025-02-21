@@ -244,11 +244,6 @@ public class DarkPaladin : MonoBehaviour, ItakeDamage
         }
         isShooting = false;
     }
-    private void Shoot()
-    {
-
-       
-    }
     #region OnDrawGizmos
     private void OnDrawGizmos()
     {

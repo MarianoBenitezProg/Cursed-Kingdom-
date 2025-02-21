@@ -46,10 +46,11 @@ public class darkPaladinPROYEC : Proyectile
             }
             else
             {
+                ProyectilePool.Instance.ReturnObstacle(gameObject, ProjectileType.DarkPaladinAtack);
+                isActive = false;
                 isPulling = false;
                 pullTimer = 0f;
                 Lifetimer = 0f;
-                ProyectilePool.Instance.ReturnObstacle(gameObject, ProjectileType.DarkPaladinAtack);
             }
         }
     }

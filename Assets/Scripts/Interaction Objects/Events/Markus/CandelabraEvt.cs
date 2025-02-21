@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CandelabraEvt : MarkusEvent
+public class CandelabraEvt : CharactersEvent
 {
     bool eventCompleted;
     [SerializeField]CandelabraItem[] items;
