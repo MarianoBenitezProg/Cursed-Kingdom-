@@ -2233,8 +2233,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.03675008, y: -3.4689999, z: 0}
-    m_Extent: {x: 6.19775, y: 7.0334997, z: 0}
+    m_Center: {x: -0.03610015, y: -3.4617002, z: 0}
+    m_Extent: {x: 6.1937, y: 7.028, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -9014,12 +9014,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 299989705}
     m_Modifications:
     - target: {fileID: 498139724170273280, guid: 9b0fc832148f42d499a5ede26d542b3c, type: 3}
+      propertyPath: m_Size.x
+      value: 2.6627235
+      objectReference: {fileID: 0}
+    - target: {fileID: 498139724170273280, guid: 9b0fc832148f42d499a5ede26d542b3c, type: 3}
       propertyPath: m_Size.y
-      value: 3.6484299
+      value: 5.4184265
+      objectReference: {fileID: 0}
+    - target: {fileID: 498139724170273280, guid: 9b0fc832148f42d499a5ede26d542b3c, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.13409233
       objectReference: {fileID: 0}
     - target: {fileID: 498139724170273280, guid: 9b0fc832148f42d499a5ede26d542b3c, type: 3}
       propertyPath: m_Offset.y
-      value: 1.3242149
+      value: 2.2092133
       objectReference: {fileID: 0}
     - target: {fileID: 1430853140228559626, guid: 9b0fc832148f42d499a5ede26d542b3c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9062,33 +9070,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3977146836219130262, guid: 9b0fc832148f42d499a5ede26d542b3c, type: 3}
-      propertyPath: health
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 3977146836219130262, guid: 9b0fc832148f42d499a5ede26d542b3c, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 576027391}
-    - target: {fileID: 3977146836219130262, guid: 9b0fc832148f42d499a5ede26d542b3c, type: 3}
-      propertyPath: viewRadius
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 3977146836219130262, guid: 9b0fc832148f42d499a5ede26d542b3c, type: 3}
-      propertyPath: attackRadius
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 3977146836219130262, guid: 9b0fc832148f42d499a5ede26d542b3c, type: 3}
-      propertyPath: dissolveDuration
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6185533663203993187, guid: 9b0fc832148f42d499a5ede26d542b3c, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b1bb9f0977aa40449b2cdc014e74fa68, type: 3}
-    - target: {fileID: 6185533663203993187, guid: 9b0fc832148f42d499a5ede26d542b3c, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: e5a3e9ffb7018a3408eec92e8980fb42, type: 2}
     - target: {fileID: 8180235206601829802, guid: 9b0fc832148f42d499a5ede26d542b3c, type: 3}
       propertyPath: m_Name
       value: Planta
