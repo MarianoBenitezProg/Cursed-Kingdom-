@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4842528205037089863}
   - component: {fileID: 8329568134657038349}
   - component: {fileID: 6899671959966241276}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rata
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,6 +118,7 @@ MonoBehaviour:
   shootingPoint: {fileID: 0}
   obstaculos: []
   thisMaterial: {fileID: 0}
+  dissolveDuration: 0.4
   needToAtack: 0
   needToSeek: 0
   lookingDir: 0

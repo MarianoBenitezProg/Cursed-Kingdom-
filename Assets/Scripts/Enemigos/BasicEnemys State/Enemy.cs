@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour, IStunned
     public Material thisMaterial;
     protected bool isDying;
     private float dissolveAmount = 1f;
+    public float dissolveDuration = 0.4f;
 
     [SerializeField] public bool needToAtack = false;
     [SerializeField] public bool needToSeek = false;
@@ -305,12 +306,11 @@ public class Enemy : MonoBehaviour, IStunned
     {
         float elapsedTime = 0f;
         float startValue = dissolveAmount;
-        float duration = .40f; // 1 second duration
 
-        while (elapsedTime < duration)
+        while (elapsedTime < dissolveDuration)
         {
             elapsedTime += Time.deltaTime;
-            dissolveAmount = Mathf.Lerp(startValue, 0f, elapsedTime / duration);
+            dissolveAmount = Mathf.Lerp(startValue, 0f, elapsedTime / dissolveDuration);
 
             // Update the shader parameter
             thisMaterial.SetFloat("_DissolveAmount", dissolveAmount);
@@ -328,6 +328,4 @@ public class Enemy : MonoBehaviour, IStunned
         // Uncomment the next line if you want the object to be destroyed
         // Destroy(gameObject);
     }
-
-
 }

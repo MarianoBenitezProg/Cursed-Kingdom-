@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 498139724170273280}
   - component: {fileID: 3977146836219130262}
   - component: {fileID: 5424153412985922999}
-  m_Layer: 0
+  - component: {fileID: 2448825949188290011}
+  m_Layer: 6
   m_Name: Planta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.83, y: 2.99, z: 0}
-  m_LocalScale: {x: 1.5, y: 3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -55,7 +56,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: e5a3e9ffb7018a3408eec92e8980fb42, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -73,10 +74,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_SortingLayerID: 769220169
+  m_SortingLayer: 2
+  m_SortingOrder: -1
+  m_Sprite: {fileID: 21300000, guid: b1bb9f0977aa40449b2cdc014e74fa68, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -119,18 +120,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 1.3242149}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.498, y: 0.09502626}
+    oldSize: {x: 4.44, y: 6.23}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 3.6484299}
   m_EdgeRadius: 0
 --- !u!114 &3977146836219130262
 MonoBehaviour:
@@ -145,12 +146,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: []
-  health: 100
+  health: 30
   speed: 5
   rotationSpeed: 5
   isStunned: 0
-  viewRadius: 10
-  attackRadius: 10
+  viewRadius: 16
+  attackRadius: 12
   lostTimer: 0
   playerDist: 0
   playerLayer:
@@ -162,11 +163,13 @@ MonoBehaviour:
   player: {fileID: 0}
   shootingPoint: {fileID: 0}
   obstaculos: []
+  thisMaterial: {fileID: 0}
+  dissolveDuration: 1
   needToAtack: 0
   needToSeek: 0
   lookingDir: 0
   _animator: {fileID: 0}
-  warningTime: 2
+  warningTime: 1.5
   warningGB: {fileID: 7236731561823598918, guid: 80fd651c14651eb4e954dc9baeb38147, type: 3}
 --- !u!95 &5424153412985922999
 Animator:
@@ -189,3 +192,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2448825949188290011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8180235206601829802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b917c2a2e2de9f741a4bc8ca5bb1dc8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
