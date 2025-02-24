@@ -89,13 +89,10 @@ public class P_Inventory
         {
             for (int i = 0; i < SavedGameManager.instance.saveSlots.Count; i++)
             {
-                Debug.Log("Entro 1");
                 if (SavedGameManager.instance.selectedSaveSlot == SavedGameManager.instance.saveSlots[i].slot)
                 {
-                    Debug.Log("Entro 2");
                     for (int y = 0; y < SavedGameManager.instance.saveSlots[i].items.Length; y++)
                     {
-                        Debug.Log("Entro 3");
                         if (SavedGameManager.instance.saveSlots[i].items[y].isPicked == true)
                         {
                             itemsList.Add(SavedGameManager.instance.saveSlots[i].items[y]);

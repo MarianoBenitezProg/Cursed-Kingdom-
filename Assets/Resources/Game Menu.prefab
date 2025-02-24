@@ -496,7 +496,8 @@ MonoBehaviour:
   loadingBar: {fileID: 0}
   minimumLoadTime: 1
   timer: 0
-  isGameCanvas: 0
+  isGameCanvas: 1
+  isGamePaused: 0
   dialogueText: {fileID: 0}
 --- !u!1 &5380282443682966277
 GameObject:

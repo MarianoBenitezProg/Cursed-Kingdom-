@@ -2267,8 +2267,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.030200005, y: -3.4632497, z: 0}
-    m_Extent: {x: 6.1944, y: 7.02665, z: 0}
+    m_Center: {x: -0.03670001, y: -3.466, z: 0}
+    m_Extent: {x: 6.1933002, y: 7.0325, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -22114,6 +22114,22 @@ PrefabInstance:
     - target: {fileID: 1278537559888113902, guid: 9d76a33323f66714195a3fb28e4f1a46, type: 3}
       propertyPath: m_Name
       value: Candelabro (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2055919518695033351, guid: 9d76a33323f66714195a3fb28e4f1a46, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2055919518695033351, guid: 9d76a33323f66714195a3fb28e4f1a46, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2055919518695033351, guid: 9d76a33323f66714195a3fb28e4f1a46, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2055919518695033351, guid: 9d76a33323f66714195a3fb28e4f1a46, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

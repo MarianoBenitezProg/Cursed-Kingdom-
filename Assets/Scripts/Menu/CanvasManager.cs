@@ -11,7 +11,7 @@ public class CanvasManager : MonoBehaviour, IScreen
     public float minimumLoadTime = 1f;
     public float timer;
     public bool isGameCanvas;
-    bool isGamePaused;
+    public bool isGamePaused;
 
     [Header("Dialogue")]
     public Text dialogueText;
@@ -60,6 +60,8 @@ public class CanvasManager : MonoBehaviour, IScreen
 
     public void BTN_BackToMenu()
     {
+        isGamePaused = false;
+        Debug.Log("Testing");
         LevelsManager.instance?.LoadScene("Main Menu"); // Load Menu Scene
     }
 
@@ -69,6 +71,7 @@ public class CanvasManager : MonoBehaviour, IScreen
     }
     public void BTN_Back()
     {
+        isGamePaused = false;
         Debug.Log("Testing");
         ScreenManager.Instance.Pop();
     }
