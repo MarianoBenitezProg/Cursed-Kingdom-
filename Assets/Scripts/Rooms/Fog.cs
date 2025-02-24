@@ -9,6 +9,15 @@ public class Fog : MonoBehaviour
     public int damage;
     public float timerLimit;
     P_Behaviour _playerScript;
+    [SerializeField] bool isEvent;
+
+    private void Awake()
+    {
+        if (isEvent == false)
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

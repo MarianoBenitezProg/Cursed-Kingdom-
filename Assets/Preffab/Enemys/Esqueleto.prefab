@@ -141,8 +141,8 @@ MonoBehaviour:
   speed: 3
   rotationSpeed: 5
   isStunned: 0
-  viewRadius: 7
-  attackRadius: 4.01
+  viewRadius: 10
+  attackRadius: 2.5
   lostTimer: 0
   playerDist: 0
   playerLayer:
@@ -155,10 +155,12 @@ MonoBehaviour:
   shootingPoint: {fileID: 0}
   obstaculos: []
   thisMaterial: {fileID: 0}
+  dissolveDuration: 0.4
   needToAtack: 0
   needToSeek: 0
   lookingDir: 0
   _animator: {fileID: 0}
+  attackTimerLimit: 1.25
   IsDamageable: 0
   thisCollider: {fileID: 0}
 --- !u!95 &8277232471246709097

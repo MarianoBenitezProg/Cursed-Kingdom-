@@ -8,6 +8,7 @@ public class Room_Manager : MonoBehaviour
     [SerializeField] bool _isActive;
     [SerializeField] bool _isRoomCompleted;
     [SerializeField] int _count; // We have to set it by hand. Maybe we can find a way to not do it by hand (The trigger enter doesn´t work)
+    [SerializeField] bool _isFogRestored;
 
     private void Awake()
     {
@@ -17,6 +18,18 @@ public class Room_Manager : MonoBehaviour
     private void OnDestroy()
     {
         EventManager.Unsubscribe(TypeEvent.EnemyKilled, EnemyKilled);
+    }
+
+    private void Update()
+    {
+        if (_isActive == true)
+        {
+            TurnOnFogs();
+        }
+        else if(_isFogRestored == false)
+        {
+            TurnOffFogs();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -47,6 +60,7 @@ public class Room_Manager : MonoBehaviour
         {
             _fogs[i].SetActive(false);
         }
+        _isFogRestored = true;
     }
     public void TurnOnFogs()
     {

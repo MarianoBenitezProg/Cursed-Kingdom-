@@ -159,6 +159,14 @@ PrefabInstance:
       propertyPath: dialogueSequences.Array.data[1].dialogueLines.Array.data[0]
       value: Good, i have one final ace up my sleeve
       objectReference: {fileID: 0}
+    - target: {fileID: 1963157846417227781, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -21.779999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963157846417227781, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 33.640007
+      objectReference: {fileID: 0}
     - target: {fileID: 4060827338496318711, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
       propertyPath: m_LocalPosition.x
       value: 50.33
@@ -242,6 +250,22 @@ PrefabInstance:
     - target: {fileID: 4429722512805911734, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
       propertyPath: m_Name
       value: Level 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588909846159483396, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -21.779999
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588909846159483396, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 33.640007
+      objectReference: {fileID: 0}
+    - target: {fileID: 7586784137183992841, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -82.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 7586784137183992841, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -107.13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

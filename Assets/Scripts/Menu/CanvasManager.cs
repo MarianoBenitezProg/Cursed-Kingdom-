@@ -11,17 +11,28 @@ public class CanvasManager : MonoBehaviour, IScreen
     public float minimumLoadTime = 1f;
     public float timer;
     public bool isGameCanvas;
+    bool isGamePaused;
 
     [Header("Dialogue")]
     public Text dialogueText;
 
+
     private void Update()
     {
-        if (isGameCanvas == true)
+        if (isGameCanvas == true && isGamePaused == false)
         {
             if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
             {
-                ScreenManager.Instance.Push("Game Menu");
+                isGamePaused = true;
+                ScreenManager.Instance?.Push("Game Menu");
+            }
+        }
+        else if(isGameCanvas == true && isGamePaused == true)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+            {
+                isGamePaused = false;
+                ScreenManager.Instance?.Pop();
             }
         }
     }
@@ -31,17 +42,17 @@ public class CanvasManager : MonoBehaviour, IScreen
         if (selectedSlot == 1)
         {
             SavedGameManager.instance.selectedSaveSlot = SaveSlot.SlotOne;
-            LevelsManager.instance.LoadScene(SavedGameManager.instance.saveSlots[1].level);
+            LevelsManager.instance?.LoadScene(SavedGameManager.instance.saveSlots[1].level);
         }
         else if (selectedSlot == 2)
         {
             SavedGameManager.instance.selectedSaveSlot = SaveSlot.SlotTwo;
-            LevelsManager.instance.LoadScene(SavedGameManager.instance.saveSlots[2].level);
+            LevelsManager.instance?.LoadScene(SavedGameManager.instance.saveSlots[2].level);
         }
         else if (selectedSlot == 3)
         {
             SavedGameManager.instance.selectedSaveSlot = SaveSlot.SlotThree;
-            LevelsManager.instance.LoadScene(SavedGameManager.instance.saveSlots[3].level);
+            LevelsManager.instance?.LoadScene(SavedGameManager.instance.saveSlots[3].level);
         }
 
          // Load Levels Scene
@@ -49,15 +60,16 @@ public class CanvasManager : MonoBehaviour, IScreen
 
     public void BTN_BackToMenu()
     {
-        LevelsManager.instance.LoadScene("Main Menu"); // Load Menu Scene
+        LevelsManager.instance?.LoadScene("Main Menu"); // Load Menu Scene
     }
 
     public void BTN_CallScreen(string screenName)
     {
-        ScreenManager.Instance.Push(screenName);
+        ScreenManager.Instance?.Push(screenName);
     }
     public void BTN_Back()
     {
+        Debug.Log("Testing");
         ScreenManager.Instance.Pop();
     }
     public void BTN_ExitGame()
@@ -69,15 +81,15 @@ public class CanvasManager : MonoBehaviour, IScreen
     {
         if(saveSlot == 1)
         {
-            SavedGameManager.instance.RestoreData(SaveSlot.SlotOne);
+            SavedGameManager.instance?.RestoreData(SaveSlot.SlotOne);
         }
         if (saveSlot == 2)
         {
-            SavedGameManager.instance.RestoreData(SaveSlot.SlotTwo);
+            SavedGameManager.instance?.RestoreData(SaveSlot.SlotTwo);
         }
         if (saveSlot == 3)
         {
-            SavedGameManager.instance.RestoreData(SaveSlot.SlotThree);
+            SavedGameManager.instance?.RestoreData(SaveSlot.SlotThree);
         }
     }
 

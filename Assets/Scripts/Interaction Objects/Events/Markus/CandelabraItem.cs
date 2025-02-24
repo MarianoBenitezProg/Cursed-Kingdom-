@@ -14,13 +14,21 @@ public class CandelabraItem : CharactersEvent
 
     private void Update()
     {
-        if(isActive == true)
+        if(mainScript.eventCompleted == false)
         {
-            Action();
+            if (isActive == true)
+            {
+                Action();
+            }
+        }
+        else if(mainScript.eventCompleted == true)
+        {
+            TurnOnCandles();
+            isActive = true;
         }
         if(actionTrigger == true)
         {
-            mainScript.itemsActiveCount++;
+            mainScript.Action();
             actionTrigger = false;
         }
 
@@ -50,22 +58,31 @@ public class CandelabraItem : CharactersEvent
 
     public override void Action()
     {
-        for (int i = 0; i < effects.Length; i++)
-        {
-            effects[i].SetActive(true);
-        }
+        TurnOnCandles();
         timer += Time.deltaTime;
 
         if(timer >= timerLimit)
         {
-            for (int i = 0; i < effects.Length; i++)
-            {
-                effects[i].SetActive(false);
-            }
+            TurnOffCandles();
             isActive = false;
             mainScript.itemsActiveCount--;
             timer = 0;
             
+        }
+    }
+
+    public void TurnOnCandles()
+    {
+        for (int i = 0; i < effects.Length; i++)
+        {
+            effects[i].SetActive(true);
+        }
+    }
+    public void TurnOffCandles()
+    {
+        for (int i = 0; i < effects.Length; i++)
+        {
+            effects[i].SetActive(false);
         }
     }
 }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SkeletonScript : Enemy,ItakeDamage
 {
-    float Atacktimer;
+    float Attacktimer = 1f;
+    public float attackTimerLimit;
     int dmg = 20;
     public bool IsDamageable;
     GameObject escudo;
@@ -18,24 +19,21 @@ public class SkeletonScript : Enemy,ItakeDamage
     {
         lookingDir = GetLookDirection(player.transform.position, this.transform.position);
         UpdateAnimation();
-            
 
-        if (playerDist > 2)
+        if (playerDist > 1.5f)
         {
             Vector3 FowardDirection = (player.transform.position - transform.position).normalized;
             transform.position += FowardDirection * speed * Time.deltaTime;
-        }else if (playerDist < 2)
-        {
+        }
 
-            var playersc = player.GetComponent<P_Behaviour>();
-            if (playersc != null)
+        var playersc = player.GetComponent<P_Behaviour>();
+        if (playersc != null)
+        {
+            Attacktimer += Time.deltaTime;
+            if (Attacktimer >= attackTimerLimit)
             {
-                Atacktimer += Time.deltaTime;
-                if (Atacktimer >= 1.5)
-                {
-                    playersc.TakeDamage(dmg);
-                    Atacktimer = 0;
-                }
+                playersc.TakeDamage(dmg);
+                Attacktimer = 0;
             }
         }
     }

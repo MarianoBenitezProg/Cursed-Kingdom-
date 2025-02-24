@@ -20,7 +20,6 @@ public class ScreenManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
-
         }
     }
     public void Push(IScreen screen)
