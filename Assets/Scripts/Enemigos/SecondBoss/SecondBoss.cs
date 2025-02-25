@@ -10,14 +10,15 @@ public class SecondBoss : MonoBehaviour, ItakeDamage
 
     public float speed = 10f;
     public Vector3 originPoint;
+    public GameObject player;
 
 
-    public CapsuleCollider2D colider;
-
-
-
-
+    private CapsuleCollider2D colider;
     SecondBossState currentState;
+
+
+    public new List<GameObject> spawnPoints = new List<GameObject>();
+
 
     protected virtual void Awake()
     {

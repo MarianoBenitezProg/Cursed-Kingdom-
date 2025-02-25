@@ -784,7 +784,7 @@ MonoBehaviour:
   - type: 8
     prefab: {fileID: 6680674797573749220, guid: a01d9493ae8d209469d586b517989419, type: 3}
   - type: 9
-    prefab: {fileID: 8899492846939327930, guid: 2a310455e547d1f4cb95beae156433e5, type: 3}
+    prefab: {fileID: 7663296128722824507, guid: d7dff2c0e90c0974187db468dd405422, type: 3}
   - type: 10
     prefab: {fileID: 4104636495881820960, guid: 98edf59df1139fe4880f52219038da1c, type: 3}
   poolSizePerType: 4
@@ -7109,8 +7109,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.04274988, y: -3.46635, z: 0}
-    m_Extent: {x: 6.19595, y: 7.03435, z: 0}
+    m_Center: {x: -0.042950153, y: -3.4697003, z: 0}
+    m_Extent: {x: 6.19455, y: 7.0306, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
