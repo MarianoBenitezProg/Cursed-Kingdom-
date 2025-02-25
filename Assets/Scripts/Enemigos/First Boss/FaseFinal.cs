@@ -31,7 +31,7 @@ public class FaseFinal : BossState
             var vidaPlataforma = plataforma.GetComponent<PlatformSc>();
             vidaPlataforma.Currenthealth = vidaPlataforma.health;
             BoxCollider2D platformCol =  plataforma.GetComponent<BoxCollider2D>();
-            platformCol.enabled = true;
+            platformCol.enabled = false;
             plataforma.SetActive(true);
 
         }
@@ -56,16 +56,13 @@ public class FaseFinal : BossState
         }
 
         // ?? Coloca la advertencia cada 4 segundos
-        if (!warningPlaced && warningTimer >= 4f)
+        if (warningTimer >= 4f)
         {
             PlaceWarning(boss);
+            warningTimer = 0f; // Reinicio el timer para que vuelva a ejecutarse en 4s
+            warningPlaced = false; // Permitimos que el proyectil se vuelva a generar
         }
 
-        // ?? Dispara desde la advertencia después de 3 segundos (total 7 segundos desde el inicio)
-        if (warningPlaced && warningTimer >= 7f)
-        {
-            FireFromWarning(boss);
-        }
 
         // ? Actualiza el temporizador de movimiento
         moveTimer += Time.deltaTime;
@@ -118,13 +115,13 @@ public class FaseFinal : BossState
             plataforma.SetActive(false);
         }
         // prendo las que necesito 
-        boss.Plataformas[2].SetActive(true);
+        boss.Plataformas[0].SetActive(true);
         boss.Plataformas[5].SetActive(true);
 
         switch (currentVIndex)
         {
             case 0:
-                boss.transform.position = boss.Plataformas[2].transform.position;
+                boss.transform.position = boss.Plataformas[0].transform.position;
                 Debug.Log(" Moviéndose a Plataforma[2]");
                 currentVIndex = 1;
                 break;
@@ -148,7 +145,7 @@ public class FaseFinal : BossState
                 break;
 
             case 4:
-                boss.transform.position = boss.Plataformas[2].transform.position;
+                boss.transform.position = boss.Plataformas[0].transform.position;
                 Debug.Log(" Moviéndose a Plataforma[2]");
                 currentVIndex = 5;
                 break;
@@ -238,30 +235,32 @@ public class FaseFinal : BossState
     {
         if (boss.player == null)
         {
+            Debug.LogWarning("No se encontró al jugador, no se puede colocar el proyectil.");
             return;
         }
 
-        warningPosition = boss.player.transform.position;
-        GameObject warningInstance = GameObject.Instantiate(boss.warningGB, warningPosition, Quaternion.identity);
-        GameObject.Destroy(warningInstance, 3f);
+        // Posición del jugador con un offset para que aparezca arriba
+        warningPosition = boss.player.transform.position + new Vector3(0f, 1.5f, 0f);
 
-        warningPlaced = true;
-    }
+        GameObject disparo = ProyectilePool.Instance.GetObstacle(ProjectileType.PlantAtack);
 
-    private void FireFromWarning(FirstBoss boss)
-    {
-        GameObject attackProjectile = ProyectilePool.Instance.GetObstacle(ProjectileType.PlantAtack);
-        if (attackProjectile != null)
+        if (disparo != null)
         {
-            attackProjectile.transform.position = warningPosition;
-            attackProjectile.transform.rotation = Quaternion.identity;
-            attackProjectile.SetActive(true);
+            disparo.transform.position = warningPosition;
+            disparo.SetActive(true); // Asegurar que el proyectil está activo en la escena
+            PlantaPROYEC proyectilScript = disparo.GetComponent<PlantaPROYEC>();
+            proyectilScript.colider.enabled = false; // Desactiva la colisión al spawnear
+            proyectilScript.Lifetimer = 0f; // Reinicia su tiempo de vida
+            proyectilScript.warningTimer = 0f;
+            Debug.Log("Proyectil colocado en " + warningPosition);
         }
-
-
-        warningTimer = 0f;
-        warningPlaced = false;
+        else
+        {
+            Debug.LogError("No se pudo obtener el proyectil de la pool.");
+        }
     }
+
+
     public void ExitState(FirstBoss boss)
     {
         Debug.Log("Saliendo de la Fase Final...");

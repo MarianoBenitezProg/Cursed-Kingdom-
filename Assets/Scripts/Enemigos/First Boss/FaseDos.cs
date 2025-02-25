@@ -19,22 +19,22 @@ public class FaseDos : BossState
     {
         bossScript = boss;
         Debug.Log("Entré en la Fase dos");
-        //desactivo el colider
+
+        // Desactivo el colider
         boss.colider.enabled = false;
 
         foreach (GameObject plataforma in boss.Plataformas)
         {
-            //restauro la vida de las plataformas
             var vidaPlataforma = plataforma.GetComponent<PlatformSc>();
             vidaPlataforma.Currenthealth = vidaPlataforma.health;
-            // las apago 
-            plataforma.SetActive(false);
+            plataforma.SetActive(false); // Apagar plataformas
         }
-        // prendo las que necesito 
-        boss.Plataformas[2].SetActive(true);
+
+        // Activar las plataformas necesarias
+        boss.Plataformas[0].SetActive(true);
         boss.Plataformas[5].SetActive(true);
 
-        //variables de movimiento y disparos 
+        // Reiniciar variables
         moveTimer = 0f;
         currentStep = 0;
         basicShootTimer = 0f;
@@ -43,7 +43,7 @@ public class FaseDos : BossState
         waitingAtOriginalPos = false;
         waitTimer = 0f;
 
-        boss.transform.position = boss.Plataformas[2].transform.position;
+        boss.transform.position = boss.Plataformas[0].transform.position;
     }
 
     public void UpdateState(FirstBoss boss)
@@ -51,26 +51,23 @@ public class FaseDos : BossState
         basicShootTimer += Time.deltaTime;
         warningTimer += Time.deltaTime;
 
-        //bool de vulnerabilidad
+        // Si el jefe está en modo de vulnerabilidad
         if (waitingAtOriginalPos)
         {
-            //activo el colider y me dejo pegar
             boss.colider.enabled = true;
             waitTimer += Time.deltaTime;
 
-            //tiempo de vulnerabilidad
             if (waitTimer >= 2f)
             {
                 ReactivatePlatforms(boss);
                 waitingAtOriginalPos = false;
                 waitTimer = 0f;
             }
-
             return;
         }
 
-        //si no tengo plataformas
-        if (!boss.Plataformas[2].activeSelf && !boss.Plataformas[5].activeSelf)
+        // Si no hay plataformas activas, el jefe vuelve a su posición original
+        if (!boss.Plataformas[0].activeSelf && !boss.Plataformas[5].activeSelf)
         {
             boss.transform.position = boss.originalPos;
             waitingAtOriginalPos = true;
@@ -93,15 +90,12 @@ public class FaseDos : BossState
             basicShootTimer = 0f;
         }
 
-        //Ataque secundario con advertencia cada 4 segundos
-        if (!warningPlaced && warningTimer >= 4f)
+        // Ataque secundario con advertencia cada 4 segundos
+        if (warningTimer >= 4f)
         {
             PlaceWarning(boss);
-        }
-
-        if (warningPlaced && warningTimer >= 7f)
-        {
-            FireFromWarning(boss);
+            warningTimer = 0f; // Reinicio el timer para que vuelva a ejecutarse en 4s
+            warningPlaced = false; // Permitimos que el proyectil se vuelva a generar
         }
     }
 
@@ -114,10 +108,11 @@ public class FaseDos : BossState
                 currentStep = 1;
                 break;
             case 1:
-                if (boss.Plataformas[5].activeInHierarchy == true)
+                if (boss.Plataformas[5].activeInHierarchy)
                 {
-                boss.transform.position = boss.Plataformas[5].transform.position;
-                }else
+                    boss.transform.position = boss.Plataformas[5].transform.position;
+                }
+                else
                 {
                     boss.transform.position = boss.originalPos;
                 }
@@ -128,21 +123,17 @@ public class FaseDos : BossState
                 currentStep = 3;
                 break;
             case 3:
-
-                if (boss.Plataformas[2].activeInHierarchy == true)
+                if (boss.Plataformas[0].activeInHierarchy)
                 {
-                    boss.transform.position = boss.Plataformas[2].transform.position;
+                    boss.transform.position = boss.Plataformas[0].transform.position;
                 }
                 else
                 {
                     boss.transform.position = boss.originalPos;
                 }
-
                 currentStep = 0;
-
                 break;
         }
-
     }
 
     private void BasicShot(FirstBoss boss)
@@ -160,50 +151,49 @@ public class FaseDos : BossState
         {
             disparo.transform.position = boss.ShootPoint;
             disparo.transform.rotation = Quaternion.Euler(0f, 0f, angleToPlayer);
+            disparo.SetActive(true);
         }
-
+        else
+        {
+            Debug.LogError("No se pudo obtener el proyectil de la pool.");
+        }
     }
 
     private void PlaceWarning(FirstBoss boss)
     {
         if (boss.player == null)
         {
+            Debug.LogWarning("No se encontró al jugador, no se puede colocar el proyectil.");
             return;
         }
 
-        warningPosition = boss.player.transform.position;
-        GameObject warningInstance = GameObject.Instantiate(boss.warningGB, warningPosition, Quaternion.identity);
-        GameObject.Destroy(warningInstance, 3f);
+        // Posición del jugador con un offset para que aparezca arriba
+        warningPosition = boss.player.transform.position + new Vector3(0f, 1.5f, 0f);
 
-        warningPlaced = true;
-    }
+        GameObject disparo = ProyectilePool.Instance.GetObstacle(ProjectileType.PlantAtack);
 
-    private void FireFromWarning(FirstBoss boss)
-    {
-        GameObject attackProjectile = ProyectilePool.Instance.GetObstacle(ProjectileType.PlantAtack);
-        if (attackProjectile != null)
+        if (disparo != null)
         {
-            attackProjectile.transform.position = warningPosition;
-            attackProjectile.transform.rotation = Quaternion.identity;
-            attackProjectile.SetActive(true);
+            disparo.transform.position = warningPosition;
+            disparo.SetActive(true); // Asegurar que el proyectil está activo en la escena
+            Debug.Log("Proyectil colocado en " + warningPosition);
         }
-
-
-        warningTimer = 0f;
-        warningPlaced = false;
+        else
+        {
+            Debug.LogError("No se pudo obtener el proyectil de la pool.");
+        }
     }
 
     private void ReactivatePlatforms(FirstBoss boss)
     {
-        var vidaPlataforma2 = boss.Plataformas[2].GetComponent<PlatformSc>();
+        var vidaPlataforma2 = boss.Plataformas[0].GetComponent<PlatformSc>();
         var vidaPlataforma5 = boss.Plataformas[5].GetComponent<PlatformSc>();
 
         vidaPlataforma2.Currenthealth = vidaPlataforma2.health;
         vidaPlataforma5.Currenthealth = vidaPlataforma5.health;
 
-        boss.Plataformas[2].SetActive(true);
+        boss.Plataformas[0].SetActive(true);
         boss.Plataformas[5].SetActive(true);
-
     }
 
     public void ExitState(FirstBoss boss)

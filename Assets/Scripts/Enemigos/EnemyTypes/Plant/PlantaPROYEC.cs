@@ -2,38 +2,56 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlantaPROYEC : Proyectile
+public class PlantaPROYEC : MonoBehaviour
 {
-    private float Lifetimer;
+    public CircleCollider2D colider;
+    public float Lifetimer;
+    public float destroyTimer;
+    public float warningTimer;
+    public int dmg;
+    public ProjectileType ProyectType;
 
-    public override void Behaviour()
+    private void Awake()
     {
-        Lifetimer += Time.deltaTime;
-        if (Lifetimer >= destroyTimer)
-        {
-            ProyectilePool.Instance.ReturnObstacle(gameObject, ProjectileType.PlantAtack);
-            Lifetimer = 0;
-        }
-
-        if (gameObject.activeSelf)
-        {
-            transform.position += transform.right * speed * Time.deltaTime;
-
-        }
+        colider = GetComponent<CircleCollider2D>();
+        colider.enabled = false;
 
 
     }
+
+    private void Update()
+    {
+        warningTimer += Time.deltaTime;
+
+        if (!colider.enabled && warningTimer >= 2.5f)
+        {
+            Debug.Log("Activando colider");
+            colider.enabled = true;
+            warningTimer = 0;
+        }
+
+
+        Lifetimer += Time.deltaTime;
+        if (Lifetimer >= destroyTimer)
+        {
+            colider.enabled = false;
+            ProyectilePool.Instance.ReturnObstacle(gameObject, ProyectType);
+            Lifetimer = 0;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         var check = other.gameObject.GetComponent<ItakeDamage>();
         if (check != null)
         {
             check.TakeDamage(dmg);
-            ProyectilePool.Instance.ReturnObstacle(gameObject, ProjectileType.PlantAtack);
+            colider.enabled = false;
+            ProyectilePool.Instance.ReturnObstacle(gameObject, ProyectType);
         }
         else
         {
-            Debug.Log("no se le puede hacer daño ");
+            Debug.Log("No se le puede hacer daño");
         }
     }
 }

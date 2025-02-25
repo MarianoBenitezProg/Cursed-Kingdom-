@@ -8,7 +8,6 @@ public class FirstBoss : MonoBehaviour, ItakeDamage
     [SerializeField] private int maxhealth = 200;
     public List<GameObject> Plataformas;
     public GameObject player;
-    public GameObject warningGB;
     public float BasicShootTimer;
     public Vector3 ShootPoint;
     public Vector3 originalPos;

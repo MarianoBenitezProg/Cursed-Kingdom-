@@ -13,10 +13,8 @@ public class SecondBoss : MonoBehaviour, ItakeDamage
 
 
     public CapsuleCollider2D colider;
-    public List<GameObject> Points1;
-    public List<GameObject> Points2;
 
-    public GameObject toroFake;
+
 
 
     SecondBossState currentState;
