@@ -599,6 +599,62 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8322752635607821, guid: 95949281a3c56a449a63fb15761af02d, type: 3}
+      propertyPath: sounds.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8322752635607821, guid: 95949281a3c56a449a63fb15761af02d, type: 3}
+      propertyPath: sounds.Array.data[5].name
+      value: BossCagesPhase
+      objectReference: {fileID: 0}
+    - target: {fileID: 8322752635607821, guid: 95949281a3c56a449a63fb15761af02d, type: 3}
+      propertyPath: sounds.Array.data[6].name
+      value: FeranaStoneMove
+      objectReference: {fileID: 0}
+    - target: {fileID: 8322752635607821, guid: 95949281a3c56a449a63fb15761af02d, type: 3}
+      propertyPath: sounds.Array.data[7].name
+      value: MarkusTorchLightUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8322752635607821, guid: 95949281a3c56a449a63fb15761af02d, type: 3}
+      propertyPath: sounds.Array.data[8].name
+      value: Ui Touch/Close
+      objectReference: {fileID: 0}
+    - target: {fileID: 8322752635607821, guid: 95949281a3c56a449a63fb15761af02d, type: 3}
+      propertyPath: sounds.Array.data[5].clip.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8322752635607821, guid: 95949281a3c56a449a63fb15761af02d, type: 3}
+      propertyPath: sounds.Array.data[6].clip.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8322752635607821, guid: 95949281a3c56a449a63fb15761af02d, type: 3}
+      propertyPath: sounds.Array.data[7].clip.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8322752635607821, guid: 95949281a3c56a449a63fb15761af02d, type: 3}
+      propertyPath: sounds.Array.data[8].clip.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8322752635607821, guid: 95949281a3c56a449a63fb15761af02d, type: 3}
+      propertyPath: sounds.Array.data[5].clip.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: e26a6826edc599344ad4ea6a78a84fdc, type: 3}
+    - target: {fileID: 8322752635607821, guid: 95949281a3c56a449a63fb15761af02d, type: 3}
+      propertyPath: sounds.Array.data[6].clip.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4d7b377b6fae7874eabe3e0b886beea6, type: 3}
+    - target: {fileID: 8322752635607821, guid: 95949281a3c56a449a63fb15761af02d, type: 3}
+      propertyPath: sounds.Array.data[7].clip.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9aa916f376b1026429a84ddbe25eec72, type: 3}
+    - target: {fileID: 8322752635607821, guid: 95949281a3c56a449a63fb15761af02d, type: 3}
+      propertyPath: sounds.Array.data[8].clip.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: aaa423ef856a9804da35961a2a8f0193, type: 3}
+    - target: {fileID: 8322752635607821, guid: 95949281a3c56a449a63fb15761af02d, type: 3}
+      propertyPath: sounds.Array.data[8].clip.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: fcdb44a36b547d14d8977bd674b68898, type: 3}
     - target: {fileID: 559849888838067833, guid: 95949281a3c56a449a63fb15761af02d, type: 3}
       propertyPath: m_Name
       value: VFX
