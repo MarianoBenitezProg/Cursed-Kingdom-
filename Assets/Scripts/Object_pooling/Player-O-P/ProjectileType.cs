@@ -16,6 +16,7 @@ public enum ProjectileType
 
     EyeEnemy,
     PlantAtack,
+    CrawlerAttack,
     DarkPaladinAtack,
     FirstBossAtack,
 

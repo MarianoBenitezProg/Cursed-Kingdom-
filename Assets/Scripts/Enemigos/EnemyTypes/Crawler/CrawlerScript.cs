@@ -6,8 +6,9 @@ public class CrawlerScript : Enemy, ItakeDamage
 {
     int dmg = 15;
     float Atacktimer;
-    float CoolDowntimer;
-    bool needToCoolDown;
+    public float attackCooldown = 3;
+
+    public GameObject ataque;
 
     public override void Seek()
     {
@@ -20,36 +21,19 @@ public class CrawlerScript : Enemy, ItakeDamage
 
     public override void Attack()
     {
-        var playerScript = player.GetComponent<P_Behaviour>();
-
-        if (playerScript != null)
-        {
-            if (needToCoolDown == false)
-            {
-                playerScript.Stunned(3f, 0f, true);
-                needToCoolDown = true;
-            }
-
-            if (needToCoolDown == true)
-                CoolDowntimer += Time.deltaTime;
-
-            if (CoolDowntimer >= 5f)
-            {
-                needToCoolDown = false;
-                CoolDowntimer = 0;
-            }
-
             Atacktimer += Time.deltaTime;
 
-            if (Atacktimer >= 3f)
+            if (Atacktimer >= attackCooldown)
             {
-                playerScript.TakeDamage(dmg);
                 Atacktimer = 0f;
+
+            GameObject ataque = ProyectilePool.Instance.GetObstacle(ProjectileType.CrawlerAttack);
+            ataque.transform.position = player.transform.position;
             }
-        }
+            return;
+        
 
     }
-
 
 
 
