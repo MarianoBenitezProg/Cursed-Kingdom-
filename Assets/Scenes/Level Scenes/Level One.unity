@@ -3881,9 +3881,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMarkusBuff: 0
   isFeranaBuff: 0
-  isCCAbilityUnlocked: 1
-  isUtilityAbilityUnlocked: 1
-  isTutorialFinished: 1
+  isCCAbilityUnlocked: 0
+  isUtilityAbilityUnlocked: 0
+  isTutorialFinished: 0
 --- !u!1 &1165643637 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9105917049827636466, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
