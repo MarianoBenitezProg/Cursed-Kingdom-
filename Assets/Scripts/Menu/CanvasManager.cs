@@ -60,6 +60,7 @@ public class CanvasManager : MonoBehaviour, IScreen
 
     public void BTN_BackToMenu()
     {
+        SoundBTN_Pressed();
         isGamePaused = false;
         Debug.Log("Testing");
         LevelsManager.instance?.LoadScene("Main Menu"); // Load Menu Scene
@@ -67,10 +68,12 @@ public class CanvasManager : MonoBehaviour, IScreen
 
     public void BTN_CallScreen(string screenName)
     {
+        SoundBTN_Pressed();
         ScreenManager.Instance?.Push(screenName);
     }
     public void BTN_Back()
     {
+        SoundBTN_Pressed();
         isGamePaused = false;
         Debug.Log("Testing");
         ScreenManager.Instance.Pop();
@@ -80,8 +83,18 @@ public class CanvasManager : MonoBehaviour, IScreen
 
     }
 
+    public void SoundBTN_Enter()
+    {
+        SoundManager.instance?.PlaySound("Ui Touch");
+    }
+    public void SoundBTN_Pressed()
+    {
+        SoundManager.instance?.PlaySound("Ui Close");
+    }
+
     public void BTN_ResetSaveSlot(int saveSlot)
     {
+        SoundBTN_Pressed();
         if(saveSlot == 1)
         {
             SavedGameManager.instance?.RestoreData(SaveSlot.SlotOne);
