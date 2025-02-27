@@ -9,6 +9,7 @@ public class EyeScript : Enemy, ItakeDamage
     float angleToPlayer;
     public Vector3 spawnPoint;
     Vector3 directionToPlayer;
+    public int indexToGo = 0; 
 
     public override void Attack()
     {
@@ -20,19 +21,27 @@ public class EyeScript : Enemy, ItakeDamage
         lookingDir = GetLookDirection(player.transform.position, this.transform.position);
         UpdateAnimation();
 
-        if (playerDist < attackRadius - 1 && playerDist > 1f)
+        if (playerDist < attackRadius - 1 && playerDist > 1f && path.Count > 0)
         {
-            Vector3 retreatDirection = -(player.transform.position - transform.position).normalized;
+            int midIndex = path.Count / 2; 
+            int lastIndex = path.Count ; 
 
-            // Verificar si hay un obstáculo en la dirección de retroceso
-            if (HasObstacleInDirection(retreatDirection))
+            if (indexToGo == 0 )
             {
-                // Si hay un obstáculo, elegir una dirección alternativa (izquierda o derecha)
-                retreatDirection = ChooseAlternativeDirection(retreatDirection);
+                transform.position = Vector3.MoveTowards(transform.position, path[midIndex].position, speed * Time.deltaTime);
+                if(Vector3.Distance(transform.position, path[midIndex].position) < 5f)
+                {
+                    indexToGo++;
+                }
             }
-
-            // Mover al enemigo en la dirección elegida
-            transform.position += retreatDirection * speed * Time.deltaTime;
+            if (indexToGo == 1)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, path[0].position, speed * Time.deltaTime);
+                if (Vector3.Distance(transform.position, path[0].position) < 5f)
+                {
+                    indexToGo = 0;
+                }
+            }
         }
 
         timer += Time.deltaTime;
@@ -45,30 +54,10 @@ public class EyeScript : Enemy, ItakeDamage
 
     private bool HasObstacleInDirection(Vector3 direction)
     {
-        // Lanzar un Raycast para detectar obstáculos en la dirección dada
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 1f, 1 << 6); // Layer 6 es la pared
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 1f, 1 << 6); 
         return hit.collider != null;
     }
 
-    private Vector3 ChooseAlternativeDirection(Vector3 originalDirection)
-    {
-        // Intentar moverse a la derecha
-        Vector3 rightDirection = new Vector3(-originalDirection.y, originalDirection.x, 0).normalized;
-        if (!HasObstacleInDirection(rightDirection))
-        {
-            return rightDirection;
-        }
-
-        // Intentar moverse a la izquierda
-        Vector3 leftDirection = new Vector3(originalDirection.y, -originalDirection.x, 0).normalized;
-        if (!HasObstacleInDirection(leftDirection))
-        {
-            return leftDirection;
-        }
-
-        // Si no hay direcciones disponibles, mantener la dirección original
-        return originalDirection;
-    }
 
     public override void Seek()
     {

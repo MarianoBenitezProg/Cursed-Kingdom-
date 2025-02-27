@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour, IStunned
     protected MaterialTintColor _tintMaterial;
 
     float OutOfSigth;
-    IEnemyState currentState;
+    public IEnemyState currentState;
 
     protected virtual void Awake()
     {
