@@ -39,12 +39,20 @@ public class Enemy : MonoBehaviour, IStunned
 
     protected MaterialTintColor _tintMaterial;
 
+    PatrolState _patrol;
+    AtackState _attackState;
+    SeekState _seekState;
+
     float OutOfSigth;
     public IEnemyState currentState;
 
     protected virtual void Awake()
     {
-        SetState(new PatrolState());
+        _patrol = new PatrolState();
+        _attackState = new AtackState();
+        _seekState = new SeekState();
+
+        SetState(_patrol);
         if(GetComponent<Animator>() != null)
         {
             _animator = GetComponent<Animator>();
@@ -80,11 +88,11 @@ public class Enemy : MonoBehaviour, IStunned
 
         if (needToAtack && player != null)
         {
-            SetState(new AtackState());
+            SetState(_attackState);
         }
         else if (needToSeek && player != null)
         {
-            SetState(new SeekState());
+            SetState(_seekState);
         }
     }
 
