@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2318495626638406893}
   - component: {fileID: 1761037947376589184}
   - component: {fileID: 8911295319633798075}
+  - component: {fileID: 1288914930542631038}
+  - component: {fileID: 5617793781397421999}
   m_Layer: 6
   m_Name: Crawler
   m_TagString: Untagged
@@ -76,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.101960786, b: 0.101960786, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -103,10 +105,10 @@ MonoBehaviour:
   speed: 5
   rotationSpeed: 5
   isStunned: 0
-  viewRadius: 5
+  viewRadius: 8.34
   attackRadius: 3.41
   lostTimer: 0
-  playerDist: 0
+  playerDist: 5
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -114,11 +116,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   player: {fileID: 0}
-  obstaculos: []
+  shootingPoint: {fileID: 0}
+  thisMaterial: {fileID: 0}
+  dissolveDuration: 0.4
   needToAtack: 0
   needToSeek: 0
   lookingDir: 0
   _animator: {fileID: 0}
+  attackCooldown: 3
+  ataque: {fileID: 0}
 --- !u!61 &8911295319633798075
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -164,3 +170,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &1288914930542631038
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7221959139062971703}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 241c3112fc27846438908c175bb04d37, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5617793781397421999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7221959139062971703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b917c2a2e2de9f741a4bc8ca5bb1dc8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

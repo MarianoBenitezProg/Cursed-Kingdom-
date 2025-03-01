@@ -101,8 +101,7 @@ MonoBehaviour:
   speed: 0
   dmg: 5
   destroyTimer: 5
-  ProyectType: 0
-  dmg: 0
+  ProyectType: 10
 --- !u!61 &51588444460418582
 BoxCollider2D:
   m_ObjectHideFlags: 0
