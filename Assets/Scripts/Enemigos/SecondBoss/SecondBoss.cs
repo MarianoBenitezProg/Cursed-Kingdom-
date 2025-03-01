@@ -124,7 +124,7 @@ public class SecondBoss : MonoBehaviour, ItakeDamage
             colider.enabled = true;
 
 
-            if (Vector3.Distance(player.transform.position, transform.position) > 5)
+            if (Vector3.Distance(player.transform.position, transform.position) > 7)
             {
                 dir = (player.transform.position - transform.position).normalized;
                 rb.velocity = dir * speed;
