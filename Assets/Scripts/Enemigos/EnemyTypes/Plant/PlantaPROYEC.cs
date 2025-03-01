@@ -23,7 +23,7 @@ public class PlantaPROYEC : MonoBehaviour
     {
         warningTimer += Time.deltaTime;
 
-        if (!colider.enabled && warningTimer >= 2.5f)
+        if (!colider.enabled && warningTimer >= 3f)
         {
             Debug.Log("Activando colider");
             colider.enabled = true;

@@ -52,11 +52,7 @@ public class EyeScript : Enemy, ItakeDamage
         }
     }
 
-    private bool HasObstacleInDirection(Vector3 direction)
-    {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 1f, 1 << 6); 
-        return hit.collider != null;
-    }
+
 
 
     public override void Seek()

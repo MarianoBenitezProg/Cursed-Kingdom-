@@ -4,46 +4,19 @@ using UnityEngine;
 
 public class PlantScript : Enemy, ItakeDamage
 {
-    private float timer; 
-    private bool warningPlaced; 
-    private Vector3 warningPosition;
-    public float warningTime;
-    float cooldownTimer;
+    private float cooldownTimer;
 
-    public GameObject warningGB; 
     public override void Attack()
     {
         cooldownTimer += Time.deltaTime;
-        if (!warningPlaced && cooldownTimer >= 1f) 
+        if (cooldownTimer >= 3f) // Dispara cada 3 segundos
         {
-            _animator.SetBool("IsCharging",true);
-            warningPosition = player.transform.position;
-            GameObject warningInstance = Instantiate(warningGB, warningPosition, Quaternion.identity); // Instancia del aviso
-            Destroy(warningInstance, warningTime);
-            warningPlaced = true; 
-        }
-        if(warningPlaced == true)
-        {
-            timer += Time.deltaTime;
+            GameObject disparo = ProyectilePool.Instance.GetObstacle(ProjectileType.PlantAtack);
+            disparo.transform.position = player.transform.position; // Spawnea sobre el jugador
+            cooldownTimer = 0f;
         }
 
-        if (warningPlaced && timer >= warningTime && isDying == false)
-        {
-            GameObject attackProjectile = ProyectilePool.Instance.GetObstacle(ProjectileType.PlantAtack);
-            
-            if (attackProjectile != null)
-            {
-                attackProjectile.transform.position = warningPosition; 
-                attackProjectile.transform.rotation = Quaternion.identity; 
-                attackProjectile.SetActive(true);
-            }
-            _animator.SetBool("IsCharging", false);
-            timer = 0;
-            cooldownTimer = 0;
-            warningPlaced = false;
-        }
-
-        if (isDying == true)
+        if (isDying)
         {
             _animator.SetBool("IsDying", true);
         }
@@ -56,12 +29,13 @@ public class PlantScript : Enemy, ItakeDamage
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var abilty = collision.gameObject.GetComponent<Ability>();
-        if (abilty != null)
+        var ability = collision.gameObject.GetComponent<Ability>();
+        if (ability != null)
         {
-            TakeDamage(abilty.dmg);
+            TakeDamage(ability.dmg);
         }
     }
+
     public void TakeDamage(int dmg)
     {
         health -= dmg;
