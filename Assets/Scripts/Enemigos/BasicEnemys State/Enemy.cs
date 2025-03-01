@@ -23,7 +23,6 @@ public class Enemy : MonoBehaviour, IStunned
 
     public GameObject player;
     public GameObject shootingPoint;
-    public List<GameObject> obstaculos = new List<GameObject>();
 
     public Material thisMaterial;
     protected bool isDying;
@@ -84,7 +83,6 @@ public class Enemy : MonoBehaviour, IStunned
 
         UpdateShootingPoint();
         CanSeeTarget();
-        HasAnObstacle();
 
         if (needToAtack && player != null)
         {
@@ -163,8 +161,7 @@ public class Enemy : MonoBehaviour, IStunned
             {
                 lostTimer += Time.deltaTime;
 
-                // Si se pierde al jugador por mucho tiempo, volver a patrulla
-                if (lostTimer > 4)
+                if (lostTimer > 2)
                 {
                     needToSeek = false;
                     needToAtack = false;
@@ -184,12 +181,10 @@ public class Enemy : MonoBehaviour, IStunned
         Vector2 direction = playerPosition - enemyPosition;
         if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
         {
-            // The player is more to the left or right
             return direction.x > 0 ? Direction.Right : Direction.Left;
         }
         else
         {
-            // The player is more up or down
             return direction.y > 0 ? Direction.Up : Direction.Down;
         }
     }
@@ -237,36 +232,7 @@ public class Enemy : MonoBehaviour, IStunned
     }
     #endregion
 
-    void HasAnObstacle()
-    {
-        Collider2D[] obstaclesInViewRadius = Physics2D.OverlapCircleAll(transform.position, viewRadius, obstacleLayer);
-        List<GameObject> detectedObstacles = new List<GameObject>();
 
-        foreach (Collider2D col in obstaclesInViewRadius)
-        {
-            if (!obstaculos.Contains(col.gameObject))
-            {
-                obstaculos.Add(col.gameObject);
-            }
-
-            detectedObstacles.Add(col.gameObject);
-        }
-
-        obstaculos.RemoveAll(obstaculo => !detectedObstacles.Contains(obstaculo));
-    }
-
-    List<Vector2> GetObstacleDirections()
-    {
-        List<Vector2> obstacleDirections = new List<Vector2>();
-
-        foreach (GameObject obstaculo in obstaculos)
-        {
-            Vector2 direction = (obstaculo.transform.position - transform.position).normalized;
-            obstacleDirections.Add(direction);
-        }
-
-        return obstacleDirections;
-    }
 
     #region OnDrawGizmos
     private void OnDrawGizmos()
@@ -276,19 +242,6 @@ public class Enemy : MonoBehaviour, IStunned
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRadius);
 
-        if (obstaculos != null)
-        {
-            Gizmos.color = Color.green; 
-
-            foreach (GameObject obstaculo in obstaculos)
-            {
-                if (obstaculo != null)
-                {
-                    Vector2 direction = (obstaculo.transform.position - transform.position).normalized;
-                    Gizmos.DrawLine(transform.position, (Vector2)transform.position + direction * 2); 
-                }
-            }
-        }
     }
 
     #endregion
@@ -332,8 +285,5 @@ public class Enemy : MonoBehaviour, IStunned
         dissolveAmount = 0f;
         thisMaterial.SetFloat("_DissolveAmount", dissolveAmount);
 
-        // Optional: Destroy the game object after dissolution
-        // Uncomment the next line if you want the object to be destroyed
-        // Destroy(gameObject);
     }
 }

@@ -19,5 +19,6 @@ public enum ProjectileType
     CrawlerAttack,
     DarkPaladinAtack,
     FirstBossAtack,
+    SecondBossAtack,
 
 }

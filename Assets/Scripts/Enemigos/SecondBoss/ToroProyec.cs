@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class crawlerProyec : Proyectile
+public class ToroProyec : Proyectile
 {
+
     private float Lifetimer;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -13,20 +14,16 @@ public class crawlerProyec : Proyectile
             var p_behaviour = other.GetComponent<P_Behaviour>();
             if (p_behaviour != null)
             {
-
-                p_behaviour.Stunned(2f, 0, true);
                 p_behaviour.TakeDamage(dmg);
-
-                ProyectilePool.Instance.ReturnObstacle(gameObject, ProjectileType.CrawlerAttack);
             }
         }
     }
     private void Update()
     {
         Lifetimer += Time.deltaTime;
-        if (Lifetimer > 5f) 
+        if (Lifetimer > 5f)
         {
-            ProyectilePool.Instance.ReturnObstacle(gameObject, ProjectileType.CrawlerAttack);
+            ProyectilePool.Instance.ReturnObstacle(gameObject, ProjectileType.SecondBossAtack);
 
         }
     }
