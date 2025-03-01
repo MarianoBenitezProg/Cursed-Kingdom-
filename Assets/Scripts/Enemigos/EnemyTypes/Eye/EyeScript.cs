@@ -101,5 +101,9 @@ public class EyeScript : Enemy, ItakeDamage
             _tintMaterial.SetTintColor(Color.red);
             Debug.Log("Tint");
         }
+        if (health <= 0)
+        {
+            SoundManager.instance?.PlaySound("Mutant Dead");
+        }
     }
 }

@@ -57,6 +57,11 @@ public class SkeletonScript : Enemy,ItakeDamage
             health -= dmg;
             Debug.Log(health);
             _tintMaterial.SetTintColor(Color.red);
+            if(health <= 0)
+            {
+                Die();
+                SoundManager.instance.PlaySound("Goblin Dead");
+            }
         }
     }
 }

@@ -9,9 +9,21 @@ public class RataScript : Enemy, ItakeDamage
     int dmg = 5;
     float angleToPlayer;
     Vector3 directionToPlayer;
+    public SpriteRenderer spriteRenderer;
 
     public override void Attack()
     {
+
+        if(lookingDir == Direction.Right)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else
+        {
+            spriteRenderer.flipX = false;
+        }
+        lookingDir = GetLookDirection(player.transform.position, this.transform.position);
+        UpdateAnimation();
         if (player == null) return;
         if(playerDist >1.2)
         {
@@ -37,6 +49,8 @@ public class RataScript : Enemy, ItakeDamage
 
     public override void Seek()
     {
+        lookingDir = GetLookDirection(player.transform.position, this.transform.position);
+        UpdateAnimation();
         if (player == null) return;
         directionToPlayer = (player.transform.position - transform.position).normalized;
         angleToPlayer = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
@@ -51,6 +65,10 @@ public class RataScript : Enemy, ItakeDamage
         {
             _tintMaterial.SetTintColor(new Color(1, 0, 0, 1f));
             Debug.Log("TintColor");
+        }
+        if(health <= 0)
+        {
+            SoundManager.instance?.PlaySound("Mutant Dead");
         }
     }
 }

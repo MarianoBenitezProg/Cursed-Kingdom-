@@ -2466,8 +2466,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.03434992, y: -3.4701, z: 0}
-    m_Extent: {x: 6.19525, y: 7.0344996, z: 0}
+    m_Center: {x: -0.040549994, y: -3.4689498, z: 0}
+    m_Extent: {x: 6.1929502, y: 7.02935, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -8253,11 +8253,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4169056789867597775, guid: cb05c134acb0f4e4883a7c1921d6fde4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.6
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 4169056789867597775, guid: cb05c134acb0f4e4883a7c1921d6fde4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -12.21
+      value: 7.2
       objectReference: {fileID: 0}
     - target: {fileID: 4169056789867597775, guid: cb05c134acb0f4e4883a7c1921d6fde4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8561,9 +8561,9 @@ MonoBehaviour:
   - type: 7
     prefab: {fileID: 2694205241798850848, guid: 98e8a597fbef9284591b797550df5a08, type: 3}
   - type: 8
-    prefab: {fileID: 6680674797573749220, guid: a01d9493ae8d209469d586b517989419, type: 3}
+    prefab: {fileID: 2874815325900369206, guid: 7c988f1c6b0dcc14f8193e7975482383, type: 3}
   - type: 9
-    prefab: {fileID: 7663296128722824507, guid: d7dff2c0e90c0974187db468dd405422, type: 3}
+    prefab: {fileID: 369943316813020647, guid: fe52caf899c69d7439d9f4af6fce84bc, type: 3}
   - type: 10
     prefab: {fileID: 4104636495881820960, guid: 98edf59df1139fe4880f52219038da1c, type: 3}
   poolSizePerType: 4
@@ -9618,7 +9618,7 @@ Transform:
   m_GameObject: {fileID: 762514416}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.930002, y: -19.359993, z: 0}
+  m_LocalPosition: {x: 12.530002, y: 0.050005913, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22165,10 +22165,6 @@ PrefabInstance:
       propertyPath: lockedHallway
       value: 
       objectReference: {fileID: 3493262293050217560}
-    - target: {fileID: 2104763128461771780, guid: 85b01c4e06625f044b0bc0b0fe2c280c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6.81
-      objectReference: {fileID: 0}
     - target: {fileID: 2797273238779304858, guid: 85b01c4e06625f044b0bc0b0fe2c280c, type: 3}
       propertyPath: m_Name
       value: Markus Candelabra
@@ -22217,22 +22213,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 92892429}
-    - target: {fileID: 4842250654810441735, guid: 85b01c4e06625f044b0bc0b0fe2c280c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.96
-      objectReference: {fileID: 0}
     - target: {fileID: 7057148900810928892, guid: 85b01c4e06625f044b0bc0b0fe2c280c, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 92892429}
-    - target: {fileID: 8625582742381000642, guid: 85b01c4e06625f044b0bc0b0fe2c280c, type: 3}
-      propertyPath: m_Size.y
-      value: 13.110844
-      objectReference: {fileID: 0}
-    - target: {fileID: 8625582742381000642, guid: 85b01c4e06625f044b0bc0b0fe2c280c, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.6884861
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23461,7 +23445,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56
+  m_fontSize: 53.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -75631,7 +75615,7 @@ Transform:
   m_GameObject: {fileID: 1958268870}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.930002, y: -19.359993, z: 0}
+  m_LocalPosition: {x: 12.530002, y: 0.050005913, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

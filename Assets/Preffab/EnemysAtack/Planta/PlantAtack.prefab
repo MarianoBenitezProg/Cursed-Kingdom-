@@ -134,6 +134,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colider: {fileID: 0}
+  Lifetimer: 0
   destroyTimer: 5
+  warningTimer: 0
   dmg: 10
   ProyectType: 9

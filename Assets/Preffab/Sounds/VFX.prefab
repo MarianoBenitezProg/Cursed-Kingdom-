@@ -48,20 +48,37 @@ MonoBehaviour:
   sounds:
   - name: Basic Arrow
     clip:
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 8300000, guid: f3280ba36a5541349abfd834a28d2771, type: 3}
   - name: Hatchdoor
     clip:
-    - {fileID: 0}
+    - {fileID: 8300000, guid: b3ebcfc21d4de094b99ee7c8b258ec83, type: 3}
   - name: Sword
     clip:
-    - {fileID: 0}
+    - {fileID: 8300000, guid: 7caa0bd1483c91b49936edc1f213109e, type: 3}
   - name: Wall Break
     clip:
-    - {fileID: 0}
-  - name: EnemyDead
+    - {fileID: 8300000, guid: 2b6b8a8eb735ab348b966a75bd60816d, type: 3}
+  - name: BossCagesPhase
     clip:
-    - {fileID: 0}
+    - {fileID: 8300000, guid: e26a6826edc599344ad4ea6a78a84fdc, type: 3}
+  - name: FeranaStoneMove
+    clip:
+    - {fileID: 8300000, guid: 4d7b377b6fae7874eabe3e0b886beea6, type: 3}
+  - name: MarkusTorchLightUp
+    clip:
+    - {fileID: 8300000, guid: 9aa916f376b1026429a84ddbe25eec72, type: 3}
+  - name: Ui Close
+    clip:
+    - {fileID: 8300000, guid: aaa423ef856a9804da35961a2a8f0193, type: 3}
+  - name: Ui Touch
+    clip:
+    - {fileID: 8300000, guid: fcdb44a36b547d14d8977bd674b68898, type: 3}
+  - name: Mutant Dead
+    clip:
+    - {fileID: 8300000, guid: 5389818ba93680d40b65cff9aaa0bd35, type: 3}
+  - name: Goblin Dead
+    clip:
+    - {fileID: 8300000, guid: 55d13fd6f023cfa49aaa9a13d00d624f, type: 3}
   audioSource: {fileID: 0}
 --- !u!82 &8556113790933318317
 AudioSource:
@@ -72,7 +89,7 @@ AudioSource:
   m_GameObject: {fileID: 559849888838067833}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -2424548762524597861, guid: b6984a4db1b176a46a334081c2071ff0, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
