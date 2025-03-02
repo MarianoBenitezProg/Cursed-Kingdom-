@@ -37,10 +37,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _FogSize: 2.5
-    - _FogSpeed: 0.5
+    - _FogSize: 2
+    - _FogSpeed: 1
     m_Colors:
-    - _FogColro: {r: 0.735849, g: 0.735849, b: 0.735849, a: 0.16862746}
+    - _FogColro: {r: 0.735849, g: 0.735849, b: 0.735849, a: 0.9137255}
   m_BuildTextureStacks: []
 --- !u!114 &7326981104147348386
 MonoBehaviour:
