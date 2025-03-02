@@ -33,8 +33,11 @@ public class SecondBoss : MonoBehaviour, ItakeDamage
     public List<GameObject> enemigsToSpawn = new List<GameObject>();
     public List<GameObject> paths = new List<GameObject>();
 
+    Animator _animator;
+
     protected virtual void Awake()
     {
+        _animator = GetComponent<Animator>();
         colider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         originPoint = transform.position;
@@ -128,6 +131,7 @@ public class SecondBoss : MonoBehaviour, ItakeDamage
             {
                 dir = (player.transform.position - transform.position).normalized;
                 rb.velocity = dir * speed;
+                _animator.SetBool("IsWalking", true);
             }
             else
             {

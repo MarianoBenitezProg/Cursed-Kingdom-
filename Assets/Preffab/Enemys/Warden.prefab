@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6688277266360494342
+--- !u!1 &1920674595848169256
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8292417054510064099}
-  - component: {fileID: 5212504629736106565}
-  - component: {fileID: 2293561147271906246}
-  - component: {fileID: 8316685887911290299}
-  m_Layer: 0
-  m_Name: toroProyec
+  - component: {fileID: 7411125012413665378}
+  - component: {fileID: 5019158131597423850}
+  - component: {fileID: 6903750935055561388}
+  - component: {fileID: 4653971231288262537}
+  - component: {fileID: 2845286140818847666}
+  m_Layer: 6
+  m_Name: Warden
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8292417054510064099
+--- !u!4 &7411125012413665378
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6688277266360494342}
+  m_GameObject: {fileID: 1920674595848169256}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21, y: 7.4000006, z: 0}
-  m_LocalScale: {x: 3, y: 5, z: 5}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 33.1, y: 13.6, z: 0}
+  m_LocalScale: {x: 5.35, y: 6, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &5212504629736106565
+--- !u!212 &5019158131597423850
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6688277266360494342}
+  m_GameObject: {fileID: 1920674595848169256}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -86,13 +87,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &2293561147271906246
+--- !u!61 &6903750935055561388
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6688277266360494342}
+  m_GameObject: {fileID: 1920674595848169256}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -131,19 +132,78 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &8316685887911290299
+--- !u!50 &4653971231288262537
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920674595848169256}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &2845286140818847666
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6688277266360494342}
+  m_GameObject: {fileID: 1920674595848169256}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48cfeb4900ff3f54799c4c90ca039879, type: 3}
+  m_Script: {fileID: 11500000, guid: a01cd0c2262d80d4988be3e104b1145f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  dmg: 20
-  destroyTimer: 5
-  ProyectType: 13
+  originPoint: {x: 0, y: 0, z: 0}
+  maxhealth: 200
+  damage: 10
+  speed: 10
+  needToStop: 0
+  stopTimer: 0
+  stopTime: 2
+  player: {fileID: 0}
+  atack: {fileID: 0}
+  dir: {x: 0, y: 0, z: 0}
+  viewRadius: 34.5
+  playerDistance: 0
+  atackTimer: 0
+  atackCountDown: 2
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  spawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  enemigsToSpawn:
+  - {fileID: 5251428383370063044, guid: 2c4903e62db703243ba6f8d1823d06c1, type: 3}
+  - {fileID: 1344969937338828680, guid: 4cacbf904232b7e49861c211acf3f895, type: 3}
+  - {fileID: 7573863032267090120, guid: d081a0875a017e94faa816bbe7d50610, type: 3}
+  paths:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

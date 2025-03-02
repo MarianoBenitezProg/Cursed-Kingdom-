@@ -1,0 +1,152 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2204657624835660086
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3731644861487432164}
+  m_Layer: 0
+  m_Name: 'Proyectile-Factory-Pool '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3731644861487432164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2204657624835660086}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.6657896, y: -1.9932644, z: -0.078346245}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4409725895104658473}
+  - {fileID: 5036298367776409431}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5459591733742412039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4409725895104658473}
+  - component: {fileID: 2988484102702649944}
+  m_Layer: 0
+  m_Name: fact
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4409725895104658473
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5459591733742412039}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3731644861487432164}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2988484102702649944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5459591733742412039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44cedf73f47b8f642997c1869b308268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePool: {fileID: 8093769239094073354}
+--- !u!1 &5991732302342064600
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5036298367776409431}
+  - component: {fileID: 8093769239094073354}
+  m_Layer: 0
+  m_Name: pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5036298367776409431
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5991732302342064600}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3731644861487432164}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8093769239094073354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5991732302342064600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aafeccf41bf79114f805d6f52a0cf1e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefabs:
+  - type: 0
+    prefab: {fileID: 3881307644359780031, guid: 5ede9c183460b99498a24e68f53aea4f, type: 3}
+  - type: 1
+    prefab: {fileID: 3881307644359780031, guid: 285b969ef68e33840980051cb1093d70, type: 3}
+  - type: 2
+    prefab: {fileID: 3881307644359780031, guid: 7e116b3f622c2664eb276351f9ffa10f, type: 3}
+  - type: 3
+    prefab: {fileID: 3881307644359780031, guid: 31af2c01c874f034daafa327ddbef718, type: 3}
+  - type: 4
+    prefab: {fileID: 2694205241798850848, guid: 5aabb3c283d263c44861ea76b22c30a8, type: 3}
+  - type: 5
+    prefab: {fileID: 2694205241798850848, guid: cb4adb39f40cd094f83a449ee3f97775, type: 3}
+  - type: 6
+    prefab: {fileID: 2694205241798850848, guid: 46e2d8e40392b0e4c8332384a762ed0d, type: 3}
+  - type: 7
+    prefab: {fileID: 2694205241798850848, guid: 98e8a597fbef9284591b797550df5a08, type: 3}
+  - type: 8
+    prefab: {fileID: 2874815325900369206, guid: 7c988f1c6b0dcc14f8193e7975482383, type: 3}
+  - type: 9
+    prefab: {fileID: 369943316813020647, guid: fe52caf899c69d7439d9f4af6fce84bc, type: 3}
+  - type: 11
+    prefab: {fileID: 2313970412704810814, guid: 191938a7728536641be2945c05251a6e, type: 3}
+  - type: 10
+    prefab: {fileID: 3368786388156582535, guid: b488b6752ff543d4eae8eb3e3673160b, type: 3}
+  - type: 13
+    prefab: {fileID: 6688277266360494342, guid: d18010dea4e3c2247b111bbfb3072e52, type: 3}
+  poolSizePerType: 4
