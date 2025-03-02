@@ -26,6 +26,12 @@ public class LevelsManager : MonoBehaviour
         StartCoroutine(LoadSceneAsync(sceneName));
     }
 
+    public void RestartLevel()
+    {
+        currentLevelName = SceneManager.GetActiveScene().name;
+        StartCoroutine(LoadSceneAsync(currentLevelName));
+    }
+
 
     private IEnumerator LoadSceneAsync(string sceneName)
     {
