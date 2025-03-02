@@ -27,15 +27,6 @@ public class PlantScript : Enemy, ItakeDamage
         _animator.SetBool("IsAwake", true);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        var ability = collision.gameObject.GetComponent<Ability>();
-        if (ability != null)
-        {
-            TakeDamage(ability.dmg);
-        }
-    }
-
     public void TakeDamage(int dmg)
     {
         health -= dmg;
