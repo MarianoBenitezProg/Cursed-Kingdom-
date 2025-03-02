@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: []
-  health: 40
+  health: 20
   speed: 3
   rotationSpeed: 5
   isStunned: 0
@@ -171,7 +171,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.60259134, y: 0.92778915}
+    pivot: {x: 0.51, y: 0.313722}
     oldSize: {x: 0.76, y: 1.66}
     newSize: {x: 10.24, y: 10.24}
     adaptiveTilingThreshold: 0.5

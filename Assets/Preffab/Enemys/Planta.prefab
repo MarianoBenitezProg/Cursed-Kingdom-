@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: []
-  health: 80
+  health: 60
   speed: 5
   rotationSpeed: 5
   isStunned: 0
@@ -162,15 +162,12 @@ MonoBehaviour:
     m_Bits: 64
   player: {fileID: 0}
   shootingPoint: {fileID: 0}
-  obstaculos: []
   thisMaterial: {fileID: 0}
   dissolveDuration: 1
   needToAtack: 0
   needToSeek: 0
   lookingDir: 0
   _animator: {fileID: 0}
-  warningTime: 1.5
-  warningGB: {fileID: 7236731561823598918, guid: 80fd651c14651eb4e954dc9baeb38147, type: 3}
 --- !u!95 &5424153412985922999
 Animator:
   serializedVersion: 5
