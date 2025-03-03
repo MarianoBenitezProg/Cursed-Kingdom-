@@ -4382,6 +4382,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4435989184945007293, guid: cb05c134acb0f4e4883a7c1921d6fde4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5223325776414046699, guid: cb05c134acb0f4e4883a7c1921d6fde4, type: 3}
       propertyPath: m_LocalPosition.y
       value: -1.1
@@ -4435,7 +4439,8 @@ PrefabInstance:
       value: 769220169
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3344165410073954997, guid: cb05c134acb0f4e4883a7c1921d6fde4, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4169056789867597775, guid: cb05c134acb0f4e4883a7c1921d6fde4, type: 3}
       insertIndex: -1
@@ -11375,7 +11380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fb04b9cba8ae9840ac52058264de515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevelName: Level Two
+  nextLevelName: Level Three
 --- !u!61 &1763097710
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18219,8 +18224,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.03095007, y: -3.4702, z: 0}
-    m_Extent: {x: 6.19095, y: 7.0327, z: 0}
+    m_Center: {x: -0.029850006, y: -3.46475, z: 0}
+    m_Extent: {x: 6.19795, y: 7.0303497, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
