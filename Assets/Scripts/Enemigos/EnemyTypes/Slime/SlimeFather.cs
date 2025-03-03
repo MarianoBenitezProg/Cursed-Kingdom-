@@ -90,6 +90,7 @@ public class SlimeFather : MonoBehaviour, ItakeDamage
         {
             SpawnChildren();
         }
+        EventManager.Trigger(TypeEvent.EnemyKilled);
         Destroy(gameObject);
     }
 

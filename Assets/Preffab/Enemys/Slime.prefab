@@ -107,7 +107,7 @@ MonoBehaviour:
   slimeScale: 3
   slimePrefab: {fileID: 455245011889459780}
   moveStep: 3
-  moveCooldown: 3
+  moveCooldown: 2
   detectionRange: 10
   jumpTimer: 0
   particlesPrefab: {fileID: 5922496560539672930, guid: 4911c72666ba1a54cbf5dba95139d474, type: 3}
@@ -116,7 +116,6 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
-  player: {fileID: 0}
 --- !u!58 &5258210105710144950
 CircleCollider2D:
   m_ObjectHideFlags: 0

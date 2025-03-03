@@ -28210,6 +28210,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slime
       objectReference: {fileID: 0}
+    - target: {fileID: 6683107800464089494, guid: df5e74e976bf59446972fb339fb0d666, type: 3}
+      propertyPath: moveCooldown
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8157766534726975017, guid: df5e74e976bf59446972fb339fb0d666, type: 3}
       propertyPath: m_LocalScale.x
       value: 3
@@ -59967,7 +59971,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8724012861160256637, guid: 97c9280f5e3877b40935ef0fa25731e4, type: 3}
       propertyPath: _count
-      value: 2
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8724012861160256637, guid: 97c9280f5e3877b40935ef0fa25731e4, type: 3}
       propertyPath: _fogs.Array.size
@@ -60177,10 +60181,10 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 2.6037736, y: 2.0800107, z: 0, w: 0}
+      - m_Value: {x: 0.30953908, y: 1.3638952, z: 2.262837, w: 0}
         m_Name: InnerColor
         m_Overridden: 1
-      - m_Value: {x: 2.4150944, y: 0, z: 0.022494335, w: 0}
+      - m_Value: {x: 0.7541109, y: 0.1506567, z: 1.5209153, w: 0}
         m_Name: Outercolor
         m_Overridden: 1
     m_Uint:
@@ -104734,10 +104738,10 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 2.6037736, y: 2.0800107, z: 0, w: 0}
+      - m_Value: {x: 0.30953908, y: 1.3638952, z: 2.262837, w: 0}
         m_Name: InnerColor
         m_Overridden: 1
-      - m_Value: {x: 2.4150944, y: 0, z: 0.022494335, w: 0}
+      - m_Value: {x: 0.7541109, y: 0.1506567, z: 1.5209153, w: 0}
         m_Name: Outercolor
         m_Overridden: 1
     m_Uint:
@@ -113007,7 +113011,7 @@ Transform:
   m_GameObject: {fileID: 1243872779}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.920002, y: -23.959993, z: 0}
+  m_LocalPosition: {x: -30.469997, y: 8.750006, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -114266,10 +114270,10 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 2.6037736, y: 2.0800107, z: 0, w: 0}
+      - m_Value: {x: 0.30953908, y: 1.3638952, z: 2.262837, w: 0}
         m_Name: InnerColor
         m_Overridden: 1
-      - m_Value: {x: 2.4150944, y: 0, z: 0.022494335, w: 0}
+      - m_Value: {x: 0.7541109, y: 0.1506567, z: 1.5209153, w: 0}
         m_Name: Outercolor
         m_Overridden: 1
     m_Uint:
@@ -115083,7 +115087,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8724012861160256637, guid: 97c9280f5e3877b40935ef0fa25731e4, type: 3}
       propertyPath: _count
-      value: 4
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8724012861160256637, guid: 97c9280f5e3877b40935ef0fa25731e4, type: 3}
       propertyPath: _fogs.Array.size
@@ -118282,7 +118286,7 @@ Transform:
   m_GameObject: {fileID: 1601518602}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.920002, y: -23.959993, z: 0}
+  m_LocalPosition: {x: -30.469997, y: 8.750006, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -120966,11 +120970,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4169056789867597775, guid: cb05c134acb0f4e4883a7c1921d6fde4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.59
+      value: -40.8
       objectReference: {fileID: 0}
     - target: {fileID: 4169056789867597775, guid: cb05c134acb0f4e4883a7c1921d6fde4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -16.81
+      value: 15.9
       objectReference: {fileID: 0}
     - target: {fileID: 4169056789867597775, guid: cb05c134acb0f4e4883a7c1921d6fde4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -122541,10 +122545,10 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 2.6037736, y: 2.0800107, z: 0, w: 0}
+      - m_Value: {x: 0.30953908, y: 1.3638952, z: 2.262837, w: 0}
         m_Name: InnerColor
         m_Overridden: 1
-      - m_Value: {x: 2.4150944, y: 0, z: 0.022494335, w: 0}
+      - m_Value: {x: 0.7541109, y: 0.1506567, z: 1.5209153, w: 0}
         m_Name: Outercolor
         m_Overridden: 1
     m_Uint:
@@ -125633,7 +125637,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8724012861160256637, guid: 97c9280f5e3877b40935ef0fa25731e4, type: 3}
       propertyPath: _count
-      value: 5
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 8724012861160256637, guid: 97c9280f5e3877b40935ef0fa25731e4, type: 3}
       propertyPath: _fogs.Array.size
