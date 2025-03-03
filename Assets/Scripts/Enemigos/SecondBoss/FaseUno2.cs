@@ -9,7 +9,6 @@ public class FaseUno2 : SecondBossState
     {
         boss.rb.velocity = Vector2.zero;
         boss.transform.position =  boss.originPoint;
-        boss.speed += 2;
         boss.damage += 2;
 
         spawnearEnemigos(boss);
