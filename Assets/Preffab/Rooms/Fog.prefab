@@ -94,6 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 15
   timerLimit: 0.75
+  isEvent: 0
 --- !u!1 &4354400816867498639
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,8 +161,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.26460004, y: 1.6006, z: 0}
-    m_Extent: {x: 4.0975, y: 4.7174997, z: 0}
+    m_Center: {x: 0.2609501, y: 1.5923499, z: 0}
+    m_Extent: {x: 4.09805, y: 4.72175, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -1046,7 +1047,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 5
       minScalar: 10
       maxCurve:
         serializedVersion: 2
