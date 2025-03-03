@@ -109,9 +109,13 @@ MonoBehaviour:
   moveStep: 3
   moveCooldown: 3
   detectionRange: 10
+  jumpTimer: 0
   particlesPrefab: {fileID: 5922496560539672930, guid: 4911c72666ba1a54cbf5dba95139d474, type: 3}
   objectRenderer: {fileID: 0}
   slimeLight: {fileID: 7125684662071491289}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
   player: {fileID: 0}
 --- !u!58 &5258210105710144950
 CircleCollider2D:

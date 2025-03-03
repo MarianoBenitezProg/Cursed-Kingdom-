@@ -16,7 +16,7 @@ public class SlimeFather : MonoBehaviour, ItakeDamage
     [SerializeField] private float moveStep = 5f;
     [SerializeField] private float moveCooldown = 2f;
     [SerializeField] private float detectionRange = 5f;
-    private float jumpTimer = 0f;
+    public float jumpTimer = 0f;
 
     [Header ("Effects")]
     public GameObject particlesPrefab;
@@ -24,8 +24,9 @@ public class SlimeFather : MonoBehaviour, ItakeDamage
     public GameObject slimeLight;
     MaterialTintColor _tintMaterial;
 
+    public LayerMask playerLayer;
 
-    public Transform player;
+    private Transform player;
     bool _dieEvent = false;
 
     private float currentHealth;
@@ -49,10 +50,12 @@ public class SlimeFather : MonoBehaviour, ItakeDamage
             StartCoroutine(DieCoroutine());
             _dieEvent = true;
         }
+        hasAplayerInSigth();
 
         if (player != null && Vector2.Distance(transform.position, player.position) <= detectionRange)
         {
             jumpTimer += Time.deltaTime;
+
             if (jumpTimer >= moveCooldown)
             {
                 MoveTowardsPlayer();
@@ -63,10 +66,8 @@ public class SlimeFather : MonoBehaviour, ItakeDamage
 
     private void MoveTowardsPlayer()
     {
-        // Calcular dirección normalizada hacia el jugador
         Vector3 direction = (player.position - transform.position).normalized;
 
-        // Mover al slime en pasos de 1f en esa dirección
         transform.position += direction * moveStep;
     }
 
@@ -136,6 +137,18 @@ public class SlimeFather : MonoBehaviour, ItakeDamage
             player.TakeDamage(damage);
 
         }
+    }
+
+    void hasAplayerInSigth()
+    {
+
+        Collider2D[] playersInRadius = Physics2D.OverlapCircleAll(transform.position, detectionRange, playerLayer);
+
+        if (playersInRadius.Length > 0)
+        {
+            player  = playersInRadius[0].gameObject.transform;
+        }
+
     }
 
     private void OnDrawGizmos()

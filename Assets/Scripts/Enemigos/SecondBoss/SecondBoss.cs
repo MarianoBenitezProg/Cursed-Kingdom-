@@ -6,34 +6,45 @@ public class SecondBoss : MonoBehaviour, ItakeDamage
 {
     public Vector3 originPoint;
 
+
+    [Header("variables basicas")]
     private int health;
     [SerializeField] private int maxhealth = 200;
     public int damage = 10;
-
     public float speed = 10f;
-    public bool needToStop = false;
-    public float stopTimer = 0f;
-    public float stopTime = 2f;
-    public GameObject player;
-    public GameObject atack;
     public Vector3 dir;
 
-    public float viewRadius = 10f;
-    public float playerDistance;
 
+
+    [Header("variables ataques")]
+    public GameObject player;
     public float atackTimer;
     public float atackCountDown = 2f;
+    public float viewRadius = 10f;
+
+
+    [Header("variables vision ")]
+    public float obstacleRadius = 5f;
+    public float playerDistance;
+    public float allowRunDistance = 3f;
+    public float directionTime;
 
 
     private BoxCollider2D colider;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private SecondBossState currentState;
+    Animator _animator;
+
+
+    [Header("variables enemigos  y layers")]
     public LayerMask playerLayer;
+    public LayerMask obstacleLayer;
+
     public List<GameObject> spawnPoints = new List<GameObject>();
     public List<GameObject> enemigsToSpawn = new List<GameObject>();
     public List<GameObject> paths = new List<GameObject>();
 
-    Animator _animator;
+
 
     protected virtual void Awake()
     {
@@ -55,10 +66,7 @@ public class SecondBoss : MonoBehaviour, ItakeDamage
             Debug.Log(health);
         }
 
-        if (player != null)
-        {
-            Move();
-        }
+
 
     }
 
@@ -118,83 +126,27 @@ public class SecondBoss : MonoBehaviour, ItakeDamage
         }
     }
 
-    private void Move()
-    {
-        if (player == null) return;
-
-        if (needToStop == false)
-        {
-            colider.enabled = true;
-
-
-            if (Vector3.Distance(player.transform.position, transform.position) > 7)
-            {
-                dir = (player.transform.position - transform.position).normalized;
-                rb.velocity = dir * speed;
-                _animator.SetBool("IsWalking", true);
-            }
-            else
-            {
-                rb.velocity = Vector3.zero;
-
-                atackTimer += Time.deltaTime;
-                if(atackTimer >= atackCountDown)
-                {
-                var proyetile = ProyectilePool.Instance.GetObstacle(ProjectileType.SecondBossAtack);
-                var toroProyec = proyetile.GetComponent<ToroProyec>();
-                toroProyec.dmg = damage;
-                proyetile.transform.position = transform.position + dir * 5;
-                    atackTimer = 0;
-                }
-            }
-
-
-
-        }
-        else
-        {
-            colider.enabled = false;
-
-            rb.velocity = Vector2.zero;
-            stopTimer += Time.deltaTime;
-            if (stopTimer >= stopTime)
-            {
-                needToStop = false;
-                stopTimer = 0;
-            }
-
-        }
-    }
-
+ 
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            needToStop = true;
             var playerHealth = collision.GetComponent<P_Behaviour>();
-
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(damage);
             }
         }
     }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            if (player != null)
-            {
 
-            }
-
-        }
-    }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, viewRadius);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, obstacleRadius);
+
     }
 }
