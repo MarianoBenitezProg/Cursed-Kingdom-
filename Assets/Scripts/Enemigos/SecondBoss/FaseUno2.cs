@@ -10,6 +10,7 @@ public class FaseUno2 : SecondBossState
         boss.rb.velocity = Vector2.zero;
         boss.transform.position =  boss.originPoint;
         boss.damage += 2;
+        boss.speed += 2;
 
         spawnearEnemigos(boss);
     }
@@ -75,7 +76,6 @@ public class FaseUno2 : SecondBossState
         if (boss.player != null)
         {
             boss.dir = (boss.player.transform.position - boss.transform.position).normalized;
-            boss.transform.rotation = Quaternion.LookRotation(Vector3.forward, boss.dir);
             puntoRush = boss.transform.position;
 
         }

@@ -174,23 +174,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originPoint: {x: 0, y: 0, z: 0}
   maxhealth: 200
-  damage: 10
-  speed: 5
-  needToStop: 0
-  stopTimer: 0
-  stopTime: 2
-  player: {fileID: 0}
-  atack: {fileID: 0}
+  damage: 5
+  speed: 5.5
   dir: {x: 0, y: 0, z: 0}
-  viewRadius: 34.5
-  playerDistance: 0
+  player: {fileID: 0}
   atackTimer: 0
   atackCountDown: 2
+  viewRadius: 34.5
+  obstacleRadius: 9.35
+  playerDistance: 0
+  allowRunDistance: 30
+  directionTime: 0
+  rb: {fileID: 0}
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 16
   spawnPoints:
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

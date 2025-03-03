@@ -7,8 +7,7 @@ public class FaseInicial2 : SecondBossState
     public void EnterState(SecondBoss boss)
     {
         boss.transform.position = boss.originPoint;
-        boss.damage += 2;
-        Debug.Log("estoy en la fase inicia");
+        Debug.Log("estoy en la fase inicial");
     }
     public void UpdateState(SecondBoss boss)
     {

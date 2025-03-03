@@ -8,8 +8,10 @@ public class FaseFinal2 : SecondBossState
     {
 
         boss.transform.position = boss.spawnPoints[1].transform.position;
+        boss.rb.velocity = Vector2.zero;
         boss.speed += 2;
         boss.damage += 2;
+
 
 
         spawnearEnemigos(boss);

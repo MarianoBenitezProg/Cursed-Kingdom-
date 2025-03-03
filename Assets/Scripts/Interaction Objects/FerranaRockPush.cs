@@ -6,9 +6,9 @@ public class FerranaRockPush : MonoBehaviour
 {
     public float activableArea;
     public LayerMask playerLayer;
-    public float pushForce; // Fuerza del empuje en Y
-    public float allowDistance = 3f; // Límite de distancia en Y
-    public Rigidbody2D rb; // Rigidbody2D de la roca
+    public float pushForce; 
+    public float allowDistance = 3f; 
+    public Rigidbody2D rb; 
 
     private bool rockCouldBeMove = false;
     private bool rockIsPushing = false;
@@ -17,8 +17,8 @@ public class FerranaRockPush : MonoBehaviour
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>(); // Obtiene el Rigidbody2D de la roca
-        startPosition = transform.position; // Guarda la posición inicial de la roca
+        rb = GetComponent<Rigidbody2D>(); 
+        startPosition = transform.position; 
     }
 
     private void Update()

@@ -9,9 +9,11 @@ public class FaseDos2 : SecondBossState
     private bool isCharging = false;
     private Vector3 chargeStartPosition;
 
+
     public void EnterState(SecondBoss boss)
     {
         boss.transform.position = boss.spawnPoints[1].transform.position;
+        boss.rb.velocity = Vector2.zero;
         boss.speed += 2;
         boss.damage += 2;
         spawnearEnemigos(boss);
@@ -104,7 +106,6 @@ public class FaseDos2 : SecondBossState
         chargeStartPosition = boss.transform.position;
 
         boss.dir = (boss.player.transform.position - boss.transform.position).normalized;
-        boss.transform.rotation = Quaternion.LookRotation(Vector3.forward, boss.dir);
     }
 
     private void ChargeMove(SecondBoss boss)

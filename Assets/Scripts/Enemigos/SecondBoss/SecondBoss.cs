@@ -14,6 +14,8 @@ public class SecondBoss : MonoBehaviour, ItakeDamage
     public float speed = 10f;
     public Vector3 dir;
 
+    public Direction lookingDir;
+
 
 
     [Header("variables ataques")]
@@ -92,7 +94,7 @@ public class SecondBoss : MonoBehaviour, ItakeDamage
         SecondBossState newState = currentState;
 
         if (healthPercentage > 90)
-            newState = new FaseInicial2();
+            newState = new FaseInicial2();      
         else if (healthPercentage > 60)
             newState = new FaseUno2();
         else if (healthPercentage > 30)
@@ -123,7 +125,11 @@ public class SecondBoss : MonoBehaviour, ItakeDamage
         else
         {
             player = null;
+     
         }
+
+        lookingDir = GetLookDirection(player.transform.position, this.transform.position);
+        UpdateAnimation();
     }
 
  
@@ -139,7 +145,44 @@ public class SecondBoss : MonoBehaviour, ItakeDamage
             }
         }
     }
-
+    public Direction GetLookDirection(Vector3 playerPosition, Vector3 enemyPosition)
+    {
+        Vector2 direction = playerPosition - enemyPosition;
+        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+        {
+            return direction.x > 0 ? Direction.Right : Direction.Left;
+        }
+        else
+        {
+            return direction.y > 0 ? Direction.Up : Direction.Down;
+        }
+    }
+    public void UpdateAnimation()
+    {
+        if (_animator != null)
+        {
+            if (lookingDir == Direction.Up)
+            {
+                _animator.SetFloat("Y", 1f);
+                _animator.SetFloat("X", 0f);
+            }
+            if (lookingDir == Direction.Down)
+            {
+                _animator.SetFloat("Y", -1f);
+                _animator.SetFloat("X", 0f);
+            }
+            if (lookingDir == Direction.Left)
+            {
+                _animator.SetFloat("Y", 0f);
+                _animator.SetFloat("X", -1f);
+            }
+            if (lookingDir == Direction.Right)
+            {
+                _animator.SetFloat("Y", 0f);
+                _animator.SetFloat("X", 1f);
+            }
+        }
+    }
 
     private void OnDrawGizmos()
     {
