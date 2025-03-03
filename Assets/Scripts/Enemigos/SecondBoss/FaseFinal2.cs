@@ -10,12 +10,12 @@ public class FaseFinal2 : SecondBossState
         boss.transform.position = boss.spawnPoints[1].transform.position;
         boss.speed += 2;
         boss.damage += 2;
-        boss.needToStop = false;
-        boss.stopTimer = 0;
+
 
         spawnearEnemigos(boss);
     }
 
+    #region spawnEnemys 
     void spawnearEnemigos(SecondBoss boss)
     {
 
@@ -47,8 +47,18 @@ public class FaseFinal2 : SecondBossState
             }
         }
     }
+    #endregion
+
+
     public void UpdateState(SecondBoss boss)
     {
+        Move(boss);
+
+    }
+    private void Move(SecondBoss boss)
+    {
+
+
 
     }
     public void ExitState(SecondBoss boss)

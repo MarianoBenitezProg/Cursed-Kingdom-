@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class FaseUno2 : SecondBossState
 {
-
+    Vector3 puntoRush;
     public void EnterState(SecondBoss boss)
     {
-
-        boss.transform.position = boss.spawnPoints[1].transform.position;
+        boss.rb.velocity = Vector2.zero;
+        boss.transform.position =  boss.originPoint;
         boss.speed += 2;
         boss.damage += 2;
-        boss.needToStop = false;
-        boss.stopTimer = 0;
 
         spawnearEnemigos(boss);
     }
 
+
+    #region spawnEnemys
     void spawnearEnemigos(SecondBoss boss)
     {
 
@@ -47,10 +47,63 @@ public class FaseUno2 : SecondBossState
             }
         }
     }
+
+    #endregion
+
+
     public void UpdateState(SecondBoss boss)
     {
 
+        boss.directionTime += Time.deltaTime;
+
+        if (boss.directionTime < 3)
+        {
+        calculateDirect(boss);
+        }else if(boss.directionTime > 3 && boss.directionTime <= 7)
+        {
+        Move(boss);
+        }else if(boss.directionTime > 7)
+        {
+            boss.directionTime = 0;
+        }
+
+
     }
+
+
+    public void calculateDirect(SecondBoss boss)
+    {
+        if (boss.player != null)
+        {
+            boss.dir = (boss.player.transform.position - boss.transform.position).normalized;
+            boss.transform.rotation = Quaternion.LookRotation(Vector3.forward, boss.dir);
+            puntoRush = boss.transform.position;
+
+        }
+    }
+
+    private void Move(SecondBoss boss)
+    {
+        float distanciaRecorrida = Vector3.Distance(puntoRush, boss.transform.position);
+
+        float raycastDistancia = 1f; 
+        RaycastHit2D hitFrontal = Physics2D.Raycast(boss.transform.position, boss.dir, raycastDistancia, boss.obstacleLayer);
+
+        Debug.DrawRay(boss.transform.position, boss.dir * raycastDistancia, Color.red); // Dibuja el Raycast en la escena
+
+
+        if (hitFrontal.collider != null)
+        {
+            Debug.Log("Obstáculo detectado, recalculando dirección...");
+            boss.directionTime = 0; 
+        }
+        else if (distanciaRecorrida < boss.allowRunDistance)
+        {
+            boss.transform.position += boss.dir * boss.speed * Time.deltaTime;
+        }
+
+    }
+
 
     public void ExitState(SecondBoss boss)
     {
