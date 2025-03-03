@@ -9,8 +9,10 @@ public class PlantScript : Enemy, ItakeDamage
     public override void Attack()
     {
         cooldownTimer += Time.deltaTime;
+            _animator.SetBool("IsCharging", true);
         if (cooldownTimer >= 3f) // Dispara cada 3 segundos
         {
+            _animator.SetBool("IsCharging", false);
             GameObject disparo = ProyectilePool.Instance.GetObstacle(ProjectileType.PlantAtack);
             disparo.transform.position = player.transform.position; // Spawnea sobre el jugador
             cooldownTimer = 0f;

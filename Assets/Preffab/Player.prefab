@@ -277,7 +277,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2495860812310279837}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -372,7 +372,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c481fc94e6d0f643a69342bd0de481f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCinematicPlaying: 0
   life: 100
+  maxLife: 100
   lookingDir: 0
   _speed: 7
   _markusSprite: {fileID: 252700974833455941}
@@ -389,6 +391,8 @@ MonoBehaviour:
   mar_Damage: 4
   mar_CC: 6
   mar_Utility: 8
+  lifeAddedEffect: 0
+  buffTime: 0
 --- !u!114 &7050075810137084596
 MonoBehaviour:
   m_ObjectHideFlags: 0

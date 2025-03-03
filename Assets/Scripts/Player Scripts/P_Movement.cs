@@ -110,7 +110,7 @@ public class P_Movement
                     }
                     else if(_playerRef.isMarkus == false)
                     {
-                        _aimPosition.transform.position = new Vector3(playerTransform.position.x, playerTransform.position.y + 2f, 0);
+                        _aimPosition.transform.position = new Vector3(playerTransform.position.x, playerTransform.position.y + 2.2f, 0);
                     }
                     break;
                 case Direction.Left:
@@ -121,7 +121,7 @@ public class P_Movement
                     }
                     else if(_playerRef.isMarkus == false)
                     {
-                        _aimPosition.transform.position = new Vector3(playerTransform.position.x - 1.5f, playerTransform.position.y, 0);
+                        _aimPosition.transform.position = new Vector3(playerTransform.position.x - 1.8f, playerTransform.position.y, 0);
                     }
                     break;
                 case Direction.Down:
@@ -132,7 +132,7 @@ public class P_Movement
                     }
                     else if (_playerRef.isMarkus == false)
                     {
-                        _aimPosition.transform.position = new Vector3(playerTransform.position.x, playerTransform.position.y - 2, 0);
+                        _aimPosition.transform.position = new Vector3(playerTransform.position.x, playerTransform.position.y - 2.2f, 0);
                     }
                     break;
                 case Direction.Right:
@@ -143,7 +143,7 @@ public class P_Movement
                     }
                     else if(_playerRef.isMarkus == false)
                     {
-                        _aimPosition.transform.position = new Vector3(playerTransform.position.x + 1.5f, playerTransform.position.y, 0);
+                        _aimPosition.transform.position = new Vector3(playerTransform.position.x + 1.8f, playerTransform.position.y, 0);
                     }
                     break;
             }
