@@ -2328,6 +2328,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4313445638477807421, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4344480822353902257, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
       propertyPath: m_Layer
       value: 6

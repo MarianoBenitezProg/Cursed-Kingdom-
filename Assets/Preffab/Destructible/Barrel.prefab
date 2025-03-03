@@ -100,10 +100,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectLife: 2
+  _lifePrefab: {fileID: 3753797846839081397, guid: b6741aba4b7999c49ac1fd30b0cae1b2, type: 3}
   dropsPrefabs:
   - {fileID: 8424737616917405774, guid: 18452a62cbfcca64f8b1a7e125cd76fa, type: 3}
   - {fileID: 5525363211781698441, guid: 5eac4b49a5a678e42a4f15b49aa9e387, type: 3}
-  - {fileID: 3753797846839081397, guid: b6741aba4b7999c49ac1fd30b0cae1b2, type: 3}
   - {fileID: 752697594269825726, guid: d9b35ba09515f0f4c893bcf414cd0b0a, type: 3}
 --- !u!61 &2521390986610305787
 BoxCollider2D:
