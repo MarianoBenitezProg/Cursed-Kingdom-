@@ -9,7 +9,10 @@ public class PlantScript : Enemy, ItakeDamage
     public override void Attack()
     {
         cooldownTimer += Time.deltaTime;
+        if(cooldownTimer >= 1f)
+        {
             _animator.SetBool("IsCharging", true);
+        }
         if (cooldownTimer >= 3f) // Dispara cada 3 segundos
         {
             _animator.SetBool("IsCharging", false);
