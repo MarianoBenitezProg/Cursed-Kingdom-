@@ -683,6 +683,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 917368424}
     m_Modifications:
+    - target: {fileID: 4383454614923937037, guid: 97fa4a60ac67b8b4eba9c84ec589927c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8597988501277907646, guid: 97fa4a60ac67b8b4eba9c84ec589927c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.24
@@ -3622,8 +3626,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.036600113, y: -3.4607, z: 0}
-    m_Extent: {x: 6.1914, y: 7.028, z: 0}
+    m_Center: {x: -0.036649942, y: -3.4699998, z: 0}
+    m_Extent: {x: 6.19895, y: 7.0354, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -6061,11 +6065,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2055919518695033351, guid: 9d76a33323f66714195a3fb28e4f1a46, type: 3}
       propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2055919518695033351, guid: 9d76a33323f66714195a3fb28e4f1a46, type: 3}
+      propertyPath: m_SortingOrder
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2055919518695033351, guid: 9d76a33323f66714195a3fb28e4f1a46, type: 3}
       propertyPath: m_SortingLayerID
-      value: 712512473
+      value: 1789967343
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12798,7 +12806,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.17384839}
+  m_Offset: {x: -0.72072864, y: 0.17384839}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -12809,7 +12817,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.46, y: 1.0623031}
+  m_Size: {x: 2.9014583, y: 1.0623031}
   m_EdgeRadius: 0
 --- !u!212 &684183315
 SpriteRenderer:
@@ -13175,7 +13183,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.17384839}
+  m_Offset: {x: 0.7015945, y: 0.17384839}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -13186,7 +13194,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.46, y: 1.0623031}
+  m_Size: {x: 2.8631895, y: 1.0623031}
   m_EdgeRadius: 0
 --- !u!212 &697151799
 SpriteRenderer:
@@ -29289,7 +29297,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 53.4
+  m_fontSize: 56
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -47331,15 +47339,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2055919518695033351, guid: 9d76a33323f66714195a3fb28e4f1a46, type: 3}
       propertyPath: m_SortingLayer
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2055919518695033351, guid: 9d76a33323f66714195a3fb28e4f1a46, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2055919518695033351, guid: 9d76a33323f66714195a3fb28e4f1a46, type: 3}
       propertyPath: m_SortingLayerID
-      value: 769220169
+      value: 1789967343
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -48587,8 +48595,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 712512473
-  m_SortingLayer: 3
+  m_SortingLayerID: 1789967343
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 35f9feb36b66da44c888f0d1003ff102, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -57980,11 +57988,11 @@ PrefabInstance:
       objectReference: {fileID: 92892429}
     - target: {fileID: 8739949729297157821, guid: 55792c646c5c363448fddfbd7d59035e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.49848175
+      value: -0.49847984
       objectReference: {fileID: 0}
     - target: {fileID: 8739949729297157821, guid: 55792c646c5c363448fddfbd7d59035e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.49975777
+      value: -0.49975967
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -60677,8 +60685,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 712512473
-  m_SortingLayer: 3
+  m_SortingLayerID: 1789967343
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 35f9feb36b66da44c888f0d1003ff102, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
