@@ -136,6 +136,10 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp, IStunned
     public void AddLife(object param)
     {
         life += addLife;
+        if(life > maxLife)
+        {
+            life = maxLife;
+        }
         EventManager.Trigger(TypeEvent.HealthUpdate);
     }
 
