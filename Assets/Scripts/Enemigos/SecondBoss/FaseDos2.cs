@@ -12,7 +12,6 @@ public class FaseDos2 : SecondBossState
     public void EnterState(SecondBoss boss)
     {
         boss.transform.position = boss.spawnPoints[1].transform.position;
-        boss.speed += 3; // Incrementamos la velocidad un poco más
         boss.damage += 3; // Incrementamos el daño un poco más
         boss.directionTime = 0f;
         isInChargeSequence = false;
