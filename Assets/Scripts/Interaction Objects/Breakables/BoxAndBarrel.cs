@@ -38,6 +38,7 @@ public class BoxAndBarrel : BreakableObjects, ItakeDamage
             Instantiate(dropsPrefabs[objectDropRandomizer],transform.position - new Vector3(.5f, 0, 0), Quaternion.identity);
             Debug.Log(dropsPrefabs[objectDropRandomizer]);
         }
+        EventManager.Trigger(TypeEvent.AddLife);
         Destroy(gameObject);
     }
 }

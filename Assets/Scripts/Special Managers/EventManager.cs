@@ -49,6 +49,7 @@ public enum TypeEvent
     CinematicOn,
     CinematicOff,
     EnemyKilled,
-    HealthUpdate
+    HealthUpdate,
+    AddLife
 }
 

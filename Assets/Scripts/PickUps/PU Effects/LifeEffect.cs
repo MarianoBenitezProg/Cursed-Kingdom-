@@ -5,7 +5,6 @@ using UnityEngine;
 public class LifeEffect : IPowerUpEffect
 {
     P_Behaviour playerScript;
-    int addLife = 15;
     public LifeEffect(P_Behaviour playerRef)
     {
         playerScript = playerRef;
@@ -15,11 +14,7 @@ public class LifeEffect : IPowerUpEffect
         Debug.Log(playerScript);
         if (playerScript != null)
         {
-            playerScript.life += playerScript.lifeAddedEffect;
-            if (playerScript.life > 100)
-            {
-                playerScript.life = 100;
-            }
+            playerScript.life = playerScript.maxLife;
             EventManager.Trigger(TypeEvent.HealthUpdate);
             playerScript._view.TintCharacter(new Color(0, 1, 0, 1f));
         }

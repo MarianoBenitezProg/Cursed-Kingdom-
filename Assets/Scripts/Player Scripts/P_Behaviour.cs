@@ -45,8 +45,8 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp, IStunned
     #region Power Up Effects
     PowerUps _powerUpScripts;
     [Header("Power Ups Variables")]
-    public int lifeAddedEffect;
     public int buffTime;
+    public int addLife;
 
     #endregion
 
@@ -93,6 +93,7 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp, IStunned
 
         EventManager.Subscribe(TypeEvent.CinematicOn, StartingCinematic);
         EventManager.Subscribe(TypeEvent.CinematicOff, StopCinematic);
+        EventManager.Subscribe(TypeEvent.AddLife, AddLife);
 
         _inventory.RestoreInventory(); //Sets the inventory == to the saved File
     }
@@ -121,6 +122,7 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp, IStunned
     {
         EventManager.Unsubscribe(TypeEvent.CinematicOn, StartingCinematic);
         EventManager.Unsubscribe(TypeEvent.CinematicOff, StopCinematic);
+        EventManager.Unsubscribe(TypeEvent.AddLife, AddLife);
         _inventory.SaveInventory();
         //SaveData();
         _powerUpScripts.UnsubscribeEffects();//Unsubscribe all the effects to the Event Manager
@@ -129,6 +131,12 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp, IStunned
     public void StoreObject(ItemStored pickedObject)
     {
         _inventory.StoreItem(pickedObject);
+    }
+
+    public void AddLife(object param)
+    {
+        life += addLife;
+        EventManager.Trigger(TypeEvent.HealthUpdate);
     }
 
     //public void SaveData()
