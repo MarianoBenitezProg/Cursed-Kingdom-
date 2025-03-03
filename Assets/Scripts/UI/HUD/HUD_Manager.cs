@@ -56,6 +56,7 @@ public class HUD_Manager : MonoBehaviour
         UpdateUIState();
         UpdateHealthBar(null);
         EventManager.Subscribe(TypeEvent.DamageTaken, UpdateHealthBar);
+        EventManager.Subscribe(TypeEvent.HealthUpdate, UpdateHealthBar);
         EventManager.Subscribe(TypeEvent.CinematicOn, TurnOffUi);
         EventManager.Subscribe(TypeEvent.CinematicOff, TurnOnUi);
     }
@@ -82,6 +83,7 @@ public class HUD_Manager : MonoBehaviour
         EventManager.Unsubscribe(TypeEvent.DamageTaken, UpdateHealthBar);
         EventManager.Unsubscribe(TypeEvent.CinematicOn, TurnOffUi);
         EventManager.Unsubscribe(TypeEvent.CinematicOff, TurnOnUi);
+        EventManager.Unsubscribe(TypeEvent.HealthUpdate, UpdateHealthBar);
     }
 
     private void InitializeAbilityUI(GameObject[] uiElements, Dictionary<string, Image> imageDict, string prefix)

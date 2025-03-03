@@ -15,7 +15,12 @@ public class LifeEffect : IPowerUpEffect
         Debug.Log(playerScript);
         if (playerScript != null)
         {
-            playerScript.life += addLife;
+            playerScript.life += playerScript.lifeAddedEffect;
+            if (playerScript.life > 100)
+            {
+                playerScript.life = 100;
+            }
+            EventManager.Trigger(TypeEvent.HealthUpdate);
             playerScript._view.TintCharacter(new Color(0, 1, 0, 1f));
         }
     }
