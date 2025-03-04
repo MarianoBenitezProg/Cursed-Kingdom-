@@ -14,48 +14,37 @@ public class FerranaRockPush : MonoBehaviour
     private bool rockIsPushing = false;
     private P_Behaviour playerB;
     private Vector3 startPosition; // Posición inicial de la roca
+    public GameObject rock;
+    CircleCollider2D boxCollider;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>(); 
-        startPosition = transform.position; 
+        startPosition = transform.position;
+        boxCollider = GetComponent<CircleCollider2D>();
+        boxCollider.radius = activableArea;
     }
 
     private void Update()
     {
-        Collider2D playerCollider = Physics2D.OverlapCircle(transform.position, activableArea, playerLayer);
 
-        if (playerCollider != null)
+        if (playerB != null && !playerB.isMarkus)
         {
-            playerB = playerCollider.GetComponent<P_Behaviour>();
-            if(playerCollider.transform.position.y > transform.position.y)
+            if (rockCouldBeMove && Input.GetKey(KeyCode.E))
             {
-                pushForce = -2;
-            }else
-            {
-                pushForce = 2;
-
-            }
-
-            if (playerB != null && !playerB.isMarkus)
-            {
-                float distanceMoved = transform.position.y - startPosition.y;
-
-                rockCouldBeMove = distanceMoved < allowDistance;
-
-                if (rockCouldBeMove && Input.GetKey(KeyCode.E))
+                if (playerB.gameObject.transform.position.y > rock.transform.position.y)
                 {
-                    rockIsPushing = true;
-                    Debug.Log("El jugador está empujando la roca.");
+                    pushForce = -2;
                 }
                 else
                 {
-                    rockIsPushing = false;
+                    pushForce = 2;
                 }
+
+                rockIsPushing = true;
+                Debug.Log("El jugador está empujando la roca.");
             }
             else
             {
-                rockCouldBeMove = false;
                 rockIsPushing = false;
             }
         }
@@ -75,6 +64,23 @@ public class FerranaRockPush : MonoBehaviour
         else
         {
             rb.velocity = new Vector2(rb.velocity.x, 0); // Detiene la roca si no puede moverse más
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.layer == 3)
+        {
+            rockCouldBeMove = true;
+            playerB = collision.GetComponent<P_Behaviour>();
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject == rock)
+        {
+            rockCouldBeMove = false;
+            Debug.Log("Entro");
         }
     }
 

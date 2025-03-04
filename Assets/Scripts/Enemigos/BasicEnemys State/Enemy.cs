@@ -148,14 +148,12 @@ public class Enemy : MonoBehaviour, IStunned
                 needToAtack = true;
                 needToSeek = false;
                 lostTimer = 0; // Reiniciar el temporizador
-                Debug.Log("Jugador está en radio de ataque");
             }
             else if (playerDist <= viewRadius && playerDist > attackRadius)
             {
                 needToSeek = true;
                 needToAtack = false;
                 lostTimer = 0; // Reiniciar el temporizador
-                Debug.Log("Jugador está en radio de Seek");
             }
             else
             {
@@ -169,7 +167,6 @@ public class Enemy : MonoBehaviour, IStunned
                     SetState(new PatrolState());
                     lookingDir = Direction.Down;
                     UpdateAnimation();
-                    Debug.Log("Perdí al jugador, vuelvo a patrullar");
                     lostTimer = 0;
                 }
             }
