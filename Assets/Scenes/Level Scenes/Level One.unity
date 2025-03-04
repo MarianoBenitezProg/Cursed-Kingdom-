@@ -2826,6 +2826,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5212782311258262772, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 66.15
+      objectReference: {fileID: 0}
     - target: {fileID: 5241162863666051701, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -3029,6 +3033,10 @@ PrefabInstance:
     - target: {fileID: 7084896166170422780, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7145021406940632468, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
+      propertyPath: viewRadius
+      value: 7.67
       objectReference: {fileID: 0}
     - target: {fileID: 7149569527251149866, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
       propertyPath: m_Layer
@@ -8646,7 +8654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1409203978
 Animator:
   serializedVersion: 5
