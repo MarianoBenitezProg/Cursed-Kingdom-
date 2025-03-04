@@ -82,12 +82,12 @@ public class CanvasManager : MonoBehaviour, IScreen
     {
         SoundBTN_Pressed();
         isGamePaused = false;
-        Debug.Log("Testing");
         ScreenManager.Instance.Pop();
     }
     public void BTN_ExitGame()
     {
-
+       Application.Quit();
+        Debug.Log("Quit");
     }
 
     public void SoundBTN_Enter()
