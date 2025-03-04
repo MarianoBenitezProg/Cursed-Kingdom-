@@ -22,6 +22,13 @@ public class FirstBoss : MonoBehaviour, ItakeDamage
     public Animator _animator;
     private BossState currentState;
 
+    MaterialTintColor _tintMaterial;
+    public Material thisMaterial;
+    protected bool isDying;
+    private float dissolveAmount = 1f;
+    public float dissolveDuration = 0.4f;
+
+
     // Cache state instances
     private readonly FaseInicial faseInicial = new FaseInicial();
     private readonly FaseUno faseUno = new FaseUno();
@@ -30,6 +37,12 @@ public class FirstBoss : MonoBehaviour, ItakeDamage
 
     protected virtual void Awake()
     {
+        _tintMaterial = GetComponent<MaterialTintColor>();
+        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+        thisMaterial = new Material(renderer.material);
+        renderer.material = thisMaterial;
+
+        _tintMaterial.setMaterial(thisMaterial);
         colider = gameObject.GetComponent<CapsuleCollider2D>();
         originalPos = transform.position;
         health = maxhealth;
@@ -62,6 +75,7 @@ public class FirstBoss : MonoBehaviour, ItakeDamage
         health -= dmg;
         Debug.Log(health);
         CheckLifeState();
+        _tintMaterial.SetTintColor(Color.red);
     }
 
     public void CheckLifeState()
@@ -82,7 +96,8 @@ public class FirstBoss : MonoBehaviour, ItakeDamage
 
         if (health <= 0)
         {
-            Destroy(gameObject);
+            isDying = true;
+            StartCoroutine(DissolveCoroutine());
         }
     }
 
@@ -136,6 +151,30 @@ public class FirstBoss : MonoBehaviour, ItakeDamage
             }
             currentDir = lookingDir;
         }
+    }
+
+    private IEnumerator DissolveCoroutine()
+    {
+        float elapsedTime = 0f;
+        float startValue = dissolveAmount;
+
+        while (elapsedTime < dissolveDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            dissolveAmount = Mathf.Lerp(startValue, 0f, elapsedTime / dissolveDuration);
+
+            // Update the shader parameter
+            thisMaterial.SetFloat("_DissolveAmount", dissolveAmount);
+
+            yield return null;
+        }
+
+        // Ensure we reach exactly 0
+        EventManager.Trigger(TypeEvent.EnemyKilled);
+        Destroy(gameObject);
+        dissolveAmount = 0f;
+        thisMaterial.SetFloat("_DissolveAmount", dissolveAmount);
+
     }
 }
 
