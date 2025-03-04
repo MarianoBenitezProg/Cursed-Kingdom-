@@ -90,6 +90,7 @@ public class SlimeFather : MonoBehaviour, ItakeDamage
         {
             SpawnChildren();
         }
+        SoundManager.instance.PlaySound("Mutant Dead");
         EventManager.Trigger(TypeEvent.EnemyKilled);
         Destroy(gameObject);
     }
