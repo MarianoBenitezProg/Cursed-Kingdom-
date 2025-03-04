@@ -24,13 +24,13 @@ public class FaseFinal2 : SecondBossState
     {
 
 
-        GameObject enemigo1 = GameObject.Instantiate(boss.enemigsToSpawn[0], boss.spawnPoints[0].transform.position, Quaternion.identity);
-        GameObject enemigo2 = GameObject.Instantiate(boss.enemigsToSpawn[0], boss.spawnPoints[0].transform.position, Quaternion.identity);
-        GameObject enemigo3 = GameObject.Instantiate(boss.enemigsToSpawn[3], boss.spawnPoints[1].transform.position, Quaternion.identity);
+        GameObject enemigo1 = GameObject.Instantiate(boss.enemigsToSpawn[0], boss.spawnPoints[2].transform.position, Quaternion.identity);
+        GameObject enemigo2 = GameObject.Instantiate(boss.enemigsToSpawn[0], boss.spawnPoints[2].transform.position, Quaternion.identity);
+        GameObject enemigo3 = GameObject.Instantiate(boss.enemigsToSpawn[3], boss.spawnPoints[2].transform.position, Quaternion.identity);
 
-        AsignarPath(enemigo1, new List<int> { 7, 3, 2, 1, 8 }, boss);
-        AsignarPath(enemigo2, new List<int> { 8, 1, 2, 3, 7 }, boss);
-        AsignarPath(enemigo3, new List<int> { 5, 1, 2, 3, 6 }, boss);
+        AsignarPath(enemigo1, new List<int> { 2, 0, 4, 1 }, boss);
+        AsignarPath(enemigo2, new List<int> { 2, 1, 4, 0 }, boss);
+        AsignarPath(enemigo3, new List<int> { 2, 3, 7, 8, 5, 6, 7, 3}, boss);
     }
 
     void AsignarPath(GameObject enemigo, List<int> indicesPath, SecondBoss boss)

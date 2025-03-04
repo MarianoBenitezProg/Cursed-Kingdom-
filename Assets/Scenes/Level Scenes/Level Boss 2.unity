@@ -21470,6 +21470,10 @@ PrefabInstance:
       value: Warden
       objectReference: {fileID: 0}
     - target: {fileID: 2845286140818847666, guid: 7f1e82a8ec12777418cda6fe6986ae1e, type: 3}
+      propertyPath: rejas.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2845286140818847666, guid: 7f1e82a8ec12777418cda6fe6986ae1e, type: 3}
       propertyPath: paths.Array.data[0]
       value: 
       objectReference: {fileID: 320347820}
@@ -21505,6 +21509,14 @@ PrefabInstance:
       propertyPath: paths.Array.data[8]
       value: 
       objectReference: {fileID: 487195208}
+    - target: {fileID: 2845286140818847666, guid: 7f1e82a8ec12777418cda6fe6986ae1e, type: 3}
+      propertyPath: rejas.Array.data[0]
+      value: 
+      objectReference: {fileID: 940986679}
+    - target: {fileID: 2845286140818847666, guid: 7f1e82a8ec12777418cda6fe6986ae1e, type: 3}
+      propertyPath: rejas.Array.data[1]
+      value: 
+      objectReference: {fileID: 350580862}
     - target: {fileID: 2845286140818847666, guid: 7f1e82a8ec12777418cda6fe6986ae1e, type: 3}
       propertyPath: enemigsToSpawn.Array.size
       value: 4
@@ -22084,6 +22096,8 @@ MonoBehaviour:
     prefab: {fileID: 6680674797573749220, guid: a01d9493ae8d209469d586b517989419, type: 3}
   - type: 13
     prefab: {fileID: 6688277266360494342, guid: d18010dea4e3c2247b111bbfb3072e52, type: 3}
+  - type: 10
+    prefab: {fileID: 3368786388156582535, guid: b488b6752ff543d4eae8eb3e3673160b, type: 3}
   poolSizePerType: 4
 --- !u!1 &607131379
 GameObject:

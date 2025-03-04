@@ -5,29 +5,30 @@ using UnityEngine;
 public class FaseUno2 : SecondBossState
 {
     Vector3 puntoRush;
+    Animator rejasArriba;
     public void EnterState(SecondBoss boss)
     {
         boss.rb.velocity = Vector2.zero;
         boss.transform.position =  boss.originPoint;
         boss.damage += 2;
         boss.speed += 2;
-
+        rejasArriba = boss.rejas[0].GetComponent<Animator>();
+        rejasArriba.SetBool("openJailBool", true);
         spawnearEnemigos(boss);
+
     }
 
 
     #region spawnEnemys
     void spawnearEnemigos(SecondBoss boss)
     {
-
         GameObject enemigo1 = GameObject.Instantiate(boss.enemigsToSpawn[0], boss.spawnPoints[0].transform.position, Quaternion.identity);
         GameObject enemigo2 = GameObject.Instantiate(boss.enemigsToSpawn[0], boss.spawnPoints[0].transform.position, Quaternion.identity);
-        GameObject enemigo3 = GameObject.Instantiate(boss.enemigsToSpawn[1], boss.spawnPoints[1].transform.position, Quaternion.identity);
+        GameObject enemigo3 = GameObject.Instantiate(boss.enemigsToSpawn[1], boss.spawnPoints[0].transform.position, Quaternion.identity);
 
-        // Asignación de paths únicos para cada enemigo
-        AsignarPath(enemigo1, new List<int> { 0, 2, 1, 3, 5 }, boss);
-        AsignarPath(enemigo2, new List<int> { 0, 4, 1, 3, 6 }, boss);
-        AsignarPath(enemigo3, new List<int> { 1, 6, 4, 7, 0 }, boss);
+        AsignarPath(enemigo1, new List<int> { 0, 2, 1, 4}, boss);
+        AsignarPath(enemigo2, new List<int> { 0, 4, 1, 2}, boss);
+        AsignarPath(enemigo3, new List<int> { 0, 3, 5, 8, 7, 6 }, boss);
     }
 
     void AsignarPath(GameObject enemigo, List<int> indicesPath, SecondBoss boss)

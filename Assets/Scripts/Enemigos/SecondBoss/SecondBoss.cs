@@ -44,6 +44,7 @@ public class SecondBoss : MonoBehaviour, ItakeDamage
     public LayerMask obstacleLayer;
 
     public List<GameObject> spawnPoints = new List<GameObject>();
+    public List<GameObject> rejas = new List<GameObject>();
     public List<GameObject> enemigsToSpawn = new List<GameObject>();
     public List<GameObject> paths = new List<GameObject>();
 
@@ -123,6 +124,8 @@ public class SecondBoss : MonoBehaviour, ItakeDamage
         {
             player = playersInRadius[0].gameObject;
             playerDistance = Vector3.Distance(player.transform.position, transform.position);
+            lookingDir = GetLookDirection(player.transform.position, this.transform.position);
+            UpdateAnimation();
         }
         else
         {
@@ -130,8 +133,7 @@ public class SecondBoss : MonoBehaviour, ItakeDamage
      
         }
 
-        lookingDir = GetLookDirection(player.transform.position, this.transform.position);
-        UpdateAnimation();
+
     }
 
  
