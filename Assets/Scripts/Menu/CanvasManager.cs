@@ -24,6 +24,7 @@ public class CanvasManager : MonoBehaviour, IScreen
             if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
             {
                 isGamePaused = true;
+                Time.timeScale = 0;
                 ScreenManager.Instance?.Push("Game Menu");
             }
         }
@@ -32,6 +33,7 @@ public class CanvasManager : MonoBehaviour, IScreen
             if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
             {
                 isGamePaused = false;
+                Time.timeScale = 1;
                 ScreenManager.Instance?.Pop();
             }
         }
@@ -56,6 +58,11 @@ public class CanvasManager : MonoBehaviour, IScreen
         }
 
          // Load Levels Scene
+    }
+
+    public void ResetTimeScale()
+    {
+        Time.timeScale = 1;
     }
 
     public void BTN_BackToMenu()
