@@ -66,13 +66,13 @@ public class FaseUno2 : SecondBossState
             boss.directionTime = 0;
         }
 
-
     }
 
 
     public void calculateDirect(SecondBoss boss)
     {
-        boss.animatorToro.ResetTrigger("IsCharging");
+        boss.animatorToro.SetBool("IsWalking", true);
+        boss.animatorToro.SetBool("IsCharging", true);
 
         if (boss.player != null)
         {
@@ -84,26 +84,26 @@ public class FaseUno2 : SecondBossState
 
     private void Move(SecondBoss boss)
     {
+        boss.animatorToro.SetBool("IsWalking", false);
         float distanciaRecorrida = Vector3.Distance(puntoRush, boss.transform.position);
 
         #region raycast para obstaculos
         float raycastDistancia = 1f; 
         RaycastHit2D hitFrontal = Physics2D.Raycast(boss.transform.position, boss.dir, raycastDistancia, boss.obstacleLayer);
-        Debug.DrawRay(boss.transform.position, boss.dir * raycastDistancia, Color.red); // Dibuja el Raycast en la escena
+        Debug.DrawRay(boss.transform.position, boss.dir * raycastDistancia, Color.red); 
         #endregion
 
 
         if (hitFrontal.collider != null)
         {
             Debug.Log("Obstáculo detectado, recalculando dirección...");
-            boss.animatorToro.ResetTrigger("IsCharging");
+            boss.animatorToro.SetBool("IsCharging", false);
 
             boss.directionTime = 0; 
         }
         else if (distanciaRecorrida < boss.allowRunDistance)
         {
             boss.transform.position += boss.dir * boss.speed * Time.deltaTime;
-            boss.animatorToro.SetTrigger("IsCharging");
 
         }
 

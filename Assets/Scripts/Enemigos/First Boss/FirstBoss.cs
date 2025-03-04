@@ -41,8 +41,8 @@ public class FirstBoss : MonoBehaviour, ItakeDamage
         SpriteRenderer renderer = GetComponent<SpriteRenderer>();
         thisMaterial = new Material(renderer.material);
         renderer.material = thisMaterial;
-
         _tintMaterial.setMaterial(thisMaterial);
+
         colider = gameObject.GetComponent<CapsuleCollider2D>();
         originalPos = transform.position;
         health = maxhealth;

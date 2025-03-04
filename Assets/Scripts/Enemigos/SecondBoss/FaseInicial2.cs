@@ -6,7 +6,6 @@ public class FaseInicial2 : SecondBossState
 {
     public void EnterState(SecondBoss boss)
     {
-        boss.transform.position = boss.originPoint;
         Debug.Log("estoy en la fase inicial");
     }
     public void UpdateState(SecondBoss boss)
@@ -19,17 +18,19 @@ public class FaseInicial2 : SecondBossState
     {
         if (boss.player != null && boss.playerDistance > 6)
         {
-            boss.animatorToro.SetTrigger("IsWalking");
+            boss.animatorToro.SetBool("IsWalking", true);
+            boss.animatorToro.SetBool("IsAttacking", false);
+
             boss.dir = (boss.player.transform.position - boss.transform.position).normalized;
             boss.rb.velocity = boss.dir * boss.speed;
-
-
         }
-        else
+        else if(boss.player != null &&  boss.playerDistance < 6)
         {
-            boss.animatorToro.ResetTrigger("IsWalking");
+            boss.animatorToro.SetBool("IsAttacking", true);
+            boss.animatorToro.SetBool("IsWalking", true);
 
             boss.rb.velocity = Vector3.zero;
+
             boss.atackTimer += Time.deltaTime;
 
             if (boss.atackTimer >= boss.atackCountDown)
@@ -42,10 +43,12 @@ public class FaseInicial2 : SecondBossState
     }
     void shot(SecondBoss boss)
     {
+        Debug.Log("estoy shoteando");
         var proyetile = ProyectilePool.Instance.GetObstacle(ProjectileType.SecondBossAtack);
+        proyetile.transform.position = boss.transform.position + boss.dir * 5;
+
         var toroProyec = proyetile.GetComponent<ToroProyec>();
         toroProyec.dmg = boss.damage;
-        proyetile.transform.position = boss.transform.position + boss.dir * 5;
     }
 
     public void ExitState(SecondBoss boss)
