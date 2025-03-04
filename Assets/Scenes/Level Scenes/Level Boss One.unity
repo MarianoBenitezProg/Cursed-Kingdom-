@@ -2379,7 +2379,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2234959924423381945, guid: c0717b4276cf0834b92ff320b3f0c72b, type: 3}
       propertyPath: m_Size.y
-      value: 4.135292
+      value: 4.9168854
       objectReference: {fileID: 0}
     - target: {fileID: 2234959924423381945, guid: c0717b4276cf0834b92ff320b3f0c72b, type: 3}
       propertyPath: m_Offset.x
@@ -2387,7 +2387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2234959924423381945, guid: c0717b4276cf0834b92ff320b3f0c72b, type: 3}
       propertyPath: m_Offset.y
-      value: 1.3332481
+      value: 0.9424515
       objectReference: {fileID: 0}
     - target: {fileID: 8019498037426807483, guid: c0717b4276cf0834b92ff320b3f0c72b, type: 3}
       propertyPath: m_Name
@@ -2400,6 +2400,10 @@ PrefabInstance:
     - target: {fileID: 8416370083259014202, guid: c0717b4276cf0834b92ff320b3f0c72b, type: 3}
       propertyPath: cinematicCamera.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416370083259014202, guid: c0717b4276cf0834b92ff320b3f0c72b, type: 3}
+      propertyPath: dialogueSequences.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8416370083259014202, guid: c0717b4276cf0834b92ff320b3f0c72b, type: 3}
       propertyPath: cinematicCamera.Array.data[0]
@@ -2429,6 +2433,22 @@ PrefabInstance:
       propertyPath: dialogueSequences.Array.data[2].dialoguePanel
       value: 
       objectReference: {fileID: 472318426}
+    - target: {fileID: 8416370083259014202, guid: c0717b4276cf0834b92ff320b3f0c72b, type: 3}
+      propertyPath: dialogueSequences.Array.data[0].dialogueLines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416370083259014202, guid: c0717b4276cf0834b92ff320b3f0c72b, type: 3}
+      propertyPath: dialogueSequences.Array.data[0].dialogueLines.Array.data[0]
+      value: gounrznoa
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416370083259014202, guid: c0717b4276cf0834b92ff320b3f0c72b, type: 3}
+      propertyPath: dialogueSequences.Array.data[0].dialogueLines.Array.data[1]
+      value: gradsfg
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416370083259014202, guid: c0717b4276cf0834b92ff320b3f0c72b, type: 3}
+      propertyPath: dialogueSequences.Array.data[1].dialogueLines.Array.data[0]
+      value: "Don\xB4t tell me you are afraid of some little rats..."
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18224,8 +18244,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.029850006, y: -3.46475, z: 0}
-    m_Extent: {x: 6.19795, y: 7.0303497, z: 0}
+    m_Center: {x: -0.04340005, y: -3.4721498, z: 0}
+    m_Extent: {x: 6.1923, y: 7.03345, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
