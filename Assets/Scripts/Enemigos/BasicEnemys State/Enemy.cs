@@ -277,10 +277,13 @@ public class Enemy : MonoBehaviour, IStunned
         }
 
         // Ensure we reach exactly 0
-        EventManager.Trigger(TypeEvent.EnemyKilled);
         Destroy(gameObject);
         dissolveAmount = 0f;
         thisMaterial.SetFloat("_DissolveAmount", dissolveAmount);
 
+    }
+    private void OnDestroy()
+    {
+        EventManager.Trigger(TypeEvent.EnemyKilled);
     }
 }

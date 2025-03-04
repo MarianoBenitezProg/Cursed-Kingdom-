@@ -36,6 +36,7 @@ public class DarkPaladin : MonoBehaviour, ItakeDamage
     MaterialTintColor _tintMaterial;
     bool isDying;
     bool isShooting;
+    public GameObject endLight;
 
 
     [SerializeField] GameObject player;
@@ -296,6 +297,7 @@ public class DarkPaladin : MonoBehaviour, ItakeDamage
     } 
     public void Die()
     {
+        endLight.SetActive(true);
         isDying = true;
         //StartCoroutine(DissolveCoroutine());
         Destroy(gameObject);
