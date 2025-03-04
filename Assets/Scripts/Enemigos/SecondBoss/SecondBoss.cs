@@ -115,7 +115,6 @@ public class SecondBoss : MonoBehaviour, ItakeDamage
             Destroy(gameObject);
         }
     }
-
     private void HasAnEnemy()
     {
         Collider2D[] playersInRadius = Physics2D.OverlapCircleAll(transform.position, viewRadius, playerLayer);
@@ -132,8 +131,6 @@ public class SecondBoss : MonoBehaviour, ItakeDamage
             player = null;
      
         }
-
-
     }
 
  
