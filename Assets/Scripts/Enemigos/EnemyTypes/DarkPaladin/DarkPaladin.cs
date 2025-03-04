@@ -51,9 +51,7 @@ public class DarkPaladin : MonoBehaviour, ItakeDamage
         ShootPoint = transform.GetChild(0);
 
         SpriteRenderer renderer = GetComponent<SpriteRenderer>();
-        //_tintMaterial = GetComponentInChildren<MaterialTintColor>();
-        //thisMaterial = GetComponentInChildren<Material>();
-        //renderer.material = thisMaterial;
+
     }
 
     private void Update()
@@ -69,15 +67,15 @@ public class DarkPaladin : MonoBehaviour, ItakeDamage
     {
 
         // aca consigo los gameobects
-        //Collider2D[] targetsInViewRadius = Physics2D.OverlapCircleAll(transform.position, viewRadius, playerLayer);
-        //foreach (Collider2D col in targetsInViewRadius)
-        //{
-        //    if (((1 << col.gameObject.layer) & playerLayer) != 0)
-        //    {
-        //        player = col.gameObject;
-        //        break;
-        //    }
-        //}
+        Collider2D[] targetsInViewRadius = Physics2D.OverlapCircleAll(transform.position, viewRadius, playerLayer);
+        foreach (Collider2D col in targetsInViewRadius)
+        {
+            if (((1 << col.gameObject.layer) & playerLayer) != 0)
+            {
+                player = col.gameObject;
+                break;
+            }
+        }
 
         if (player != null && isDying == false)
         {
