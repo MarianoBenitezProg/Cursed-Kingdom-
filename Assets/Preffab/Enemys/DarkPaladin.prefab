@@ -256,7 +256,7 @@ MonoBehaviour:
   dmg: 30
   isStunned: 1
   viewRadius: 15
-  attackRadius: 3.5
+  attackRadius: 3.39
   shootTimer: 0
   CoolDownShotTimer: 4
   playerDist: 0
