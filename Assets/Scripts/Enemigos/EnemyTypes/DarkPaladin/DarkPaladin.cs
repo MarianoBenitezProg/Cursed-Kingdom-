@@ -299,6 +299,7 @@ public class DarkPaladin : MonoBehaviour, ItakeDamage
         isDying = true;
         //StartCoroutine(DissolveCoroutine());
         Destroy(gameObject);
+        EventManager.Trigger(TypeEvent.EnemyKilled);
     }
 
     private IEnumerator DissolveCoroutine()
@@ -320,7 +321,6 @@ public class DarkPaladin : MonoBehaviour, ItakeDamage
         }
 
         // Ensure we reach exactly 0
-        EventManager.Trigger(TypeEvent.EnemyKilled);
         Destroy(gameObject);
         dissolveAmount = 0f;
         thisMaterial.SetFloat("_DissolveAmount", dissolveAmount);
