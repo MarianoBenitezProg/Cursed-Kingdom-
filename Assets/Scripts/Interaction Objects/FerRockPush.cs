@@ -17,7 +17,6 @@ public class FerRockPush : MonoBehaviour
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>(); // Obtiene el Rigidbody2D de la roca
         startPosition = transform.position; // Guarda la posición inicial de la roca
     }
 
