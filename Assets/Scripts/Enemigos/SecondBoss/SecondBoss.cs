@@ -20,6 +20,7 @@ public class SecondBoss : MonoBehaviour, ItakeDamage
 
     [Header("variables ataques")]
     public GameObject player;
+    public Animator playerAnimator;
     public float atackTimer;
     public float atackCountDown = 2f;
     public float viewRadius = 10f;
@@ -35,7 +36,7 @@ public class SecondBoss : MonoBehaviour, ItakeDamage
     private BoxCollider2D colider;
     public Rigidbody2D rb;
     private SecondBossState currentState;
-    Animator _animator;
+    public Animator animatorToro;
 
 
     [Header("variables enemigos  y layers")]
@@ -50,12 +51,13 @@ public class SecondBoss : MonoBehaviour, ItakeDamage
 
     protected virtual void Awake()
     {
-        _animator = GetComponent<Animator>();
+        animatorToro = GetComponent<Animator>();
         colider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         originPoint = transform.position;
         SetState(new FaseInicial2());
         health = maxhealth;
+
     }
 
     private void Update()
@@ -159,27 +161,27 @@ public class SecondBoss : MonoBehaviour, ItakeDamage
     }
     public void UpdateAnimation()
     {
-        if (_animator != null)
+        if (animatorToro != null)
         {
             if (lookingDir == Direction.Up)
             {
-                _animator.SetFloat("Y", 1f);
-                _animator.SetFloat("X", 0f);
+                animatorToro.SetFloat("Y", 1f);
+                animatorToro.SetFloat("X", 0f);
             }
             if (lookingDir == Direction.Down)
             {
-                _animator.SetFloat("Y", -1f);
-                _animator.SetFloat("X", 0f);
+                animatorToro.SetFloat("Y", -1f);
+                animatorToro.SetFloat("X", 0f);
             }
             if (lookingDir == Direction.Left)
             {
-                _animator.SetFloat("Y", 0f);
-                _animator.SetFloat("X", -1f);
+                animatorToro.SetFloat("Y", 0f);
+                animatorToro.SetFloat("X", -1f);
             }
             if (lookingDir == Direction.Right)
             {
-                _animator.SetFloat("Y", 0f);
-                _animator.SetFloat("X", 1f);
+                animatorToro.SetFloat("Y", 0f);
+                animatorToro.SetFloat("X", 1f);
             }
         }
     }

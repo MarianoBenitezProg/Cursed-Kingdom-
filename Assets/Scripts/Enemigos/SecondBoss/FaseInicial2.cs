@@ -17,15 +17,18 @@ public class FaseInicial2 : SecondBossState
 
     private void Move(SecondBoss boss)
     {
-        // que se mueva hacia el player
         if (boss.player != null && boss.playerDistance > 6)
         {
+            boss.animatorToro.SetTrigger("IsWalking");
             boss.dir = (boss.player.transform.position - boss.transform.position).normalized;
             boss.rb.velocity = boss.dir * boss.speed;
+
 
         }
         else
         {
+            boss.animatorToro.ResetTrigger("IsWalking");
+
             boss.rb.velocity = Vector3.zero;
             boss.atackTimer += Time.deltaTime;
 

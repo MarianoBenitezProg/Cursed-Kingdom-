@@ -73,6 +73,9 @@ public class FaseDos2 : SecondBossState
 
     private void Move(SecondBoss boss)
     {
+
+        boss.animatorToro.SetTrigger("IsWalking");
+
         if (boss.player != null && boss.playerDistance > 6)
         {
             boss.dir = (boss.player.transform.position - boss.transform.position).normalized;
@@ -102,6 +105,8 @@ public class FaseDos2 : SecondBossState
 
     private void StartCharge(SecondBoss boss)
     {
+        boss.animatorToro.ResetTrigger("IsCharging");
+
         boss.rb.velocity = Vector2.zero;
         chargeStartPosition = boss.transform.position;
 
@@ -110,6 +115,8 @@ public class FaseDos2 : SecondBossState
 
     private void ChargeMove(SecondBoss boss)
     {
+        boss.animatorToro.SetTrigger("IsCharging");
+
         float distanciaRecorrida = Vector3.Distance(chargeStartPosition, boss.transform.position);
 
         float raycastDistancia = 1f;
@@ -121,7 +128,9 @@ public class FaseDos2 : SecondBossState
         if (hitFrontal.collider != null)
         {
             Debug.Log("Obstáculo detectado, recalculando dirección...");
+            boss.animatorToro.ResetTrigger("IsCharging");
             boss.directionTime = 7.5f;
+
         }
         else if (distanciaRecorrida < boss.allowRunDistance)
         {

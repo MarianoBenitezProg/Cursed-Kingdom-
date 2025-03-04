@@ -73,6 +73,8 @@ public class FaseUno2 : SecondBossState
 
     public void calculateDirect(SecondBoss boss)
     {
+        boss.animatorToro.ResetTrigger("IsCharging");
+
         if (boss.player != null)
         {
             boss.dir = (boss.player.transform.position - boss.transform.position).normalized;
@@ -85,20 +87,25 @@ public class FaseUno2 : SecondBossState
     {
         float distanciaRecorrida = Vector3.Distance(puntoRush, boss.transform.position);
 
+        #region raycast para obstaculos
         float raycastDistancia = 1f; 
         RaycastHit2D hitFrontal = Physics2D.Raycast(boss.transform.position, boss.dir, raycastDistancia, boss.obstacleLayer);
-
         Debug.DrawRay(boss.transform.position, boss.dir * raycastDistancia, Color.red); // Dibuja el Raycast en la escena
+        #endregion
 
 
         if (hitFrontal.collider != null)
         {
             Debug.Log("Obstáculo detectado, recalculando dirección...");
+            boss.animatorToro.ResetTrigger("IsCharging");
+
             boss.directionTime = 0; 
         }
         else if (distanciaRecorrida < boss.allowRunDistance)
         {
             boss.transform.position += boss.dir * boss.speed * Time.deltaTime;
+            boss.animatorToro.SetTrigger("IsCharging");
+
         }
 
     }
