@@ -95,6 +95,9 @@ public class P_Behaviour : MonoBehaviour, ItakeDamage, ICanPickUp, IStunned
         EventManager.Subscribe(TypeEvent.CinematicOff, StopCinematic);
         EventManager.Subscribe(TypeEvent.AddLife, AddLife);
 
+    }
+    private void Start()
+    {
         _inventory.RestoreInventory(); //Sets the inventory == to the saved File
     }
     private void Update()
