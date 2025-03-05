@@ -14,7 +14,7 @@ public class PuntoFinal : MonoBehaviour
 
     private void Update()
     {
-        // Limpiar lista de enemigos nulos o destruidos
+        // Limpia enemigos nulos
         enemigos.RemoveAll(enemigo => enemigo == null);
 
         if (enemigos.Count == 0)
@@ -25,26 +25,17 @@ public class PuntoFinal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Verificar si está en las capas de enemigos
+        // Verifica capas de enemigos
         if (collision.gameObject.layer == 6 || collision.gameObject.layer == 8)
         {
-            // Verificar cada tipo de enemigo específico
-            Component[] enemyComponents = {
-                collision.gameObject.GetComponent<SkeletonScript>(),
-                collision.gameObject.GetComponent<RataScript>(),
-                collision.gameObject.GetComponent<CrawlerScript>(),
-                collision.gameObject.GetComponent<EyeScript>(),
-                collision.gameObject.GetComponent<SecondBoss>()
-            };
-
-            // Agregar a la lista si tiene alguno de los componentes
-            foreach (var component in enemyComponents)
+            // Detecta tipos específicos de enemigos
+            if (collision.GetComponent<SkeletonScript>() != null ||
+                collision.GetComponent<RataScript>() != null ||
+                collision.GetComponent<CrawlerScript>() != null ||
+                collision.GetComponent<EyeScript>() != null ||
+                collision.GetComponent<SecondBoss>() != null)
             {
-                if (component != null)
-                {
-                    enemigos.Add(collision.gameObject);
-                    break; // Salir después de agregar para evitar duplicados
-                }
+                enemigos.Add(collision.gameObject);
             }
         }
     }
