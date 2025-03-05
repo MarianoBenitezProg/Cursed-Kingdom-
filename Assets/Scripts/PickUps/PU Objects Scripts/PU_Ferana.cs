@@ -22,6 +22,7 @@ public class PU_Ferana : MonoBehaviour, IPickableObject
     {
         selectedItem.isPicked = true;
         obj.StoreObject(selectedItem);
+        SoundManager.instance.PlaySound("FerMarkPU", 0.3f);
         gameObject.SetActive(false);
     }
 }

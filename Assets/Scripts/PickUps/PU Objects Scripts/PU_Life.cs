@@ -19,6 +19,7 @@ public class PU_Life : MonoBehaviour, IPickableObject
     {
         selectedItem.isPicked = true;
         obj.StoreObject(selectedItem);
+        SoundManager.instance.PlaySound("Pickup", 0.3f);
         Destroy(gameObject);
     }
 }

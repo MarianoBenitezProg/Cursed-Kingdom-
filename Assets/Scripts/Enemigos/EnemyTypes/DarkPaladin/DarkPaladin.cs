@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -231,6 +231,7 @@ public class DarkPaladin : MonoBehaviour, ItakeDamage
         GameObject disparo = ProyectilePool.Instance.GetObstacle(ProjectileType.DarkPaladinAtack);
         disparo.transform.position = ShootPoint.position;
         _animator.SetTrigger("IsShooting");
+        SoundManager.instance.PlaySound("EvilSpell");
         yield return new WaitForSeconds(1f);
         directionToPlayer = (player.transform.position - transform.position).normalized;
         angleToPlayer = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
@@ -300,6 +301,7 @@ public class DarkPaladin : MonoBehaviour, ItakeDamage
         endLight.SetActive(true);
         isDying = true;
         //StartCoroutine(DissolveCoroutine());
+        SoundManager.instance.PlaySound("PaladinDeath", 0.8f);
         Destroy(gameObject);
         EventManager.Trigger(TypeEvent.EnemyKilled);
     }

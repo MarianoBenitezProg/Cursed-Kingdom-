@@ -20,6 +20,7 @@ public class PU_Markus : MonoBehaviour, IPickableObject
     {
         selectedItem.isPicked = true;
         obj.StoreObject(selectedItem);
+        SoundManager.instance.PlaySound("FerMarkPU", 0.3f);
         gameObject.SetActive(false);
     }
 

@@ -39,6 +39,7 @@ public class BoxAndBarrel : BreakableObjects, ItakeDamage
             Debug.Log(dropsPrefabs[objectDropRandomizer]);
         }
         EventManager.Trigger(TypeEvent.AddLife);
+        SoundManager.instance.PlaySound("WoodCrate", 0.1f);
         Destroy(gameObject);
     }
 }

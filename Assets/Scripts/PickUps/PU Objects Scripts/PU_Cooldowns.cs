@@ -21,6 +21,7 @@ public class PU_Cooldowns : MonoBehaviour, IPickableObject
     {
         selectedItem.isPicked = true;
         obj.StoreObject(selectedItem);
+        SoundManager.instance.PlaySound("CooldownPotion", 0.3f);
         gameObject.SetActive(false);
     }
 
