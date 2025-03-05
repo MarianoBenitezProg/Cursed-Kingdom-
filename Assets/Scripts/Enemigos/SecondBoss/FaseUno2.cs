@@ -9,7 +9,6 @@ public class FaseUno2 : SecondBossState
     public void EnterState(SecondBoss boss)
     {
         boss.rb.velocity = Vector2.zero;
-        boss.transform.position =  boss.originPoint;
         boss.damage += 2;
         rejasArriba = boss.rejas[0].GetComponent<Animator>();
         rejasArriba.SetBool("openJailBool", true);

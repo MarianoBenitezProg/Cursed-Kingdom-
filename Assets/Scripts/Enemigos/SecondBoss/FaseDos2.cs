@@ -20,7 +20,6 @@ public class FaseDos2 : SecondBossState
         boss.animatorToro.SetBool("IsWalking", false);
         boss.directionTime = 0;
 
-        boss.transform.position = boss.spawnPoints[1].transform.position;
         boss.rb.velocity = Vector2.zero;
         boss.damage += 2;
         rejasArriba = boss.rejas[1].GetComponent<Animator>();

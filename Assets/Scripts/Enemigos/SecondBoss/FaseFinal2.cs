@@ -14,7 +14,6 @@ public class FaseFinal2 : SecondBossState
 
     public void EnterState(SecondBoss boss)
     {
-        boss.transform.position = boss.spawnPoints[2].transform.position;
         boss.rb.velocity = Vector2.zero;
         boss.damage += 2;
         spawnearEnemigos(boss);
