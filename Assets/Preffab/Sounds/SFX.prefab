@@ -79,6 +79,27 @@ MonoBehaviour:
   - name: Goblin Dead
     clip:
     - {fileID: 8300000, guid: 55d13fd6f023cfa49aaa9a13d00d624f, type: 3}
+  - name: Pickup
+    clip:
+    - {fileID: 8300000, guid: 7b35ccd2f9af95546b811e03609f74da, type: 3}
+  - name: WoodCrate
+    clip:
+    - {fileID: 8300000, guid: 4e4644f3142dc3243adb72fc189cffc3, type: 3}
+  - name: CooldownPotion
+    clip:
+    - {fileID: 8300000, guid: 0e0dfd81d30657a4998ee7a3dd71baa5, type: 3}
+  - name: EvilSpell
+    clip:
+    - {fileID: 8300000, guid: f0ecd2e4684f73f408d65501852e5bc0, type: 3}
+  - name: PaladinDeath
+    clip:
+    - {fileID: 8300000, guid: ec77448deea3c784bb5479996c29d9c1, type: 3}
+  - name: FerMarkPU
+    clip:
+    - {fileID: 8300000, guid: 85bbb12fe2097d847bbccbed803645e2, type: 3}
+  - name: ChestOpen
+    clip:
+    - {fileID: 8300000, guid: 29889d0d5164a7c4f9980100fd09681a, type: 3}
   audioSource: {fileID: 0}
 --- !u!82 &8556113790933318317
 AudioSource:
