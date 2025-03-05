@@ -11,7 +11,6 @@ public class FaseUno2 : SecondBossState
         boss.rb.velocity = Vector2.zero;
         boss.transform.position =  boss.originPoint;
         boss.damage += 2;
-        boss.speed += 2;
         rejasArriba = boss.rejas[0].GetComponent<Animator>();
         rejasArriba.SetBool("openJailBool", true);
         spawnearEnemigos(boss);
@@ -55,7 +54,13 @@ public class FaseUno2 : SecondBossState
 
         boss.directionTime += Time.deltaTime;
 
-        if (boss.directionTime < 3)
+        if( boss.directionTime > 0 && boss.directionTime < 2 )
+        {
+            boss.animatorToro.SetBool("IsAttacking", false);
+            boss.animatorToro.SetBool("IsWalking", false);
+            boss.animatorToro.SetBool("IsCharging", false);
+
+        }else if (boss.directionTime < 3 && boss.directionTime > 2)
         {
         calculateDirect(boss);
         }else if(boss.directionTime > 3 && boss.directionTime <= 7)
@@ -65,13 +70,11 @@ public class FaseUno2 : SecondBossState
         {
             boss.directionTime = 0;
         }
-
     }
 
 
     public void calculateDirect(SecondBoss boss)
     {
-        boss.animatorToro.SetBool("IsWalking", true);
         boss.animatorToro.SetBool("IsCharging", true);
 
         if (boss.player != null)
@@ -84,11 +87,11 @@ public class FaseUno2 : SecondBossState
 
     private void Move(SecondBoss boss)
     {
-        boss.animatorToro.SetBool("IsWalking", false);
+
         float distanciaRecorrida = Vector3.Distance(puntoRush, boss.transform.position);
 
         #region raycast para obstaculos
-        float raycastDistancia = 1f; 
+        float raycastDistancia = 5f; 
         RaycastHit2D hitFrontal = Physics2D.Raycast(boss.transform.position, boss.dir, raycastDistancia, boss.obstacleLayer);
         Debug.DrawRay(boss.transform.position, boss.dir * raycastDistancia, Color.red); 
         #endregion
@@ -98,14 +101,18 @@ public class FaseUno2 : SecondBossState
         {
             Debug.Log("Obstáculo detectado, recalculando dirección...");
             boss.animatorToro.SetBool("IsCharging", false);
+            boss.animatorToro.SetBool("IsAttacking", false);
+            boss.animatorToro.SetBool("IsWalking", false);
 
             boss.directionTime = 0; 
         }
         else if (distanciaRecorrida < boss.allowRunDistance)
         {
+
             boss.transform.position += boss.dir * boss.speed * Time.deltaTime;
 
         }
+
 
     }
 

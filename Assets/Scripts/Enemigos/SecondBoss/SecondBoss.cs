@@ -23,6 +23,8 @@ public class SecondBoss : MonoBehaviour, ItakeDamage
 
     public Direction lookingDir;
 
+    public bool cabezeo;
+
 
 
     [Header("variables ataques")]
