@@ -9,10 +9,11 @@ public class Chest : Interaction
     [SerializeField] GameObject[] loot;
     [SerializeField] GameObject lootSpawnPoint;
     [SerializeField] GameObject tutorialText;
+    bool isOpened;
 
     private void Update()
     {
-        if(canInteract == true && Input.GetKeyDown(interactionKey))
+        if(canInteract == true && Input.GetKeyDown(interactionKey) && isOpened == false)
         {
             Action();
         }
@@ -44,5 +45,6 @@ public class Chest : Interaction
         openChest.SetActive(true);
 
         Instantiate(loot[Random.Range(0,loot.Length)], lootSpawnPoint.transform.position, Quaternion.identity);
+        isOpened = true;
     }
 }

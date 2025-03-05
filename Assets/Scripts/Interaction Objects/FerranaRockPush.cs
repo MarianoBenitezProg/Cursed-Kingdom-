@@ -8,8 +8,9 @@ public class FerranaRockPush : MonoBehaviour
     public LayerMask playerLayer;
     public float pushForce; 
     public float allowDistance = 3f; 
-    public Rigidbody2D rb; 
+    public Rigidbody2D rb;
 
+    private bool limitReached = false;
     private bool rockCouldBeMove = false;
     private bool rockIsPushing = false;
     private P_Behaviour playerB;
@@ -29,7 +30,7 @@ public class FerranaRockPush : MonoBehaviour
 
         if (playerB != null && !playerB.isMarkus)
         {
-            if (rockCouldBeMove && Input.GetKey(KeyCode.E))
+            if (rockCouldBeMove && Input.GetKey(KeyCode.E) && limitReached == false)
             {
                 if (playerB.gameObject.transform.position.y > rock.transform.position.y)
                 {
@@ -79,6 +80,7 @@ public class FerranaRockPush : MonoBehaviour
     {
         if(collision.gameObject == rock)
         {
+            limitReached = true;
             rockCouldBeMove = false;
             Debug.Log("Entro");
         }

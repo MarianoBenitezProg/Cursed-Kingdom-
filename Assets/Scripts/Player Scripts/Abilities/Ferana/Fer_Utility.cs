@@ -36,7 +36,10 @@ public class Fer_Utility : Ability
             {
                 takeDamage.TakeDamage(damageDealt);
                 Enemy enemyScript = collision.gameObject.GetComponent<Enemy>();
-                enemyScript.Stunned(stunTime, 3, false);
+                if(enemyScript != null)
+                {
+                    enemyScript.Stunned(stunTime, 3, false);
+                }
             }
             timer = 0;
             ProyectilePool.Instance.ReturnObstacle(this.gameObject, ProyectType);
