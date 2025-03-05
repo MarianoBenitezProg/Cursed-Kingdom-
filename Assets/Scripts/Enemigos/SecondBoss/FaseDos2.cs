@@ -5,7 +5,7 @@ using UnityEngine;
 public class FaseDos2 : SecondBossState
 {
     Vector3 puntoRush;
-    private float chargeCooldown = 5f; // Tiempo entre corneadas
+    private float chargeCooldown = 5f; 
     private float chargeTimer = 0f;
     private bool isCharging = false;
     private Vector3 chargeStartPosition;
@@ -24,6 +24,7 @@ public class FaseDos2 : SecondBossState
         boss.damage += 2;
         rejasArriba = boss.rejas[1].GetComponent<Animator>();
         rejasArriba.SetBool("openJailBool", true);
+
         spawnearEnemigos(boss);
     }
 
