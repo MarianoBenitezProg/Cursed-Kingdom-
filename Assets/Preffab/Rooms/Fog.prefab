@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54df261158d408e4a850fcde599380f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 15
+  damage: 25
   timerLimit: 0.75
   isEvent: 0
 --- !u!1 &4354400816867498639
@@ -161,8 +161,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.2609501, y: 1.5923499, z: 0}
-    m_Extent: {x: 4.09805, y: 4.72175, z: 0}
+    m_Center: {x: 0.25409997, y: 1.6068, z: 0}
+    m_Extent: {x: 4.103, y: 4.7214, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
