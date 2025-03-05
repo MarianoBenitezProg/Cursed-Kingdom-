@@ -44,17 +44,17 @@ public class CanvasManager : MonoBehaviour, IScreen
         if (selectedSlot == 1)
         {
             SavedGameManager.instance.selectedSaveSlot = SaveSlot.SlotOne;
-            LevelsManager.instance?.LoadScene(SavedGameManager.instance.saveSlots[1].level);
+            LevelsManager.instance?.LoadScene(SavedGameManager.instance.saveSlots[selectedSlot].level);
         }
         else if (selectedSlot == 2)
         {
             SavedGameManager.instance.selectedSaveSlot = SaveSlot.SlotTwo;
-            LevelsManager.instance?.LoadScene(SavedGameManager.instance.saveSlots[2].level);
+            LevelsManager.instance?.LoadScene(SavedGameManager.instance.saveSlots[selectedSlot].level);
         }
         else if (selectedSlot == 3)
         {
             SavedGameManager.instance.selectedSaveSlot = SaveSlot.SlotThree;
-            LevelsManager.instance?.LoadScene(SavedGameManager.instance.saveSlots[3].level);
+            LevelsManager.instance?.LoadScene(SavedGameManager.instance.saveSlots[selectedSlot].level);
         }
 
          // Load Levels Scene
