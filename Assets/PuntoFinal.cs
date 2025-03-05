@@ -9,11 +9,15 @@ public class PuntoFinal : MonoBehaviour
 
     private void Awake()
     {
-        puntoFinal = gameObject.transform.GetChild(0).gameObject;        
+        puntoFinal = gameObject.transform.GetChild(0).gameObject;
     }
+
     private void Update()
     {
-        if(enemigos.Count == 0)
+        // Limpiar lista de enemigos nulos o destruidos
+        enemigos.RemoveAll(enemigo => enemigo == null);
+
+        if (enemigos.Count == 0)
         {
             puntoFinal.SetActive(true);
         }
@@ -21,25 +25,27 @@ public class PuntoFinal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Verificar si está en las capas de enemigos
         if (collision.gameObject.layer == 6 || collision.gameObject.layer == 8)
         {
-            var enemy = collision.GetComponent<Enemy>();
-            var warden = collision.GetComponent<SecondBoss>();
+            // Verificar cada tipo de enemigo específico
+            Component[] enemyComponents = {
+                collision.gameObject.GetComponent<SkeletonScript>(),
+                collision.gameObject.GetComponent<RataScript>(),
+                collision.gameObject.GetComponent<CrawlerScript>(),
+                collision.gameObject.GetComponent<EyeScript>(),
+                collision.gameObject.GetComponent<SecondBoss>()
+            };
 
-            if (enemy != null)
+            // Agregar a la lista si tiene alguno de los componentes
+            foreach (var component in enemyComponents)
             {
-                enemigos.Add(collision.gameObject);
-            }
-
-            if (warden != null)
-            {
-                enemigos.Add(collision.gameObject);
+                if (component != null)
+                {
+                    enemigos.Add(collision.gameObject);
+                    break; // Salir después de agregar para evitar duplicados
+                }
             }
         }
     }
-    public List<GameObject> GetEnemigos()
-    {
-        return enemigos;
-    }
 }
-
