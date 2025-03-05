@@ -9,8 +9,7 @@ public class PuntoFinal : MonoBehaviour
 
     private void Awake()
     {
-        puntoFinal = gameObject.transform.GetChild(0).gameObject;
-        
+        puntoFinal = gameObject.transform.GetChild(0).gameObject;        
     }
     private void Update()
     {

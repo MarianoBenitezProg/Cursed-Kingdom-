@@ -4639,6 +4639,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8093769239094073354, guid: 0eaed182b3d5c1442a47b5ceabe63dca, type: 3}
+      propertyPath: poolSizePerType
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093769239094073354, guid: 0eaed182b3d5c1442a47b5ceabe63dca, type: 3}
+      propertyPath: projectilePrefabs.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093769239094073354, guid: 0eaed182b3d5c1442a47b5ceabe63dca, type: 3}
+      propertyPath: projectilePrefabs.Array.data[10].type
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093769239094073354, guid: 0eaed182b3d5c1442a47b5ceabe63dca, type: 3}
+      propertyPath: projectilePrefabs.Array.data[11].type
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093769239094073354, guid: 0eaed182b3d5c1442a47b5ceabe63dca, type: 3}
+      propertyPath: projectilePrefabs.Array.data[11].prefab
+      value: 
+      objectReference: {fileID: 6688277266360494342, guid: d18010dea4e3c2247b111bbfb3072e52, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19161,8 +19181,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.041800022, y: -3.47125, z: 0}
-    m_Extent: {x: 6.1918, y: 7.02955, z: 0}
+    m_Center: {x: -0.039499998, y: -3.46645, z: 0}
+    m_Extent: {x: 6.2003, y: 7.03065, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
