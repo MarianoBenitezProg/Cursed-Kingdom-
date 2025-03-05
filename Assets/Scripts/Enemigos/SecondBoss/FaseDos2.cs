@@ -18,6 +18,7 @@ public class FaseDos2 : SecondBossState
         boss.animatorToro.SetBool("IsCharging", false);
         boss.animatorToro.SetBool("IsAttacking", false);
         boss.animatorToro.SetBool("IsWalking", false);
+        boss.directionTime = 0;
 
         boss.transform.position = boss.spawnPoints[1].transform.position;
         boss.rb.velocity = Vector2.zero;
@@ -86,10 +87,12 @@ public class FaseDos2 : SecondBossState
     #region movimiento 1
     private void Move(SecondBoss boss)
     {
+        Debug.Log("estoy en move ");
         boss.rb.velocity = Vector3.zero;
 
         boss.animatorToro.SetBool("IsWalking", true);
         boss.animatorToro.SetBool("IsAttacking", false);
+        boss.animatorToro.SetBool("IsCharging", false);
 
         if (boss.player != null && boss.playerDistance > 6)
         {
@@ -124,6 +127,8 @@ public class FaseDos2 : SecondBossState
     #endregion
     private void StartCharge(SecondBoss boss)
     {
+        Debug.Log("estoy en startCharge ");
+
         boss.animatorToro.SetBool("IsCharging", true);
 
         boss.rb.velocity = Vector2.zero;
@@ -134,6 +139,8 @@ public class FaseDos2 : SecondBossState
 
     private void ChargeMove(SecondBoss boss)
     {
+        Debug.Log("estoy en charge");
+
         float distanciaRecorrida = Vector3.Distance(chargeStartPosition, boss.transform.position);
         float raycastDistancia = 1f;
 
