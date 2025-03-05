@@ -131,9 +131,10 @@ public class SlimeFather : MonoBehaviour, ItakeDamage
         Debug.Log(currentHealth);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == 3)
+        if (collision.gameObject.layer == 3)
         {
             var player = collision.gameObject.GetComponent<P_Behaviour>();
             player.TakeDamage(damage);
