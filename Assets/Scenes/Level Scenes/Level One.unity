@@ -3062,6 +3062,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 7258718933399107491, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
+      propertyPath: m_ShadowBias
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7258718933399107491, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 7260549919927712595, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
       propertyPath: m_Layer
       value: 6
