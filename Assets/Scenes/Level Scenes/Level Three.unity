@@ -60485,6 +60485,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7445709626878152690, guid: a0df97f32e680324abff9cbf0c4026a8, type: 3}
+      propertyPath: health
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7445709626878152690, guid: a0df97f32e680324abff9cbf0c4026a8, type: 3}
       propertyPath: endLight
       value: 
       objectReference: {fileID: 1036669159}
