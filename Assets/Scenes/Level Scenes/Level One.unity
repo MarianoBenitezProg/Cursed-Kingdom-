@@ -3214,6 +3214,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 8245612250243837490, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.59
+      objectReference: {fileID: 0}
     - target: {fileID: 8270513800279855528, guid: c17471b34e5d5c843baab355f62dcf71, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -5300,7 +5304,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 278739389715031489, guid: f5d02b84c6d5e994787dbf7f5ee8b7b8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2018918058907902586, guid: f5d02b84c6d5e994787dbf7f5ee8b7b8, type: 3}
       propertyPath: TriggerModule.enabled
@@ -5400,15 +5404,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6649927193295041516, guid: f5d02b84c6d5e994787dbf7f5ee8b7b8, type: 3}
       propertyPath: m_Size.y
-      value: 3.815435
+      value: 3.3497205
       objectReference: {fileID: 0}
     - target: {fileID: 6649927193295041516, guid: f5d02b84c6d5e994787dbf7f5ee8b7b8, type: 3}
       propertyPath: m_Offset.x
-      value: 0.12251514
+      value: 0.1225152
       objectReference: {fileID: 0}
     - target: {fileID: 6649927193295041516, guid: f5d02b84c6d5e994787dbf7f5ee8b7b8, type: 3}
       propertyPath: m_Offset.y
-      value: -0.2671759
+      value: 0.9394529
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8677,7 +8681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1409203978
 Animator:
   serializedVersion: 5
