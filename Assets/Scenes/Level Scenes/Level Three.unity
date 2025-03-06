@@ -128374,11 +128374,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 407390721237805497, guid: 97fa4a60ac67b8b4eba9c84ec589927c, type: 3}
       propertyPath: m_Size.y
-      value: 2.6798935
+      value: 5.065529
       objectReference: {fileID: 0}
     - target: {fileID: 407390721237805497, guid: 97fa4a60ac67b8b4eba9c84ec589927c, type: 3}
       propertyPath: m_Offset.y
-      value: -1.3418388
+      value: -0.14902115
       objectReference: {fileID: 0}
     - target: {fileID: 4383454614923937037, guid: 97fa4a60ac67b8b4eba9c84ec589927c, type: 3}
       propertyPath: m_SortingOrder
