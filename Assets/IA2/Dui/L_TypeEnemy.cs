@@ -19,7 +19,7 @@ public class L_TypeEnemy : MonoBehaviour
 
     public List<string> ProcessEnemyGroups(List<List<A_EnemyCount>> enemyGroups)
     {
-        return enemyGroups.SelectMany(g => g).OrderBy(e => e.Health) .Select(e => $"{e.Type} - HP: {e.Health}").ToList();
+        return enemyGroups.SelectMany(g => g).OrderBy(e => e.Health).Select(e => $"{e.Type} - HP: {e.Health}").ToList();
     }
 
 
