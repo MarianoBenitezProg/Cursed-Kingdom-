@@ -23,7 +23,7 @@ public class L_TypeEnemy : MonoBehaviour
     }
 
 
-    public void ProcessEnemiesInChunks(int chunkSize)
+    public void EnemiesChunks(int chunkSize)
     {
         var enemies = GenerateAndFilterEnemies(100);
 
